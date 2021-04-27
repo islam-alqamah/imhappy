@@ -17,32 +17,18 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default card-view">
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-sm-12 col-xs-12">
-                                <div class="form-wrap">
-                                    <div class="alert alert-danger alert-dismissible">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <h4 style="color: #ffffff"> <i class="zmdi zmdi-delete pr-15 pull-left"></i> {{ __('Payment Failed .') }}</h4>
-                                                <p style="color: #ffffff">{{ __('Something went wrong while processing payment.') }}</p>
-                                                <p style="color: #ffffff">{{ __('Please contact system admin.') }}</p>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="{{ route('account.plan') }}" class="btn btn-primary pull-right">{{ __('Payment History') }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                {{ $subscribe->plan->title }} - {{ $subscribe->starts_at }} - {{ $subscribe->ends_at }}
+                            <div class="col-md-12 text-center">
+                                <img src="{{ url('assets/img/sad.png') }}" width="80">
+                                <h4 style="color: #D43F3F;text-align: center" class="mt-10"> {{ __('Oops! Unsuccessful Subscription!') }}</h4>
+                                <p style="color: #E1ACAC;text-align: center" class="mt-10">{{ __('Something went wrong, we couldn\'t subscribe you') }}</p>
+                                <p style="color: #E1ACAC;text-align: center" class="mt-10">{{ __('Keep calm and try again') }}</p>
+                                <a href="{{ url('account/payments') }}" class="btn btn-primary fancy-button btn-0 mt-20 mr-20 btn-outline">{{ __('Go to Payments History') }}</a>
+                                <a href="{{ url('dashboard') }}" class="btn btn-info fancy-button btn-0 mt-20 btn-outline">{{ __('Go to Dashboard') }}</a>
                             </div>
                         </div>
                     </div>

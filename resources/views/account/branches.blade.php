@@ -1,123 +1,26 @@
 @extends('layouts.account')
 
 @section('content')
-    <div class="row heading-bg">
-        <div class="col-lg-3 col-md-3 col-xs-12">
-            <h5 class="txt-dark">
-                <button href="#" data-toggle="modal" data-target="#branch-form" class="btn  btn-circle btn-icon-anim btn-success btn-sm">
-                    <i class="fa fa-plus"></i>
-                </button>
-                {{ __('All Branches') }}
-            </h5>
-
-        </div>
-
-        <!-- Breadcrumb -->
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a></li>
-                <li><a href="#"><span>{{ __('Branches') }}</span></a></li>
-                <li class="active"><span>{{ __('Branches') }}</span></li>
-            </ol>
-        </div>
-        <!-- /Breadcrumb -->
-    </div>
 
     <div class="row">
 
-        <div id="branch-form" class="modal fade" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h5 class="modal-title" id="myModalLabel">{{ __('Add New Branch') }}</h5>
+        <div class="col-md-12 mt-20">
+            <div class="panel panel-default card-view">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h6 class="panel-title txt-dark">{{ __('All Branches') }}</h6>
                     </div>
-                    <form action="{{ route('branches.branches.new') }}" method="post">
-                        @csrf
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label class="control-label mb-10" for="city">
-                                {{ __('Branch Name') }}
-                            </label>
-
-                            <input type="text" required name="name" class="form-control" id="city" placeholder="{{ __('Branch Name') }}">
-
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label mb-10" for="city">
-                                {{ __('City') }}
-                            </label>
-
-                            <select required id="city" name="city" class="form-control select2 ">
-                                <option value="-1"> {{ __('Select City') }}</option>
-                                @foreach($cities as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @endforeach
-                                <option value="0">{{ __('-Add New City-') }}</option>
-                            </select>
-                        </div>
-                        <div class="form-group" id="new-city" style="display: none">
-                            <label class="control-label mb-10" for="city_name">
-                                {{ __('City Name') }}
-                            </label>
-
-                            <input type="text" name="city_name" class="form-control" id="city_name" placeholder="{{ __('City Name') }}">
-
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label mb-10" for="phone">
-                                {{ __('Branch Phone') }}
-                            </label>
-
-                            <input type="text" name="phone" class="form-control" id="phone" placeholder="{{ __('Phone') }}">
-
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label mb-10" for="address">
-                                {{ __('Branch Address') }}
-                            </label>
-
-                            <input type="text" name="address" class="form-control" id="address" placeholder="{{ __('Address') }}">
-
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label class="control-label mb-10" for="long">
-                                    {{ __('Branch Longitude') }}
-                                </label>
-
-                                <input type="text" name="longitude" class="form-control" id="long" placeholder="{{ __('Longitude') }}">
-                            </div>
-                            <div class="col-md-6">
-
-                                <label class="control-label mb-10" for="lat">
-                                    {{ __('Branch Latitude') }}
-                                </label>
-
-                                <input type="text" name="latitude" class="form-control" id="lat" placeholder="{{ __('Latitude') }}">
-                            </div>
-                        </div>
+                    <div class="pull-right">
+                        <button href="#" id="open_right_sidebar" class="btn btn-primary btn-outline fancy-button btn-0 btn-xs">
+                            <i class="fa fa-plus" style="color: #fff"></i>
+                        </button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success pull-right "><i class="fa fa-floppy-o"></i> {{ __('Save') }}</button>
-                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
-                            {{ __('Close') }}</button>
-                    </div>
-                    </form>
+                    <div class="clearfix"></div>
                 </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <div class="col-md-12">
-            <div class="panel panel-default">
-
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
                         <div class="table-wrap">
-                                <table class="table table-hover mb-0">
+                                <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>
                                         <th>{{ __('Branch Name') }}</th>
@@ -125,8 +28,7 @@
                                         <th>{{ __('Points') }}</th>
                                         <th>{{ __('Phone') }}</th>
                                         <th>{{ __('Address') }}</th>
-                                        <th>{{ __('Longitude') }}</th>
-                                        <th>{{ __('Latitude') }}</th>
+
                                         <th>{{ __('Options') }}</th>
                                     </tr>
                                     </thead>
@@ -138,12 +40,11 @@
                                         <td>{{ $branch->points->count() }}</td>
                                         <td>{{ $branch->phone }}</td>
                                         <td>{{ $branch->address }}</td>
-                                        <td>{{ $branch->longitude }}</td>
-                                        <td>{{ $branch->latitude }}</td>
+
                                         <td >
                                             <div class="btn-group">
                                                 <div class="dropdown">
-                                                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default btn-outline dropdown-toggle " type="button">
+                                                    <button aria-expanded="false" data-toggle="dropdown" style="border: none" class="btn btn-circle btn-default btn-outline dropdown-toggle" type="button">
                                                         <i class="fa fa-bars"></i> <span class="caret"></span></button>
                                                     <ul role="menu" class="dropdown-menu">
                                                         <li>
@@ -173,7 +74,7 @@
                                                         <div class="modal-body">
                                                             <div class="form-group row">
                                                                 <div class="col-md-12">
-                                                                    <p align="center"> By deleting this point all saved data will be removed.</p>
+                                                                    <p align="center"> By deleting this branch all saved data will be removed.</p>
                                                                     <p align="center" class="msg"> Please export before deleting to prevent any loss of data.</p>
                                                                     <p align="center" class="msg-confirmation" style="display: none;"> Are you sure you want to delete ? </p>
                                                                     <br/>
@@ -285,9 +186,82 @@
         </div>
     </div>
 
+    <div class="fixed-sidebar-right">
+        <ul class="right-sidebar" style="background: #f8f8f8">
+            <li>
+                <form action="{{ route('branches.branches.new') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label mb-5" for="city">
+                                {{ __('Branch Name') }}
+                            </label>
+
+                            <input type="text" required name="name" class="form-control" id="city" placeholder="">
+
+                        </div>
+                        <div class="form-group  mt-25">
+                            <label class="control-label mb-5" for="city">
+                                {{ __('City') }}
+                            </label>
+
+                            <select required id="city" name="city" class="form-control select2 ">
+                                <option value="-1"> {{ __('Select City') }}</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                                <option value="0">{{ __('-Add New City-') }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group  mt-25" id="new-city" style="display: none">
+                            <label class="control-label mb-5" for="city_name">
+                                {{ __('City Name') }}
+                            </label>
+
+                            <input type="text" name="city_name" class="form-control" id="city_name" placeholder="">
+
+                        </div>
+                        <div class="form-group  mt-25">
+                            <label class="control-label mb-5" for="phone">
+                                {{ __('Branch Phone') }}
+                            </label>
+
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="">
+
+                        </div>
+
+                        <div class="form-group mt-25">
+                            <label class="control-label mb-5" for="address">
+                                {{ __('Branch Address') }}
+                            </label>
+
+                            <input type="text" name="address" class="form-control" id="address" placeholder="">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0 pull-right "><i class="fa fa-floppy-o"></i> {{ __('Save') }}</button>
+
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+
 @endsection
 
 @section('scripts')
+    <!-- Data table JavaScript -->
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/jszip/dist/jszip.min.js"></script>
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/pdfmake/build/pdfmake.min.js"></script>
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ url('assets/dist/vendors') }}/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ url('assets/dist/') }}/js/export-table-data.js"></script>
     <script>
         $(document).on('change','#city',function () {
             if($(this).val() == 0){

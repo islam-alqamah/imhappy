@@ -1,27 +1,21 @@
 @extends('layouts.account')
 
 @section('content')
-    <div class="row heading-bg">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h5 class="txt-dark">{{ __('Settings') }}</h5>
-        </div>
-
-        <!-- Breadcrumb -->
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a></li>
-                <li><a href="#"><span>{{ __('Account') }}</span></a></li>
-                <li class="active"><span>{{ __('Settings') }}</span></li>
-            </ol>
-        </div>
-        <!-- /Breadcrumb -->
-    </div>
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default card-view" style="background: #f8f8f8">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h6 class="panel-title txt-dark">{{ __('General Settings') }}</h6>
+                    </div>
+                    <div class="pull-right">
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
                 <div class="panel-wrapper collapse in">
-                    <div class="panel-body">
+                    <div class="panel-body" >
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
                                 <div class="form-wrap">
@@ -72,20 +66,24 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="response_time_delay">
-                                                {{ __('Response Minutes Delay') }} <small>0 is disabled</small>
+                                                {{ __('Response Minutes Delay') }}
                                                 <a href="#" data-toggle="tooltip" title="Response Minutes Delay is the time which the user can send another feedback response."><i class="fa fa-question-circle"></i> </a>
                                             </label>
-                                            <input type="text" value="{{ $settings->response_time_delay }}" name="response_time_delay"
-                                                   class="form-control" id="response_time_delay" placeholder="{{ __('Minutes') }}">
+                                            <select class="form-control" name="response_time_delay">
+                                                <option @if($settings->response_time_delay==0) selected @endif value="0">Disabled</option>
+                                                <option @if($settings->response_time_delay==15) selected @endif value="15">15 Minutes</option>
+                                                <option @if($settings->response_time_delay==30) selected @endif value="30">30 Minutes</option>
+                                                <option @if($settings->response_time_delay==60) selected @endif value="60">1 Hour</option>
+                                            </select>
+
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="name">
                                                 {{ __('Telegram Group Id') }}
                                                  <a href="#" data-toggle="tooltip"
-                                                    title="(1) Go in your Telegram Group.
-                                                    (2) Add new User (Invite). (3) Search for 'getidsbot' => @getidsbot.
-                                                    (4) Message: /start@getidsbot
-                                                    -- Now you see the ID. looks like 1068773197, which is -1001068773197 for bots (with -100 prefix)!!!"><i class="fa fa-question-circle"></i> </a>
+                                                    title="1- Add @IM_HAPPY_360_BOT (I’M Happy) into your group.&#13;
+                                                    2- type /help&#13;
+                                                    3- copy and paste the ID in this field."><i class="fa fa-question-circle"></i> </a>
                                             </label>
                                             <input type="text" value="{{ $settings->telegram }}" name="telegram"
                                                    class="form-control" id="name" placeholder="{{ __('Telegram Group Id') }}">
@@ -111,7 +109,7 @@
                                             <input type="text" value="{{ $settings->instagram }}" name="instagram"
                                                    class="form-control" id="insta" placeholder="{{ __('Instagram Page Url') }}">
                                         </div>
-                                        <button type="submit" class="btn btn-success pull-right ">{{ __('Save') }}</button>
+                                        <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0 pull-right ">{{ __('Save') }}</button>
                                     </form>
                                 </div>
                             </div>

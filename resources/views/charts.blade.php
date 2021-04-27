@@ -19,9 +19,9 @@
                 <div class="refresh-container">
                     <div class="la-anim-1"></div>
                 </div>
-                <div class="panel-heading">
+                <div class="panel-heading dont-print">
                     <div class="pull-left">
-                        <form id="filtering" class="form-inline" action="{{ route('charts') }}" method="post">
+                        <form  id="filtering" class="form-inline" action="{{ route('charts') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <select name="city_id" id="city"  class="form-control">
@@ -1570,26 +1570,10 @@ stack: 'st1',
     });
     function PrintElem(elem)
     {
-        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-        mywindow.document.write('<html><head><title>' + document.title  + '</title>' +
-            '<link href="{{ url('assets/dist/vendors') }}/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>'+
-           ' <link href="{{ url('assets/dist/vendors') }}/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">' +
-            '<link href="{{ url('assets/dist/') }}/css/style.css" rel="stylesheet" type="text/css">'
-        );
-        mywindow.document.write('<h1>' + document.title  + '</h1>');
-        mywindow.document.write(document.getElementById(elem).innerHTML);
-        mywindow.document.write('' +
-            ''+
-            '</body></html>');
+        window.print();
 
-        mywindow.document.close(); // necessary for IE >= 10
-        mywindow.focus(); // necessary for IE >= 10*/
-
-        mywindow.print();
-        mywindow.close();
-
-        return true;
     }
 </script>
+
 @endsection

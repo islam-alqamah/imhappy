@@ -94,7 +94,7 @@ class UrWayController extends Controller
                     }else {
                         $payment->status = 'declined';
                         $payment->save();
-                        return 'declined';
+                        return view('account.payment-faild');
                     }
                 }
                 else

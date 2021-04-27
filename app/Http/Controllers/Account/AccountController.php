@@ -35,7 +35,7 @@ class AccountController extends Controller
         return view('account.preference');
     }
     public function payments(){
-        $payments = currentTeam()->payments;
+        $payments = Payment::where('team_id',currentTeam()->id)->orderByDesc('id')->get();
         return view('account.payment-history',compact('payments'));
     }
     public function payment($id){

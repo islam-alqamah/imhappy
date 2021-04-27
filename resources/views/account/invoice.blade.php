@@ -34,7 +34,7 @@
                             <div class="col-xs-4">
                                 <span class="txt-dark head-font inline-block capitalize-font mb-5">Billed to:</span>
                                 <address class="mb-15">
-                                    <span class="address-head mb-5">I'M Happy Inc</span>
+                                    <span class="address-head mb-5">Future Intelligence Company - I'm Happy</span>
                                     Prince Fawaz of Saudi Arabia – Jeddah <br/>
                                     <abbr title="Phone">P:</abbr>+966 507735308
                                 </address>

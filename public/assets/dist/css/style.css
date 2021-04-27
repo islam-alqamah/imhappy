@@ -3171,10 +3171,10 @@ footer {
 .select2-container--default .select2-selection--single, .select2-selection.select2-selection--multiple, .wizard .content > .body input, .mce-floatpanel .mce-textbox, .mce-floatpanel .mce-btn, .dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_length select, .jsgrid-cell input, .jsgrid-cell select, .tablesaw-bar .btn-select select, .dd-handle, .dd3-content, .app-search .form-control:focus,
 .app-search .select2-container--default .select2-selection--single:focus,
 .select2-container--default .app-search .select2-selection--single:focus, .app-search .select2-selection.select2-selection--multiple:focus, .app-search .mce-floatpanel .mce-textbox:focus, .mce-floatpanel .app-search .mce-textbox:focus, .app-search .mce-floatpanel .mce-btn:focus, .mce-floatpanel .app-search .mce-btn:focus, .app-search .dataTables_wrapper .dataTables_filter input:focus, .dataTables_wrapper .dataTables_filter .app-search input:focus, .app-search .dataTables_wrapper .dataTables_length select:focus, .dataTables_wrapper .dataTables_length .app-search select:focus, .app-search .jsgrid-cell input:focus, .jsgrid-cell .app-search input:focus, .app-search .jsgrid-cell select:focus, .jsgrid-cell .app-search select:focus, .app-search .tablesaw-bar .btn-select select:focus, .tablesaw-bar .btn-select .app-search select:focus, .app-search .dd-handle:focus, .app-search .dd3-content:focus {
-  border: 1px solid rgba(33, 33, 33, 0.12);
+  border: none;
   border-radius: 8px;
-  background-color: #f4f4f4;
-  box-shadow: none;
+  background-color: #ffffff;
+  box-shadow:  0 2px 12px 0 rgb(34 41 47 / 10%);
   color: #212121;
   height: 42px; }
   .form-control:focus, .select2-container--default .select2-selection--single .select2-selection__rendered:focus,
@@ -3894,7 +3894,7 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
       color: #212121;
       border-color: transparent; }
       .nav-tabs > li.active > a:active, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li.open > a:active, .nav-tabs > li.open > a:focus, .nav-tabs > li.open > a:hover {
-        background: #ffffff;
+        background: #f8f8f8;
         color: #212121;
         border-color: transparent; }
     .nav-tabs > li:first-child > a {
@@ -4179,8 +4179,8 @@ border-radius: 6px;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:active, .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
-  background: #4aa23c;
-  border-color: #4aa23c;
+  background: #15E2BE;
+  border-color: #15E2BE;
   color: #fff !important;
   box-shadow: none; }
 
@@ -5826,7 +5826,7 @@ a.compose-mail {
   .app-search .select2-container--default .select2-selection--single:focus,
   .select2-container--default .app-search .select2-selection--single:focus, .app-search .select2-selection.select2-selection--multiple:focus, .app-search .wizard .content > .body input:focus, .wizard .content > .body .app-search input:focus, .app-search .mce-floatpanel .mce-textbox:focus, .mce-floatpanel .app-search .mce-textbox:focus, .app-search .mce-floatpanel .mce-btn:focus, .mce-floatpanel .app-search .mce-btn:focus, .app-search .dataTables_wrapper .dataTables_filter input:focus, .dataTables_wrapper .dataTables_filter .app-search input:focus, .app-search .dataTables_wrapper .dataTables_length select:focus, .dataTables_wrapper .dataTables_length .app-search select:focus, .app-search .jsgrid-cell input:focus, .jsgrid-cell .app-search input:focus, .app-search .jsgrid-cell select:focus, .jsgrid-cell .app-search select:focus, .app-search .tablesaw-bar .btn-select select:focus, .tablesaw-bar .btn-select .app-search select:focus, .app-search .dd-handle:focus, .app-search .dd3-content:focus {
     background: rgba(255, 255, 255, 0.9) none repeat scroll 0 0;
-    border: medium none;
+    border:  none;
     border-radius: 40px;
     box-shadow: none;
     color: #4c5667;
@@ -7372,5 +7372,10 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
   .form-actions button.fc-month-button.fc-state-default.fc-corner-left,
   .form-actions button.fc-agendaWeek-button, .form-actions button.fc-prev-button, .form-actions button.fc-next-button, .form-actions button.fc-today-button {
     margin-bottom: 20px; } }
+
+.dropdown-menu{
+  left:unset;
+  right:0;
+}
 
 /*# sourceMappingURL=style.css.map */

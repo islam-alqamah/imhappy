@@ -2,5 +2,6 @@
 /vendor
 /resources/views/vendor
 /prod
+/storage
 .env
 .idea
