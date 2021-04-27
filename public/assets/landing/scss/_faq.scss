@@ -1,0 +1,236 @@
+
+
+
+/*===========================
+    12.FAQ css 
+===========================*/
+
+
+
+
+
+.faq-area{
+	position: relative;
+	&::before{
+		position: absolute;
+		content: '';
+		left: 110px;
+		top: 20px;
+		height: 75px;
+		width: 75px;
+		border-radius: 50%;
+		background-image: -moz-linear-gradient( 0deg, rgb(253,176,70) 0%, rgb(254,238,81) 100%);
+		background-image: -webkit-linear-gradient( 0deg, rgb(253,176,70) 0%, rgb(254,238,81) 100%);
+		background-image: -ms-linear-gradient( 0deg, rgb(253,176,70) 0%, rgb(254,238,81) 100%);
+        @include animation(bubbleMover linear infinite 8s);
+		@media #{$laptop} {
+			left: 0;
+		}
+        @media #{$md} {
+            top: -30px;
+        }
+        @media #{$xs} {
+            top: -30px;
+            left: 30px;
+        }
+
+	}
+	& .faq-content{
+		& span{
+			font-size: 14px;
+			text-transform: uppercase;
+			color: $theme-color;
+			letter-spacing: 2px;
+		}
+		& .title{
+			font-size: 46px;
+			padding-top: 6px;
+            @media #{$xs} {
+                font-size: 32px;
+            }
+		}
+		& p{
+			font-size: 18px;
+			font-weight: 300;
+			line-height: 36px;
+			color: $text-color;
+			padding-top: 34px;
+			padding-bottom: 50px;
+		}
+		& img{
+			width: 100%;
+			border-radius: 6px;
+		}
+	}
+
+}
+
+
+
+
+
+.faq-accrodion{
+    margin-top: 8px;
+    @media #{$md} {
+        margin-top: 30px;
+    }
+    @media #{$xs} {
+        margin-top: 30px;
+    }
+    & .accrodion{
+        position: relative;
+        -webkit-transition: all .4s ease;
+        transition: all .4s ease;
+        background-color: #fff;
+        &::before{
+            content: '';
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: 0px;
+            right: 0px;
+            border-radius: 0px;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            background-image: -webkit-gradient(linear, left top, right top, from(var(--thm-primary)), to(var(--thm-base)));
+            background-image: linear-gradient(90deg, var(--thm-primary) 0%, var(--thm-base) 100%);
+            -webkit-transition: -webkit-transform .4s ease;
+            transition: -webkit-transform .4s ease;
+            border-radius: 5px;
+            transition: transform .4s ease;
+            transition: transform .4s ease, -webkit-transform .4s ease;
+
+        }
+        &+.accrodion{
+            margin-top: 20px;
+        }
+        &.active{
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.05);
+            & .accrodion-inner{
+                margin: 0 1px;
+                background-color: transparent;
+                border-color: #dce0e8;
+            }
+            &::before{
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+
+            }
+            & .accrodion-title{
+                padding-bottom: 0;
+                &::before{
+                    opacity: 0;
+                }
+                &::after{
+                    opacity: 1;
+                    color: $theme-color;
+                }
+            }
+        }
+        & .accrodion-inner{
+            background-color: #f2f4f8;
+            padding: 27px 0;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #f2f4f8;
+            border-radius: 0px;
+            position: relative;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            border-radius: 5px;
+
+        }
+        & .accrodion-title{
+            padding: 0px 38px;
+            cursor: pointer;
+            position: relative;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            @media #{$xs} {
+                padding: 0 38px 0 20px;
+            }
+            &::before{
+                content: '\f067';
+                font-family:'FontAwesome';
+                font-weight: 900;
+                font-size: 14px;
+                color: $heading-color;
+                text-align: center;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                align-items: center;
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                opacity: 1;
+                -webkit-transition: all 500ms ease;
+                transition: all 500ms ease;
+                @media #{$xs} {
+                    right: 20px;
+                }
+            }
+            &::after{
+                content: '\f068';
+                font-weight: 900;
+                font-family:'FontAwesome';
+                font-weight: 900;
+                font-size: 14px;
+                color: $heading-color;
+                text-align: center;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                align-items: center;
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                opacity: 0;
+                -webkit-transition: all 500ms ease;
+                transition: all 500ms ease;
+                @media #{$xs} {
+                    right: 20px;
+                }
+
+            }
+            & h4{
+                margin: 0;
+                color: $heading-color;
+                font-size: 18px;
+                font-weight: 700;
+
+            }
+        }
+        & .accrodion-content{
+            & .inner{
+                padding: 0 38px;
+                padding-right: 35px;
+                padding-top: 35px;
+                padding-bottom: 0px;
+                @media #{$xs} {
+                    padding: 0 38px 0 20px;
+                }
+            }
+            & p{
+                margin: 0;
+                color: #838999;
+                font-size: 18px;
+                line-height: 36px;
+                font-weight: 300;
+
+            }
+        }
+    }
+}
+
+
+
+
