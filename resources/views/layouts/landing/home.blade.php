@@ -47,15 +47,19 @@
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/landing/css/style.css?v=2" />
     <link rel="stylesheet" href="assets/landing/css/themify-icons.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
 </head>
 
 <body>
 <!-- PRELOADER -->
 <div class="preloader">
     <div class="lds-ellipsis">
-        <span></span>
-        <span></span>
-        <span></span>
+        <lottie-player
+                src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
+                style="width: 200px;position: absolute;left: 38%"
+                autoplay
+                loop
+        ></lottie-player>
     </div>
 </div>
 <!-- END PRELOADER -->
@@ -115,8 +119,12 @@
                     <div class="navigation">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="#"
-                            ><img class="logo-main" src="assets/landing/images/IM_Happy_logo_white.png" alt=""
-                                /></a>
+                            ><lottie-player
+                                        src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
+                                        style="width: 90px;"
+                                        autoplay
+                                        loop
+                                ></lottie-player></a>
                             <!-- logo -->
                             <a class="navbar-brand-2" href="#"
                             ><img src="assets/landing/images/IM_Happy_logo_white.png" alt=""
