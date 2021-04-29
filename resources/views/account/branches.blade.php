@@ -18,8 +18,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-wrapper collapse in">
-                    <div class="panel-body">
-                        <div class="table-wrap">
+                    <div class="panel-body" >
+                        <div class="table-wrap" style="overflow: auto">
                                 <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>

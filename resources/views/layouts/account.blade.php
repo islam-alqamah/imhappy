@@ -42,7 +42,7 @@
     <div id="app">
         <center><lottie-player
                 src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
-                style="width: 200px; position: absolute;top: 30%;left:30%"
+                style="width: 200px; position: absolute;left: 38%"
                 autoplay
                 loop
         ></lottie-player></center>
