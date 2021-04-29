@@ -173,31 +173,33 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid ">
-
-            @if(!isset(currentTeam()->subscribe))
-            @if(\Carbon\Carbon::today() > currentTeam()->trial_ends_at)
-                <div class="alert alert-danger text-center">
-                    <h3 style="color: #ffffff"><i class="zmdi zmdi-block pr-15 pull-left"></i>{{ __('You are in a trial mode .') }}</h3>
-                    <h6 style="color: #ffffff">{{ __('Your free trial is Ended') }}</h6>
-                    <p> {{ __('Your clients now not be able to access your points') }}</p>
-                    <br/>
-                    <a href="{{ route('account.plan') }}" class="btn btn-primary">{{ __('Subscribe Now') }}</a>
-                </div>
-            @else
-                <div class="alert alert-warning alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h4 style="color: #ffffff"> <i class="zmdi zmdi-alert-circle-o pr-15 pull-left"></i> {{ __('You are in a trial mode .') }}</h4>
-                            <p style="color: #ffffff">{{ __('Your free trial will ends at') }} {{ currentTeam()->trial_ends_at }}</p>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="{{ route('account.plan') }}" class="btn btn-primary pull-right">{{ __('Subscribe Now') }}</a>
-                        </div>
+<div class="dont-print">
+    @if(!isset(currentTeam()->subscribe))
+        @if(\Carbon\Carbon::today() > currentTeam()->trial_ends_at)
+            <div class="alert alert-danger text-center">
+                <h3 style="color: #ffffff"><i class="zmdi zmdi-block pr-15 pull-left"></i>{{ __('You are in a trial mode .') }}</h3>
+                <h6 style="color: #ffffff">{{ __('Your free trial is Ended') }}</h6>
+                <p> {{ __('Your clients now not be able to access your points') }}</p>
+                <br/>
+                <a href="{{ route('account.plan') }}" class="btn btn-primary">{{ __('Subscribe Now') }}</a>
+            </div>
+        @else
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 style="color: #ffffff"> <i class="zmdi zmdi-alert-circle-o pr-15 pull-left"></i> {{ __('You are in a trial mode .') }}</h4>
+                        <p style="color: #ffffff">{{ __('Your free trial will ends at') }} {{ currentTeam()->trial_ends_at }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ route('account.plan') }}" class="btn btn-primary pull-right">{{ __('Subscribe Now') }}</a>
                     </div>
                 </div>
-            @endif
-            @endif
+            </div>
+        @endif
+    @endif
+</div>
+
                 @yield('content')
 
         </div>
