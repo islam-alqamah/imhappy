@@ -1,0 +1,36 @@
+.badge-circle.badge-md {
+        width: 1rem;
+        height: 1rem;
+        position: relative;
+        top: -12px;
+        left: -12px;
+    }
+
+    .h5, h5 {
+        font-size: 1.1rem !important;
+    }
+    .h6, h6 {
+        font-size: 1rem;
+    }
+    .bg-light {
+        background-color: #f7faff !important;
+    }
+    .text-secondary {
+        color: #4f5152!important;
+    }
+    [data-toggle=buttons]:not(.btn-group-colors)>.btn.active {
+        color: #333030;
+        background-color: transparent;
+    }
+
+    .checkbox-outline-input:checked ~ .checkbox-outline-label {
+        border-color: #377dff;
+    }
+    .checkbox-outline-label {
+        border: 0.0625rem solid #e7eaf3;
+        cursor: pointer;
+    }
+    input[type="radio"], input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+    }

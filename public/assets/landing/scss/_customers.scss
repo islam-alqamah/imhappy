@@ -1,0 +1,123 @@
+
+
+
+/*===========================
+    7.CUSTOMERS css 
+===========================*/
+
+
+
+.customers-area{
+	background: #f2f4f8;
+	position: relative;
+	z-index: 10;
+
+	&::after{
+		position: absolute;
+		content: '';
+		left: 0;
+		top: 0;
+		height: 575px;
+		width: 490px;
+		background-image: url(../images/customers-pattern.png);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		z-index: -1;
+		@media #{$md} {
+			display: none;
+		}
+		@media #{$xs} {
+			display: none;
+		}
+	}
+	& .section-title{
+		@media #{$md} {
+			margin-top: 30px;
+		}
+		@media #{$xs} {
+			margin-top: 30px;
+		}
+	}
+	& .customers-shape{
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: -1;
+		& img{
+			width: 100%;
+			@media #{$laptop} {
+				width: 70%;
+			}
+			@media #{$lg} {
+				width: 60%;
+			}
+			@media #{$md} {
+				width: 70%;
+			}
+		}
+	}
+	& .customers-shape-1{
+		position: absolute;
+		left: 90px;
+		top: 0px;
+		height: 150px;
+		width: 150px;
+		border-radius: 50%;
+		background-image: -moz-linear-gradient( 0deg, rgb(253,176,70) 0%, rgb(254,238,81) 100%);
+		background-image: -webkit-linear-gradient( 0deg, rgb(253,176,70) 0%, rgb(254,238,81) 100%);
+		background-image: -ms-linear-gradient( 0deg, rgb(253,176,70) 0%, rgb(254,238,81) 100%);
+		z-index: 1;
+		@include animation(mapMover linear infinite 5s);
+	}
+	& .customers-content{
+		padding-top: 15px;
+		& .item{
+			& p{
+				padding-left: 70px;
+				position: relative;
+				font-size: 14px;
+				font-family: $comfortaa;
+				line-height: 36px;
+				&::before{
+					position: absolute;
+					content: '';
+					left: 0;
+					top: 12px;
+					height: 54px;
+					width: 54px;
+					text-align: center;
+					line-height: 54px;
+					border-radius: 50%;
+					background: $secondary-color ;
+					color: $heading-color;
+					font-size: 16px;
+					font-weight: 700;
+				}
+			}
+			& span{
+				display: block;
+				font-size: 18px!important;
+				font-weight: 600;
+			}
+			&.mt-35{
+				& p{
+					&::before{
+						background: $theme-color;
+						content: '';
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+

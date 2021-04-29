@@ -1,0 +1,278 @@
+
+
+
+/*===========================
+    10.TESTIMONIALS css 
+===========================*/
+
+
+
+
+
+
+
+.testimonials-area{
+	position: relative;
+	z-index: 10;
+	& .testimonials-circle-1{
+		position: absolute;
+		left: 60px;
+		top: 0px;
+		height: 230px;
+		width: 230px;
+		border-radius: 50%;
+		background-image: -moz-linear-gradient( 0deg, rgb(90,132,250) 0%, rgb(174,220,254) 100%);
+		background-image: -webkit-linear-gradient( 0deg, rgb(90,132,250) 0%, rgb(174,220,254) 100%);
+		background-image: -ms-linear-gradient( 0deg, rgb(90,132,250) 0%, rgb(174,220,254) 100%);
+		z-index: -1;
+		@include animation(mapMover linear infinite 5s);
+		@media #{$laptop} {
+			left: 30px;
+		}
+		@media #{$xs} {
+			display: none;
+		}
+
+	}
+	& .testimonials-circle-2{
+		position: absolute;
+		right: 120px;
+		bottom: -50px;
+		height: 150px;
+		width: 150px;
+		border-radius: 50%;
+		background-image: -moz-linear-gradient( 0deg, rgb(255,72,214) 0%, rgb(254,216,83) 100%);
+		background-image: -webkit-linear-gradient( 0deg, rgb(255,72,214) 0%, rgb(254,216,83) 100%);
+		background-image: -ms-linear-gradient( 0deg, rgb(255,72,214) 0%, rgb(254,216,83) 100%);
+		z-index: -1;
+		@include animation(mapMover linear infinite 5s);
+		@media #{$laptop} {
+			right: 30px;
+		}
+
+	}
+	& .testimonials-shape{
+		position: absolute;
+		top: -1px;
+		left: 0;
+		z-index: -2;
+		& img{
+			width: 100%;
+			@media #{$laptop} {
+				width: 70%;
+			}
+			@media #{$lg} {
+				width: 65%;
+			}
+			@media #{$md} {
+				width: 60%;
+			}
+			@media #{$xs} {
+				width: 70%;
+			}
+		}
+	}
+	& .testimonials-map{
+		position: absolute;
+		left: 200px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: -1;
+		& img{
+			width: 100%;
+			@media #{$laptop} {
+				width: 90%;
+			}
+		}
+		@media #{$laptop} {
+			left: 50px;
+		}
+	}
+	& .testimonials-content{
+		& > span{
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 14px;
+			color: $theme-color;
+		}
+		& .title{
+			font-size: 46px;
+			padding-top: 4px;
+			padding-bottom: 30px;
+			@media #{$lg} {
+				font-size: 40px;
+			}
+			@media #{$xs} {
+				font-size: 26px;
+			}
+			@media #{$sm} {
+				font-size: 46px;
+			}
+
+		}
+		& > p{
+			font-size: 24px;
+			font-weight: 300;
+			line-height: 50px;
+			color: #838999;
+			@media #{$lg} {
+				font-size: 19px;
+				line-height: 36px;
+			}
+			@media #{$xs} {
+				font-size: 16px;
+				line-height: 36px;
+			}
+		}
+		& .info{
+			padding-top: 32px;
+			& span{
+				color: $theme-color;
+				font-size: 20px;
+				font-weight: 700;
+				padding-bottom: 3px;
+			}
+			& p{
+				color: $heading-color;
+			}
+		}
+	}
+	& .testimonials-content-slide{
+		& .slick-arrow{
+			position: absolute;
+			bottom: 5px;
+			right: 0;
+			z-index: 9;
+			cursor: pointer;
+			height: 60px;
+			width: 60px;
+			text-align: center;
+			line-height: 60px;
+			background: $white;
+			border-radius: 50%;
+			color: $theme-color;
+			font-size: 24px;
+			@include transition(0.3s);
+			&:hover{
+				background: #252c41;
+				color: $white;
+			}
+			&.prev{
+				right: 70px;
+			}
+			&.next{}
+		}
+	}
+	& .testimonials-user-item{
+		position: relative;
+		& .testimonials-thumb{
+			@media #{$md} {
+				padding-left: 0;
+				margin-bottom: 40px;
+			}
+			@media #{$xs} {
+				padding-left: 0;
+				margin-bottom: 40px;
+			}
+		}
+		& .testimonials-user{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			@include animation(tesiMove linear infinite 5s);
+			@media #{$md} {
+				display: none;
+			}
+			@media #{$xs} {
+				display: none;
+			}
+			& img{
+				box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.15);
+				border-radius: 50%;
+				border: 2px solid $white;
+			}
+			& .item-1{
+				position: absolute;
+				top: -95px;
+				left: 15px;
+
+			}
+			& .item-2{
+				position: absolute;
+				top: 50%;
+				left: -120px;
+				transform: translateY(-50%);
+				@media #{$lg} {
+					left: -30px;
+				}
+
+			}
+			& .item-3{
+				position: absolute;
+				bottom: -90px;
+				left: 0px;
+				@media #{$md} {
+					bottom: -40px;
+					left: -100px;
+				}
+
+			}
+			& .item-4{
+				position: absolute;
+				top: -100px;
+				right: 75px;
+
+			}
+			& .item-5{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				right: 105px;
+				@media #{$lg} {
+					right: -10px;
+				}
+
+			}
+			& .item-6{
+				position: absolute;
+				bottom: -90px;
+				right: 15px;
+				@media #{$md} {
+					bottom: -40px;
+				}
+
+			}
+
+		}
+	}
+}
+
+
+
+
+
+
+
+@keyframes tesiMove {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	15% {
+		transform: rotate(2deg);
+	}
+
+	33% {
+		transform: rotate(4deg);
+	}
+
+	66% {
+		transform: rotate(2deg);
+	}
+
+	100% {
+		transform: rotate(0deg);
+	}
+}

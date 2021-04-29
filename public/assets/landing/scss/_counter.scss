@@ -1,0 +1,65 @@
+
+
+
+/*===========================
+    13.COUNTER css 
+===========================*/
+
+
+
+
+.counter-area{
+	& .counter-item{
+		border-radius: 8px;
+		background: $theme-color;
+		padding-top: 44px;
+		padding-bottom: 53px;
+		position: relative;
+		z-index: 10;
+		&::before{
+			position: absolute;
+			content: '';
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			height: 193px;
+			width: 193px;
+			border-radius: 50%;
+			background-color: rgba(255, 255, 255,.3);
+			z-index: -1;
+		}
+		& .title{
+			font-size: 60px;
+			color:$white;
+		}
+		& .odometer-value{
+			color:$white;
+		}
+		& > span{
+			text-transform: uppercase;
+			color: $white;
+			letter-spacing: 2px;
+			display: block;
+		}
+		&.item-2{
+			background: $secondary-color;
+		}
+		&.item-3{
+			background: $theme-color;
+
+		}
+		&.item-4{
+			background: $secondary-color;
+		}
+	}
+}
+
+
+
+
+.odometer-formatting-mark{
+	display: none;
+}
+
+
+
