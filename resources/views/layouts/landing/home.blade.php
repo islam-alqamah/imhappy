@@ -53,10 +53,16 @@
 <body>
 <!-- PRELOADER -->
 <div class="preloader">
-    <div class="lds-ellipsis">
+    <div class="lds-ellipsis" style="margin: auto ;display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+">
         <lottie-player
                 src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
-                style="width: 200px;position: absolute;left: 38%"
+                style="width: 200px;"
                 autoplay
                 loop
         ></lottie-player>
@@ -119,12 +125,8 @@
                     <div class="navigation">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="#"
-                            ><lottie-player
-                                        src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
-                                        style="width: 90px;"
-                                        autoplay
-                                        loop
-                                ></lottie-player></a>
+                            ><img class="logo-main" src="assets/landing/images/IM_Happy_logo_white.png" alt=""
+                                /></a>
                             <!-- logo -->
                             <a class="navbar-brand-2" href="#"
                             ><img src="assets/landing/images/IM_Happy_logo_white.png" alt=""

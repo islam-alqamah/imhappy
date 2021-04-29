@@ -39,10 +39,16 @@
 <!-- Preloader -->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
-    <div id="app">
+    <div id="app" style="margin: auto ;display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+">
         <center><lottie-player
                 src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
-                style="width: 200px; position: absolute;left: 38%"
+                style="width: 200px; "
                 autoplay
                 loop
         ></lottie-player></center>

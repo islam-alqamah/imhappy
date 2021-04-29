@@ -170,8 +170,8 @@
         </div>
     </div>
 
-    <div class="fixed-sidebar-right">
-        <ul class="right-sidebar" style="background: #f8f8f8">
+    <div class="fixed-sidebar-right" >
+        <ul class="right-sidebar" style="background: #f8f8f8;overflow: auto">
             <li>
                 <form action="{{ route('branches.branches.new') }}" method="post">
                     @csrf
