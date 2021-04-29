@@ -51,8 +51,8 @@
 <!-- /Preloader -->
 <div class="wrapper theme-1-active pimary-color-blue">
     <!-- Top Menu Items -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="mobile-only-brand pull-left">
+    <nav class="navbar navbar-inverse navbar-fixed-top dont-print">
+        <div class="mobile-only-brand pull-left dont-print">
             <div class="nav-header pull-left">
                 <div class="logo-wrap ">
                     <a href="{{ route('dashboard') }}" >
@@ -69,7 +69,7 @@
                 </div>
             </form>
         </div>
-        <div id="mobile_only_nav" class="mobile-only-nav pull-right">
+        <div id="mobile_only_nav" class="mobile-only-nav pull-right dont-print">
             <ul class="nav navbar-right top-nav pull-right">
                 <li class="dropdown auth-drp">
                     <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
@@ -96,7 +96,7 @@
     <!-- /Top Menu Items -->
 
     <!-- Left Sidebar Menu -->
-    <div class="fixed-sidebar-left ">
+    <div class="fixed-sidebar-left dont-print">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
                 <span>Main</span>
