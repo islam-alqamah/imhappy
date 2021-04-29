@@ -200,7 +200,7 @@
                                 @endif
                             </div>
                             <button type="button"
-                                    class="btn add_quest btn-sm btn-rounded btn-primary float-right">
+                                    class="btn add_quest btn-sm btn-rounded btn-primary mb-10 float-right">
                                 <i class="ti-plus"></i> {{ __('Add Question ') }}  </button>
                         </div>
 
@@ -236,7 +236,7 @@
 
                         <h5 class="mt-10 text-center" id="rate-heading">{{ __('Sub Heading') }}</h5>
                         <div id="live_preview"style="display: none" ></div>
-                        <div id="live_preview_fields "class="text-center" >
+                        <div id="live_preview_fields" class="text-center" >
                             <div class="btn-group mt-15 mr-10">
                                 <button type="button" class="btn theme-color btn-default btn-rounded">
                                     <img src="{{ url('assets/img/excellent.png') }}" width="40">
@@ -294,6 +294,7 @@
         point_type('{{ $point->type }}');
         @endif
         function point_type(type) {
+            console.log(type);
             if(type == 'feedback'){
                 $('#feedback-editor').show();
                 $('#survey-editor').hide();
@@ -343,9 +344,7 @@
             $('.theme-color.btn-outline').css('color',$('#theme-color').val());
 
         }
-        @if(isset($point->form->questions) && $point->form->questions->count())
-        live_preview();
-        @endif
+
         live_preview();
         $(document).on('keyup','.question-input,.input-answer,.remove,#title',function () {
             live_preview();
@@ -357,7 +356,7 @@
             if(TemplateId != 0){
                 $.ajax({
                     type: "get",
-                    url: ApiURL + "survey/template/"+TemplateId+"/questions",
+                    url: ApiURL + "/survey/template/"+TemplateId+"/questions",
                     success: function(results)
                     {
                         var template = results.template;
@@ -397,6 +396,7 @@
                     }
                 });
             }
+            live_preview();
         });
 
 

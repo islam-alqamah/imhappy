@@ -146,27 +146,11 @@
                                                             <input type="text" name="address" value="{{ $branch->address }}" class="form-control" id="address" placeholder="{{ __('Address') }}">
 
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-md-6">
-                                                                <label class="control-label mb-10" for="long">
-                                                                    {{ __('Branch Longitude') }}
-                                                                </label>
 
-                                                                <input type="text" name="longitude" value="{{ $branch->longitude }}" class="form-control" id="long" placeholder="{{ __('Longitude') }}">
-                                                            </div>
-                                                            <div class="col-md-6">
-
-                                                                <label class="control-label mb-10" for="lat">
-                                                                    {{ __('Branch Latitude') }}
-                                                                </label>
-
-                                                                <input type="text" name="latitude" value="{{ $branch->latitude }}" class="form-control" id="lat" placeholder="{{ __('Latitude') }}">
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-success pull-right "><i class="fa fa-floppy-o"></i> {{ __('Save') }}</button>
-                                                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+                                                        <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0 pull-right "><i class="fa fa-floppy-o"></i> {{ __('Save') }}</button>
+                                                        <button type="button" class="btn btn-danger btn-outline fancy-button btn-0 pull-left" data-dismiss="modal">
                                                             {{ __('Close') }}</button>
                                                     </div>
                                                 </form>

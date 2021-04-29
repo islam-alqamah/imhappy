@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Account;
 
+
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\City;
@@ -11,6 +12,7 @@ use App\Models\Point;
 use App\Models\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 
 class DashboardController extends Controller
 {
@@ -254,7 +256,12 @@ class DashboardController extends Controller
             $end_date = explode(' - ',$request->date_range)[1];
             $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->addDays(30);
         }
-        for($i = 0;$i<=30;$i++){
+        $agent = new Agent();
+        $number_of_days = 30;
+if($agent->isMobile()){
+    $number_of_days = 30;
+}
+        for($i = 0;$i<=$number_of_days;$i++){
             $carbon_start_date = ($i == 0)? $carbon_start_date : $carbon_start_date->subDay();
             $excellent[$carbon_start_date->format('Y-m-d')] = FeedbackResponse::where('rate','excellent')
                 ->whereDate('created_at','<',
@@ -357,7 +364,7 @@ class DashboardController extends Controller
             $end_date = explode(' - ',$request->date_range)[1];
             $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->addDays(30);
         }
-        for($i = 0;$i<=30;$i++){
+        for($i = 0;$i<=$number_of_days;$i++){
             $carbon_start_date = ($i == 0)? $carbon_start_date : $carbon_start_date->subDay();
             $average[$carbon_start_date->format('Y-m-d')] = FeedbackResponse::where('rate','average')
                 ->whereDate('created_at','<',
@@ -460,7 +467,7 @@ class DashboardController extends Controller
             $end_date = explode(' - ',$request->date_range)[1];
             $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->addDays(30);
         }
-        for($i = 0;$i<=30;$i++){
+        for($i = 0;$i<=$number_of_days;$i++){
             $carbon_start_date = ($i == 0)? $carbon_start_date : $carbon_start_date->subDay();
             $poor[$carbon_start_date->format('Y-m-d')] = FeedbackResponse::where('rate','verypoor')
                 ->whereDate('created_at','<',
@@ -580,69 +587,7 @@ class DashboardController extends Controller
                     return Carbon::parse($date->created_at)->format('l');
                 });
 
-        $poor[0] = FeedbackResponse::where('rate','verypoor')
-            ->where('created_at','<',
-                Carbon::now()->addDays(1)->format('Y-m-d'))
-            ->where('created_at','>',
-                Carbon::now()->format('Y-m-d'))
-            ->where(function($query) use ($request){
-                $query->where('team_id', currentTeam()->id);
-                if(isset($request->city_id) && $request->city_id != 'all')
-                    $query->where('city_id', $request->city_id);
-                if(isset($request->branch_id) && $request->branch_id != 'all' ){
-                    $query->where('branch_id', $request->branch_id);
-                }
-                if(isset($request->date_range)){
-                    $start_date = explode(' - ',$request->date_range)[0];
-                    $end_date = explode(' - ',$request->date_range)[1];
-                    $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->format('Y-m-d');
-                    $carbon_end_date = Carbon::createFromFormat('m/d/Y', $end_date)->format('Y-m-d');
-                    $query->whereBetween('created_at',[$carbon_start_date,$carbon_end_date])->get();
-                }
 
-            })->get();
-        $poor[1] = FeedbackResponse::where('rate','verypoor')
-            ->where('created_at','<',
-                Carbon::now()->format('Y-m-d'))
-            ->where('created_at','>',
-                Carbon::now()->subDays(1)->format('Y-m-d'))
-            ->where(function($query) use ($request) {
-                $query->where('team_id', currentTeam()->id);
-                if(isset($request->city_id) && $request->city_id != 'all')
-                    $query->where('city_id', $request->city_id);
-                if(isset($request->branch_id) && $request->branch_id != 'all' ){
-                    $query->where('branch_id', $request->branch_id);
-                }
-                if(isset($request->date_range)){
-                    $start_date = explode(' - ',$request->date_range)[0];
-                    $end_date = explode(' - ',$request->date_range)[1];
-                    $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->format('Y-m-d');
-                    $carbon_end_date = Carbon::createFromFormat('m/d/Y', $end_date)->format('Y-m-d');
-                    $query->whereBetween('created_at',[$carbon_start_date,$carbon_end_date])->get();
-                }
-            })->get();
-        for($i = 1;$i<30;$i++){
-            $poor[$i+1] = FeedbackResponse::where('rate','verypoor')
-                ->where('created_at','<',
-                    Carbon::now()->subDays($i)->format('Y-m-d'))
-                ->where('created_at','>',
-                    Carbon::now()->subDays($i+1)->format('Y-m-d'))
-                ->where(function($query) use ($request){
-                    $query->where('team_id', currentTeam()->id);
-                    if(isset($request->city_id) && $request->city_id != 'all')
-                        $query->where('city_id', $request->city_id);
-                    if(isset($request->branch_id) && $request->branch_id != 'all' ){
-                        $query->where('branch_id', $request->branch_id);
-                    }
-                    if(isset($request->date_range)){
-                        $start_date = explode(' - ',$request->date_range)[0];
-                        $end_date = explode(' - ',$request->date_range)[1];
-                        $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->format('Y-m-d');
-                        $carbon_end_date = Carbon::createFromFormat('m/d/Y', $end_date)->format('Y-m-d');
-                        $query->whereBetween('created_at',[$carbon_start_date,$carbon_end_date])->get();
-                    }
-                })->get();
-        }
         //*Poor Data*//
         return view('charts',compact('request','cities','branches','team',
             'total_responses','excellent','excellent_h','excellent_d','excellent_m',

@@ -14,10 +14,11 @@
                     <thead>
                         <tr>
                             <th>{{ __('Name') }}</th>
-                            <th>{{ __('Interval') }}</th>
                             <th>{{ __('Price') }}</th>
-                            <th>{{ __('Team Limit') }}</th>
-                            <th>{{ __('Date') }}</th>
+                            <th>{{ __('Annual Price') }}</th>
+                            <th>{{ __('Branches Limit') }}</th>
+                            <th>{{ __('Points Limit') }}</th>
+                            <th>{{ __('Channels') }}</th>
                             <th>{{ __('Status') }}</th>
                             <th class="float-right">{{ __('Action') }}</th>
                         </tr>
@@ -26,11 +27,11 @@
                         @foreach ($plans as $plan )
                         <tr>
                             <td>{{ $plan->title }}</td>
-                            <td>{{ $plan->interval }}</td>
                             <td>{{ $plan->price }}</td>
-                            <td>{{ $plan->teams_limit }}</td>
-
-                            <td>{{ $plan->created_at->diffForHumans() }}</td>
+                            <td>{{ $plan->annual_price }}</td>
+                            <td>{{ $plan->branches }}</td>
+                            <td>{{ $plan->points }}</td>
+                            <td>{{ $plan->channels }}</td>
                             <td>
                                 @if ($plan->active === 1)
                                 <span class="badge badge-success"> {{ __('Active') }}</span>

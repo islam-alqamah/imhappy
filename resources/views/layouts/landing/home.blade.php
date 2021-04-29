@@ -11,7 +11,7 @@
     />
 
     <!--====== Title ======-->
-    <title>I'm Happy</title>
+    <title>I'M Happy</title>
 
     <!--====== Favicon Icon ======-->
     <link
@@ -115,11 +115,11 @@
                     <div class="navigation">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <a class="navbar-brand" href="#"
-                            ><img class="logo-main" src="assets/landing/images/Logo_2.png" alt=""
+                            ><img class="logo-main" src="assets/landing/images/IM_Happy_logo_white.png" alt=""
                                 /></a>
                             <!-- logo -->
                             <a class="navbar-brand-2" href="#"
-                            ><img src="assets/landing/images/Logo_2.png" alt=""
+                            ><img src="assets/landing/images/IM_Happy_logo_white.png" alt=""
                                 /></a>
                             <!-- logo -->
                             <span class="side-menu__toggler burger-menu"

@@ -32,12 +32,21 @@
             margin: 20px;
         }
     </style>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
 </head>
 
 <body>
 <!-- Preloader -->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
+    <div id="app">
+        <center><lottie-player
+                src="https://assets1.lottiefiles.com/packages/lf20_ziglw7bd.json"
+                style="width: 200px;"
+                autoplay
+                loop
+        ></lottie-player></center>
+    </div>
 </div>
 <!-- /Preloader -->
 <div class="wrapper theme-1-active pimary-color-blue">

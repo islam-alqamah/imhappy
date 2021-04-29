@@ -85,7 +85,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('profile/save', [SettingsController::class,'save_profile'])->name('profile.save');
         Route::get('plan', function () {
             $team = Auth::user()->personalTeam();
-            return view('account.plan', ['team' => $team]);
+            $plans = Plan::all();
+            return view('account.plan', ['plans' => $plans]);
         })->name('plan');
 
         Route::post('subscribe/new',[UrWayController::class,'payment_request'])->name('new.subscription');

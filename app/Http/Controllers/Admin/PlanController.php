@@ -10,11 +10,6 @@ use Stripe;
 
 class PlanController extends Controller
 {
-    // private $stripe;
-    public function __construct()
-    {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-    }
 
     /**
      * Display a listing of the resource.
@@ -74,11 +69,7 @@ class PlanController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'price' => 'required',
-            'interval' => 'required',
-            // 'max_domain' => 'required',
-            // 'mailboxes' => 'required',
-            // 'quota' => 'required',
-            'teams_limit' => 'required',
+            'annual_price' => 'required',
         ]);
 
         $gateway_id = str_replace(' ', '_', $request->input('name'). Str::random(6));
@@ -99,9 +90,13 @@ class PlanController extends Controller
             'title' => $request->input('name'),
             'stripe_id' => $gateway_id, //$stripe->id,
             'price' => $request->input('price'),
-            'interval' => $request->input('interval'),
+            'annual_price' => $request->input('annual_price'),
+            'interval' => 'Monthly',
             'slug' => Str::slug($request->input('name'), '-'),
-            'teams_limit' => $request->input('teams_limit'),
+            'teams_limit' => 1,
+            'branches' => $request->input('branches'),
+            'points' => $request->input('points'),
+            'channels' => json_encode($request->input('channels')),
             'active' => 1,
             'trial_period_days' => $request->input('trial'),
             // 'max_domain' => $request->input('max_domain'),
@@ -178,38 +173,24 @@ class PlanController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'price' => 'required',
-            'interval' => 'required',
-            'teams_limit' => 'required',
+            'annual_price' => 'required',
+
         ]);
 
         $plan = Plan::findOrFail($id);
         // Generate plan slug from plan name
         $slug = str_replace(' ', '-', $request->input('name'));
         $gateway_id = str_replace(' ', '_', $request->input('name'). Str::random(6));
-        $team_enable = ! empty($request->input('teams_limit')) ? 1 : 0;
-        $teams_limit = ! empty($request->input('teams_limit')) ? $request->input('teams_limit') : null;
-        $price = (float) $request->input('price') * 100;
-        // Delete the plan on stripe
-        if ($plan->price != $request->input('price') || $plan->interval != $request->input('interval') || $plan->trial_period_days != $request->input('trial')) {
-            $stripe_plan = \Stripe\Plan::retrieve($plan->stripe_id);
-            $stripe_plan->delete();
-            // Recrete a new plan on stripe
-            \Stripe\Plan::create([
-                'amount' => $price,
-                'interval' => $request->input('interval'),
-                'product' => [
-                    'name' => $request->input('name'),
-                ],
-                'currency' => 'usd',
-                'id' => $gateway_id,
-                'trial_period_days' => $request->input('trial'),
-            ]);
-        }
+
         $plan->title = $request->input('name');
         $plan->stripe_id = $gateway_id;
         $plan->price = $request->input('price');
-        $plan->interval = $request->input('interval');
-        $plan->teams_limit = $teams_limit;
+        $plan->annual_price = $request->input('annual_price');
+        $plan->interval = 'Monthly';
+        $plan->branches = $request->input('branches');
+        $plan->points = $request->input('points');
+        $plan->channels = json_encode($request->input('channels'));
+        $plan->teams_limit = 1;
         $plan->active = 1;
         $plan->slug = $slug;
         // $plan->max_domain = $request->input('max_domain');

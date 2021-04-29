@@ -5435,7 +5435,9 @@ a.compose-mail {
   -moz-transition: 0.3s ease;
   transition: 0.3s ease; }
   .panel-pricing:hover {
-    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05); }
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+  background: #fff;
+  }
   .panel-pricing .list-group-item {
     background: transparent;
     border: none;
@@ -5455,7 +5457,7 @@ a.compose-mail {
     margin-top: 50px;
     color: #212121; }
   .panel-pricing .panel-heading .panel-price {
-    font-size: 60px;
+    font-size: 40px;
     color: #212121;
     font-weight: 700;
     display: block;
@@ -7080,7 +7082,7 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
       right: 50px;
       top: 0; }
     .navbar.navbar-inverse.navbar-fixed-top .mobile-only-brand {
-      background: #f4f4f4;
+      background: #242B3E;
       position: relative;
       z-index: 2; }
     .navbar.navbar-inverse.navbar-fixed-top .mobile-only-nav {
@@ -7276,7 +7278,13 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
     margin-top: 30px;
     margin-bottom: 30px; }
     .timeline > li.timeline-inverted > .timeline-badge {
-      left: 0; } }
+      left: 0; }
+#filtering .form-control{
+  float:left;
+  width:30%;
+  font-size:12px;
+}
+}
 @media (max-width: 600px) {
   .product-detail-wrap {
     margin-top: 30px; }

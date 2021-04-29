@@ -1,17 +1,6 @@
 @extends('layouts.account')
 
 @section('content')
-    <div class="row heading-bg">
-
-    <h5 class="mt-10">{{ $team->settings->company_name }}</h5>
-    <!-- Row -->
-    </div>
-    <!-- /Row -->
-    <div class="row">
-        <div class="col-md-12">
-
-        </div>
-    </div>
     <!-- Row -->
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -25,14 +14,14 @@
                             @csrf
                             <div class="form-group">
                                 <select name="city_id" id="city"  class="form-control">
-                                    <option value="all">-- {{ __('All Cities') }} --</option>
+                                    <option value="all">{{ __('City') }}</option>
                                     @foreach($cities as $city)
                                         <option @if(isset($request->city_id) && $request->city_id == $city->id) selected @endif
                                                 value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
                                 <select name="branch_id" id="branch" onchange="form.submit()" class="form-control">
-                                    <option value="all">-- {{ __('All Branches') }} --</option>
+                                    <option value="all">{{ __('Branch') }}</option>
                                     @foreach($branches as $branch)
                                         <option @if(isset($request->branch_id) && $request->branch_id == $branch->id) selected @endif
                                         value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -58,7 +47,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div id="feedback-chart" class="" style="height:313px;"></div>
+                                <div id="feedback-chart" class="" style="height:400px;"></div>
                                 <h5 class="text-center">{{ __('Daily Stats') }}</h5>
                             </div>
                         </div>

@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Plan Price') }}</label>
+                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Plan Monthly Price') }}</label>
                     <div class="col-md-6">
                         <input type="text" id="price" name="price" class="form-control"
                             value="{{ $plan->price }}">
@@ -32,6 +32,17 @@
                             @if ($errors->has('price'))
                                 <span class="text-danger">{{ $errors->first('price') }}</span>
                             @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Plan Annual Price') }}</label>
+                    <div class="col-md-6">
+                        <input type="text" id="annual_price" name="annual_price" class="form-control"
+                               value="{{ $plan->annual_price }}">
+
+                        @if ($errors->has('annual_price'))
+                            <span class="text-danger">{{ $errors->first('annual_price') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="form-group row">
@@ -46,43 +57,41 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Plan interval') }}</label>
+                    <label class="col-md-3 col-form-label" for="branches">Branches Limit</label>
                     <div class="col-md-6">
-                        <select id="interval" type="" class="form-control" name="interval">
-                            <option value="">{{ __('Select interval') }}</option>
-                            <option value="day" {{ $plan->interval == 'day' ? 'selected' : '' }}>Daily</option>
-                            <option value="week" {{ $plan->interval == 'week' ? 'selected' : '' }}>Weekly</option>
-                            <option value="month" {{ $plan->interval == 'month' ? 'selected' : '' }}>Monthly</option>
-                            <option value="year" {{ $plan->interval == 'year' ? 'selected' : '' }}>Yearly</option>
-                        </select>
+                        <input type="text" id="branches" name="branches" class="form-control"
+                               value="{{ $plan->branches }}">
 
-                        @if ($errors->has('interval'))
-                            <span class="text-danger">{{ $errors->first('interval') }}</span>
+                        @if ($errors->has('branches'))
+                            <span class="text-danger">{{ $errors->first('branches') }}</span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Teams Plan') }}</label>
+                    <label class="col-md-3 col-form-label" for="points">Points Limit</label>
                     <div class="col-md-6">
-                        <div class="row">
-                        <div class="col-md-3">
-                            <label class="switch switch-text switch-pill switch-primary">
-                                <input type="checkbox" name="checkbox" id="checkbox" class="switch-input" {{ $plan->teams_enabled == 1 ? 'checked' : '' }}>
-                                <span class="switch-label" data-on="On" data-off="Off"></span>
-                                <span class="switch-handle"></span>
-                            </label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="number" id="teams_limit" name="teams_limit" class="form-control"
-                            placeholder="Number of member allow for this Plan"
-                            value="{{ $plan->teams_limit }}">
-                            @if ($errors->has('teams_limit'))
-                                <span class="text-danger">{{ $errors->first('teams_limit') }}</span>
-                            @endif
-                        </div>
-                        </div>
+                        <input type="text" id="points" name="points" class="form-control"
+                               value="{{ $plan->points }}">
+
+                        @if ($errors->has('points'))
+                            <span class="text-danger">{{ $errors->first('points') }}</span>
+                        @endif
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="channels">Channels</label>
+                    <div class="col-md-6">
+                        <label> QR-Code
+                            <input type="checkbox" name="channels[]" class="form-control"
+                                   value="QR-Code">
+                        </label>
+                        <label> Touchless
+                            <input type="checkbox" name="channels[]" class="form-control"
+                                   value="Touchless">
+                        </label>
+                    </div>
+                </div>
+
                 <hr>
                 <button type="submit" class="btn btn-secondary"><i class="fa fa-dot-circle-o"></i> {{ __('Edit plan') }}</button>
                 <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> {{ __('Reset') }}</button>

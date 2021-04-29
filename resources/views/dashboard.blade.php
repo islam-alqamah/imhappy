@@ -157,7 +157,7 @@
                 </div>
                 <div class="panel-heading">
                     <div class="pull-left">
-                        <h6 class="panel-title txt-dark">Total Results</h6>
+                        <h6 class="panel-title txt-dark">QR-Code Total Results</h6>
                     </div>
                     <div class="pull-right">
                         <a href="#" class="pull-left inline-block refresh mr-15">
@@ -168,9 +168,9 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-wrapper collapse in">
-                    <div class="panel-body">
+                    <div class="panel-body pt-40 pb-35">
                         <div id="e_chart_3" class="" style="height:236px;"></div>
-                        <div class="label-chatrs text-center mt-30">
+                        <div class="label-chatrs text-center mt-40">
 
                         </div>
                     </div>
