@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 /node_modules
 /vendor
 /resources/views/vendor
 /prod
 /storage
 .env
-=======
-/node_modules
-/vendor
-/resources/views/vendor
-/prod
-/storage
-.env
->>>>>>> 2ee1b474e6c666e0af623f46b0fe64a4147f995d
 .idea
