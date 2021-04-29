@@ -902,7 +902,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-7 col-sm-9">
                 <div class="footer-widget footer-widget-about" style="padding-top: 20px">
-                    <a href="#"><img src="assets/landing/images/Logo_2.png" alt="logo" /></a>
+                    <a href="#"><img src="assets/landing/images/IM_Happy_logo_white.png" alt="logo" /></a>
                     <p>
                         Understanding the behavior of your client will help you to track their
                         actions to spot the opportunities you do not utilize and then improve them.
@@ -918,7 +918,7 @@
                             <a href="#"><i class="fa fa-instagram"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
                         </li>
                     </ul>
                 </div>
