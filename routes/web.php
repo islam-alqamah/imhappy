@@ -48,6 +48,8 @@ URL::forceScheme('https');
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/', [FrontEndController::class,'index'])->name('home');
 
 Route::get('/view/point/{point}', [FrontEndController::class, 'view'] )->name('view.point');

@@ -1,9 +1,7 @@
 <x-guest-layout>
     <div class="padding-top-40">
     <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+
 
         <div class="card-body">
             <div class="mb-4 small text-muted">
