@@ -96,6 +96,18 @@
                         </li>
                     </ul>
                 </li>
+                <li class="dropdown auth-drp">
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
+                        <i class="fa fa-globe"></i> {{ App::getLocale() }} </a>
+                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+                        <li>
+                            <a href="{{ url('languages/en/back') }}"><i class="zmdi zmdi-account"></i><span>{{ __('EN') }}</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ url('languages/ar/back') }}"><i class="zmdi zmdi-account"></i><span>{{ __('AR') }}</span></a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
