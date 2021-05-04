@@ -128,7 +128,7 @@ class BranchesController extends Controller
         $branch->longitude = $request->longitude;
         $branch->latitude = $request->latitude;
         $branch->save();
-        return redirect('branches/branches/points/'.$branch->id)->with(['status'=>'success','msg'=>'Data Saved']);;
+        return back()->with(['status'=>'success','msg'=>'Data Saved']);;
     }
     public function update(Request $request){
         $this->validate($request, [

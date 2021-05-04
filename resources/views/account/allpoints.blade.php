@@ -18,7 +18,7 @@
                 </div>
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
-                        <div class="table-wrap">
+                        <div class="table-wrap" >
                                 <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>
@@ -80,6 +80,13 @@
                                                             <li>
                                                                 <a href="{{ route('branches.points.editor',['point'=>$point->id,'branch'=>$point->branch->id]) }}">
                                                                     <i class="fa fa-edit"></i> {{ __('Editor')}}
+                                                                </a>
+                                                            </li>
+                                                            <li class="divider"></li>
+
+                                                            <li>
+                                                                <a target="_blank" href="{{ url('view/point/'.$point->id) }}">
+                                                                    <i class="fa fa-laptop"></i> {{ __('Preview')}}
                                                                 </a>
                                                             </li>
                                                             <li class="divider"></li>

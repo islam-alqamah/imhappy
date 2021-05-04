@@ -62,7 +62,7 @@
             <div class="nav-header pull-left">
                 <div class="logo-wrap ">
                     <a href="{{ route('dashboard') }}" >
-                        <img class="brand-img" width="30" src="{{ url('assets/img/IM_Happy_logo_white.png') }}" alt="brand"/>
+                        <img class="brand-img" width="100git" src="{{ url('images/logos/logo-h.png') }}" alt="brand"/>
                     </a>
                 </div>
             </div>
@@ -71,7 +71,7 @@
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
             <form id="search_form" role="search" class="top-nav-search collapse pull-left">
                 <div class="input-group mt-10">
-                    <a href="#" style="color:#15E2BE">{{ currentTeam()->settings->company_name }}</a>
+                    <a href="#" style="color:#15E2BE">{{ currentTeam()->settings->company_name }} - {{ (currentTeam()->subscribe)?currentTeam()->subscribe->ends_at:'' }}</a>
                 </div>
             </form>
         </div>
@@ -98,7 +98,7 @@
                 </li>
                 <li class="dropdown auth-drp">
                     <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
-                        <i class="fa fa-globe"></i> {{ App::getLocale() }} </a>
+                        <i class="fa fa-globe"></i> {{ App::getLocale() }}</a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
                         <li>
                             <a href="{{ url('languages/en/back') }}"><i class="zmdi zmdi-account"></i><span>{{ __('EN') }}</span></a>
@@ -292,6 +292,24 @@
         $.toast({
             heading: '{{ __('System Message !') }}',
             text: 'Please, write a question to save your form.',
+            position: 'top-center',
+            loaderBg:'#ff0000',
+            icon: 'warning',
+            hideAfter: 3500,
+            stack: 6
+        });
+
+    });
+</script>
+@enderror
+
+@error('logo')
+<script>
+    $(window).load(function(){
+
+        $.toast({
+            heading: '{{ __('System Message !') }}',
+            text: '{{ $message }}',
             position: 'top-center',
             loaderBg:'#ff0000',
             icon: 'warning',
