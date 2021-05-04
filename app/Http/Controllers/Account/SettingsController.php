@@ -19,6 +19,9 @@ class SettingsController extends Controller
     }
 
     public function save(Request $request){
+        $request->validate([
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
         $settings = TeamSetting::find($request->id);
         $settings->company_name = $request->name;
         $settings->address = $request->address;

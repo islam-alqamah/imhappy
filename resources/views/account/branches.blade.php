@@ -19,7 +19,7 @@
                 </div>
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body" >
-                        <div class="table-wrap" style="overflow: auto">
+                        <div class="table-wrap" >
                                 <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>
@@ -173,6 +173,73 @@
     <div class="fixed-sidebar-right" >
         <ul class="right-sidebar" style="background: #f8f8f8;overflow: auto">
             <li>
+                @if(currentTeam()->subscribe)
+                    @if(currentTeam()->subscribe->plan->branches > currentTeam()->branches->count())
+                        <form action="{{ route('branches.branches.new') }}" method="post">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label mb-5" for="city">
+                                        {{ __('Branch Name') }}
+                                    </label>
+
+                                    <input type="text" required name="name" class="form-control" id="city" placeholder="">
+
+                                </div>
+                                <div class="form-group  mt-25">
+                                    <label class="control-label mb-5" for="city">
+                                        {{ __('City') }}
+                                    </label>
+
+                                    <select required id="city" name="city" class="form-control select2 ">
+                                        <option value="-1"> {{ __('Select City') }}</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        @endforeach
+                                        <option value="0">{{ __('-Add New City-') }}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group  mt-25" id="new-city" style="display: none">
+                                    <label class="control-label mb-5" for="city_name">
+                                        {{ __('City Name') }}
+                                    </label>
+
+                                    <input type="text" name="city_name" class="form-control" id="city_name" placeholder="">
+
+                                </div>
+                                <div class="form-group  mt-25">
+                                    <label class="control-label mb-5" for="phone">
+                                        {{ __('Branch Phone') }}
+                                    </label>
+
+                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="">
+
+                                </div>
+
+                                <div class="form-group mt-25">
+                                    <label class="control-label mb-5" for="address">
+                                        {{ __('Branch Address') }}
+                                    </label>
+
+                                    <input type="text" name="address" class="form-control" id="address" placeholder="">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0 pull-right "><i class="fa fa-floppy-o"></i> {{ __('Save') }}</button>
+
+                            </div>
+                        </form>
+                    @else
+                        <br>
+                        <br>
+                        <br>
+                        <center>
+                        <span>{{ __('You Have Reached The Limit Of Creating Branches For Your Package!') }}</span>
+                        <a href="{{ route('account.plan') }}" class="btn btn-primary">{{ __('Upgrade Now') }}</a>
+                        </center>
+                    @endif
+                @else
                 <form action="{{ route('branches.branches.new') }}" method="post">
                     @csrf
                     <div class="modal-body">
@@ -228,6 +295,7 @@
 
                     </div>
                 </form>
+                @endif
             </li>
         </ul>
     </div>
