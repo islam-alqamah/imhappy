@@ -58,6 +58,7 @@ class SettingsController extends Controller
         ]);
         $user->password = bcrypt($request->password);
         $user->save();
-        return back()->with(['status'=>'success','msg'=>'Data Saved']);
+
+        return redirect('/');
     }
 }
