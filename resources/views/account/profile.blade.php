@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default card-view" style="background: #f8f8f8">
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
                         <div class="row">
@@ -37,16 +37,22 @@
                                                    class="form-control" id="email" placeholder="{{ __('Email') }}">
                                         </div>
                                         <hr/>
-                                        <h4>Change Password</h4>
+                                        <h4>{{ __('Change Password') }}</h4>
                                         <br/>
                                         <div class="row form-group">
 
                                             <div class="col-md-6">
-                                                <label class="control-label mb-10" for="old-password">
+                                                <label class="control-label mb-10" for="new-password">
                                                     {{ __('New Password') }}
                                                 </label>
                                                 <input type="password" name="password" class="form-control"
-                                                       id="old-password" placeholder="{{ __('New Password') }}">
+                                                       id="new-password" placeholder="{{ __('New Password') }}">
+                                                    <center>
+                                                        <div class="checkbox checkbox-circle">
+                                                            <input id="checkbox7" onclick="ShowPass()" type="checkbox">
+                                                            <label for="checkbox7"> {{ __('Show') }} </label>
+                                                        </div>
+                                                    </center>
                                             </div>
 
                                             <div class="col-md-6">
@@ -54,7 +60,7 @@
                                                     {{ __('Confirm Password') }}
                                                 </label>
                                                 <input type="password" name="confirm_password" class="form-control"
-                                                       id="old-password" placeholder="{{ __('Confirm Password') }}">
+                                                       id="confirm-password" placeholder="{{ __('Confirm Password') }}">
                                             </div>
 
                                         </div>
@@ -69,5 +75,17 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('scripts')
+    <script>
+        function ShowPass() {
+            var x = document.getElementById("new-password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 @endsection
