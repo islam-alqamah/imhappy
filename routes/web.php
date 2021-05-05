@@ -76,7 +76,7 @@ Route::group(['middleware' => 'language'], function () {
         ->get('/reports',[DashboardController::class,'reports'] )->name('reports');
     Route::middleware(['auth:sanctum', 'verified'])
         ->post('/reports',[DashboardController::class,'reports'] )->name('reports');
-
+    Route::post('account/profile/save', [SettingsController::class,'save_profile'])->name('account.profile.save');
     Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => ['auth:sanctum', 'verified']], function () {
         Route::view('security', 'account.security')->name('security');
         Route::view('password', 'account.password')->name('password');
@@ -84,7 +84,6 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('settings', [SettingsController::class,'index'])->name('settings');
         Route::post('settings/save', [SettingsController::class,'save'])->name('settings.save');
         Route::get('profile', [SettingsController::class,'profile'])->name('profile');
-        Route::post('profile/save', [SettingsController::class,'save_profile'])->name('profile.save');
         Route::get('plan', function () {
             $team = Auth::user()->personalTeam();
             $plans = Plan::all();

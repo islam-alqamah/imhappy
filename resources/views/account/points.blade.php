@@ -101,9 +101,9 @@
                                                             <div class="modal-body">
                                                                 <div class="form-group row">
                                                                     <div class="col-md-12">
-                                                                        <p align="center"> By deleting this point all saved data will be removed.</p>
-                                                                        <p align="center" class="msg"> Please export before deleting to prevent any loss of data.</p>
-                                                                        <p align="center" class="msg-confirmation" style="display: none;"> Are you sure you want to delete ? </p>
+                                                                        <p align="center"> {{ __('By deleting this point all saved data will be removed.') }}</p>
+                                                                        <p align="center" class="msg"> {{ __('Please export before deleting to prevent any loss of data.') }}</p>
+                                                                        <p align="center" class="msg-confirmation" style="display: none;"> {{ __('Are you sure you want to delete ?') }} </p>
                                                                         <br/>
                                                                         <p class="options-btn" align="center">
                                                                             <a target="_blank" href="{{ url('reports') }}"

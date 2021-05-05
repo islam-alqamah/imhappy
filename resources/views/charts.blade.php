@@ -3,7 +3,7 @@
 @section('content')
     <!-- Row -->
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-20">
             <div id="print" class="panel panel-default card-view panel-refresh">
                 <div class="refresh-container">
                     <div class="la-anim-1"></div>

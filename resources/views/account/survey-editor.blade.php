@@ -146,15 +146,15 @@
                                 </div>
 
                                 <hr />
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="checkbox checkbox-primary  mt-10">
-                                            <input name="dummy_data" id="dummy-data" value="dummy_data"type="checkbox">
-                                            <label for="dummy-data"> {{ __('Dummy Data') }} </label>
-                                        </div>
-                                    </div>
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-sm-12">--}}
+{{--                                        <div class="checkbox checkbox-primary  mt-10">--}}
+{{--                                            <input name="dummy_data" id="dummy-data" value="dummy_data"type="checkbox">--}}
+{{--                                            <label for="dummy-data"> {{ __('Dummy Data') }} </label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                </div>
+{{--                                </div>--}}
                             </div>
 
                         </div>
@@ -201,7 +201,7 @@
                             </div>
                             <button type="button"
                                     class="btn add_quest btn-sm btn-rounded btn-primary mb-10 float-right">
-                                <i class="ti-plus"></i> {{ __('Add Question ') }}  </button>
+                                <i class="ti-plus"></i> {{ __('Add Question') }}  </button>
                         </div>
 
                         <div class="row"> <div class="col-md-6 col-md-offset-3">
@@ -250,15 +250,15 @@
                             </div>
                             <div id="email-field" class="input-group mt-10">
                                 <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                <input type="email" class="form-control" id="" placeholder="Enter email">
+                                <input type="email" class="form-control" id="" placeholder="{{ __('Enter email') }}">
                             </div>
 
                             <div id="phone-field" class="input-group mt-10">
                                 <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                <input type="text" class="form-control" id="" placeholder="Enter Phone">
+                                <input type="text" class="form-control" id="" placeholder="{{ __('Enter Phone') }}">
                             </div>
                             <div  id="feedback-field" class=" mt-10">
-                                <textarea class="form-control  mt-10" rows="5" placeholder="Enter Your Feedback"></textarea>
+                                <textarea class="form-control  mt-10" rows="5" placeholder="{{ __('Enter Your Feedback') }}"></textarea>
                             </div>
 
                         </div>

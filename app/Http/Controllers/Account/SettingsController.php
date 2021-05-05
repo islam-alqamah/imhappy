@@ -58,7 +58,7 @@ class SettingsController extends Controller
         ]);
         $user->password = bcrypt($request->password);
         $user->save();
-
-        return redirect('/');
+        Auth::guard('web')->login($user);
+        return back()->with(['status'=>'success','msg'=>'Password Changed']);
     }
 }
