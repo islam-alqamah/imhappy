@@ -30,9 +30,9 @@
                                         @csrf
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="name">
-                                                {{ __('Name') }}
+                                                {{ __('User Name') }}
                                             </label>
-                                            <input type="text" value="{{ auth()->user()->name }}" name="name" class="form-control" id="name" placeholder="{{ __('Company Name') }}">
+                                            <input disabled type="text" value="{{ auth()->user()->name }}" name="name" class="form-control" id="name" placeholder="{{ __('Company Name') }}">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="email">
@@ -45,19 +45,21 @@
                                         <h4>Change Password</h4>
                                         <br/>
                                         <div class="row form-group">
-                                            <div class="col-md-6">
-                                                <label class="control-label mb-10" for="old-password">
-                                                    {{ __('Old Password') }}
-                                                </label>
-                                                <input type="password" name="old_password" class="form-control"
-                                                       id="old-password" autocomplete="new-password" placeholder="{{ __('Old Password') }}">
-                                            </div>
+
                                             <div class="col-md-6">
                                                 <label class="control-label mb-10" for="old-password">
                                                     {{ __('New Password') }}
                                                 </label>
-                                                <input type="password" name="old_password" class="form-control"
+                                                <input type="password" name="password" class="form-control"
                                                        id="old-password" placeholder="{{ __('New Password') }}">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="control-label mb-10" for="old-password">
+                                                    {{ __('Confirm Password') }}
+                                                </label>
+                                                <input type="password" name="confirm_password" class="form-control"
+                                                       id="old-password" placeholder="{{ __('Confirm Password') }}">
                                             </div>
 
                                         </div>

@@ -71,12 +71,28 @@
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
             <form id="search_form" role="search" class="top-nav-search collapse pull-left">
                 <div class="input-group mt-10">
-                    <a href="#" style="color:#15E2BE">{{ currentTeam()->settings->company_name }} - {{ (currentTeam()->subscribe)?currentTeam()->subscribe->ends_at:'' }}</a>
+                    <a href="#" style="color:#15E2BE">{{ currentTeam()->settings->company_name }}</a>
+                    <p>{!! (currentTeam()->subscribe)?'<small style="font-size:12px;color:#eeeeee">Exp Date: '.currentTeam()->subscribe->ends_at.'</small>':'' !!}
+                        <a href="{{ route('account.plan') }}" style="color:#15E2BE">{{ __('Upgrade') }}</a>
+                    </p>
+
                 </div>
             </form>
         </div>
         <div id="mobile_only_nav" class="mobile-only-nav pull-right dont-print">
             <ul class="nav navbar-right top-nav pull-right">
+                <li class="dropdown auth-drp">
+                    <a href="#" class="dropdown-toggle pr-0" style="font-size: 26px;color: #fff" data-toggle="dropdown">
+                        <i class="fa fa-globe"></i></a>
+                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+                        <li>
+                            <a href="{{ url('languages/en/back') }}"><span>{{ __('English') }}</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ url('languages/ar/back') }}"><span>{{ __('Arabic') }}</span></a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="dropdown auth-drp">
                     <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
                         <img src="{{ Auth::user()->profile_photo_url }}" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
@@ -96,18 +112,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown">
-                        <i class="fa fa-globe"></i> {{ App::getLocale() }}</a>
-                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <li>
-                            <a href="{{ url('languages/en/back') }}"><i class="zmdi zmdi-account"></i><span>{{ __('EN') }}</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ url('languages/ar/back') }}"><i class="zmdi zmdi-account"></i><span>{{ __('AR') }}</span></a>
-                        </li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
     </nav>
@@ -292,6 +297,24 @@
         $.toast({
             heading: '{{ __('System Message !') }}',
             text: 'Please, write a question to save your form.',
+            position: 'top-center',
+            loaderBg:'#ff0000',
+            icon: 'warning',
+            hideAfter: 3500,
+            stack: 6
+        });
+
+    });
+</script>
+@enderror
+
+@error('password')
+<script>
+    $(window).load(function(){
+
+        $.toast({
+            heading: '{{ __('System Message !') }}',
+            text: '{{ $message }}',
             position: 'top-center',
             loaderBg:'#ff0000',
             icon: 'warning',
