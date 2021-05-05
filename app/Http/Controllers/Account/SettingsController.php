@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
 use App\Models\TeamSetting;
+use Auth;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -43,6 +44,20 @@ class SettingsController extends Controller
         return back()->with(['status'=>'success','msg'=>'Data Saved']);
     }
     public function profile(){
+
         return view('account.profile');
+    }
+    public function save_profile(Request $request){
+        $user = Auth::user();
+
+        if($request->password != $request->confirm_password){
+            return back()->with(['status'=>'warning','msg'=>'New Password Mismatch']);
+        }
+        $request->validate([
+            'password' => 'required|min:6',
+        ]);
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return back()->with(['status'=>'success','msg'=>'Data Saved']);
     }
 }
