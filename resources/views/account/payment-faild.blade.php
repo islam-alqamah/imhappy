@@ -25,7 +25,7 @@
                             <div class="col-md-12 text-center">
                                 <img src="{{ url('assets/img/sad.png') }}" width="80">
                                 <h4 style="color: #D43F3F;text-align: center" class="mt-10"> {{ __('Oops! Unsuccessful Subscription!') }}</h4>
-                                <p style="color: #E1ACAC;text-align: center" class="mt-10">{{ __('Something went wrong, we couldn\'t subscribe you') }}</p>
+                                <p style="color: #E1ACAC;text-align: center" class="mt-10">{{ __('Something went wrong, we could not subscribe you') }}</p>
                                 <p style="color: #E1ACAC;text-align: center" class="mt-10">{{ __('Keep calm and try again') }}</p>
                                 <a href="{{ url('account/payments') }}" class="btn btn-primary fancy-button btn-0 mt-20 mr-20 btn-outline">{{ __('Go to Payments History') }}</a>
                                 <a href="{{ url('dashboard') }}" class="btn btn-info fancy-button btn-0 mt-20 btn-outline">{{ __('Go to Dashboard') }}</a>

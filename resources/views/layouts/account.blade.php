@@ -20,6 +20,7 @@
     <link href="{{ url('assets/dist/') }}/css/fancy-buttons.css" rel="stylesheet" type="text/css">
 @yield('styles')
     <!-- Custom CSS -->
+
     <link href="{{ url('assets/dist/') }}/css/style.css" rel="stylesheet" type="text/css">
     <style type="text/css" media="print">
         .dont-print

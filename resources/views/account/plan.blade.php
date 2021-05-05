@@ -30,15 +30,16 @@
                             <div class="panel-body text-center pl-0 pr-0">
                                 <hr class="mb-30">
                                 <ul class="list-group mb-0 text-center">
-                                    <li class="list-group-item"><i class="fa fa-check"></i> {{ $plan->branches }} Branches</li>
+                                    <li class="list-group-item"><i class="fa fa-check"></i> {{ $plan->branches }}
+                                        {{__('Branches')}}</li>
                                     <li><hr class="mt-5 mb-5"></li>
-                                    <li class="list-group-item"><i class="fa fa-check"></i> {{ $plan->points }} Points</li>
+                                    <li class="list-group-item"><i class="fa fa-check"></i> {{ $plan->points }} {{ __('Points') }}</li>
                                     <li><hr class="mt-5 mb-5"></li>
                                     <li class="list-group-item"><i class="fa fa-check"></i>
                                         {{ implode(",",json_decode($plan->channels)) }}
                                     </li>
                                     <li><hr class="mt-5 mb-5"></li>
-                                    <li class="list-group-item"><i class="fa fa-check"></i> 27/7 support</li>
+                                    <li class="list-group-item"><i class="fa fa-check"></i> {{ __('27/7 support') }}</li>
                                 </ul>
                             </div>
                             <div class="panel-footer pb-35">
@@ -47,7 +48,8 @@
                                     <input type="hidden" name="currency" value="SAR">
                                     <input type="hidden" name="amount" value="{{$plan->price}}">
                                     <input type="hidden" name="order_id" value="9988">
-                                    <button class="btn btn-primary btn-outline fancy-button btn-0 btn-rounded btn-lg" type="submit">subscribe now</button>
+                                    <button class="btn btn-primary btn-outline fancy-button btn-0 btn-rounded btn-lg" type="submit">
+                                        {{ __('Subscribe Now') }}</button>
                                 </form>                </div>
                         </div>
                     </div>

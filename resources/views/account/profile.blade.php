@@ -28,12 +28,7 @@
                                 <div class="form-wrap">
                                     <form action="{{ route('account.profile.save') }}" enctype="multipart/form-data" method="post">
                                         @csrf
-                                        <div class="form-group">
-                                            <label class="control-label mb-10" for="name">
-                                                {{ __('User Name') }}
-                                            </label>
-                                            <input disabled type="text" value="{{ auth()->user()->name }}" name="name" class="form-control" id="name" placeholder="{{ __('Company Name') }}">
-                                        </div>
+
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="email">
                                                 {{ __('Email') }}
@@ -64,7 +59,7 @@
 
                                         </div>
 
-                                        <button type="submit" class="btn btn-success pull-right ">{{ __('Update') }}</button>
+                                        <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0 pull-right ">{{ __('Update') }}</button>
                                     </form>
                                 </div>
                             </div>
