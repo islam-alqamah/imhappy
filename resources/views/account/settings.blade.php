@@ -21,12 +21,24 @@
                                 <div class="form-wrap">
                                     <form action="{{ route('account.settings.save') }}" enctype="multipart/form-data" method="post">
                                         @csrf
-                                        <div class="form-group">
-                                            <label class="control-label mb-10" for="name">
-                                                {{ __('Company Name') }}
-                                            </label>
-                                            <input type="hidden" name="id" value="{{ $settings->id }}">
-                                            <input type="text" value="{{ $settings->company_name }}" name="name" class="form-control" id="name" placeholder="{{ __('Company Name') }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="name">
+                                                        {{ __('Company Name') }}
+                                                    </label>
+                                                    <input type="hidden" name="id" value="{{ $settings->id }}">
+                                                    <input type="text" value="{{ $settings->company_name }}" name="name" class="form-control" id="name" placeholder="{{ __('Company Name') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="comid">
+                                                        {{ __('Company ID') }}
+                                                    </label>
+                                                    <input type="text" disabled value="#IMH00{{ currentTeam()->id }}" name="comid" class="form-control" id="comid" placeholder="">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="address">
