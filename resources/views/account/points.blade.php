@@ -23,6 +23,7 @@
                              <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>
+                                        <th>{{ __('Point ID') }}</th>
                                         <th>{{ __('QR-Code') }}</th>
                                         <th>{{ __('Point Name') }}</th>
                                         <th>{{ __('title') }}</th>
@@ -35,6 +36,7 @@
                                     <tbody>
                                     @foreach($branch->points as $point)
                                         <tr>
+                                            <td>#{{ $point->id }}</td>
                                             <td>
                                                 <a href="{{ url($point->qrcode) }}" target="_blank">
                                                     <img src="{{ url($point->qrcode) }}" width="80"></a>

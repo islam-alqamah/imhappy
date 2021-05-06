@@ -22,6 +22,7 @@
                                 <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>
+                                        <th>{{ __('Point ID') }}</th>
                                         <th>{{ __('Branch Name') }}</th>
                                         <th>{{ __('QR-Code') }}</th>
                                         <th>{{ __('Point Name') }}</th>
@@ -36,6 +37,7 @@
                                     @foreach($points as $point)
                                         @if($point->branch)
                                         <tr>
+                                            <td>#{{ $point->id }}</td>
                                             <td>
                                                 <a href="{{ route('branches.branches.points',['branch'=>$point->branch->id]) }}" target="_blank">
                                                     {{ $point->branch->name }}</a>
