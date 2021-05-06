@@ -10,7 +10,12 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <i style="font-size: 90px;" class="fa fa-envelope"></i>
+                                <lottie-player
+                                        src="https://assets7.lottiefiles.com/packages/lf20_avhcook6.json"
+                                        style="width: 100px;"
+                                        autoplay
+                                        loop
+                                ></lottie-player>
                                 <h4 style="color: #2DAD00;text-align: center" class="mt-10"> {{ __('Thanks for signing up!') }}</h4>
                                 <p style="color: #9FBB95;text-align: center" class="mt-10">
                                     {{ __(' Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
