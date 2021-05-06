@@ -22,6 +22,7 @@
     <!-- Custom CSS -->
     <link href="{{ url('assets/dist/') }}/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
+    <link href="{{ url('assets/dist/') }}/css/fancy-buttons.css" rel="stylesheet" type="text/css">
 
 </head>
 
