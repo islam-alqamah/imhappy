@@ -16,13 +16,13 @@
                                         autoplay
                                         loop
                                 ></lottie-player>
-                                <h4 style="color: #2DAD00;text-align: center" class="mt-10"> {{ __('Thanks for signing up!') }}</h4>
+                                <h4 style="color: #15E2BE;text-align: center" class="mt-10"> {{ __('Thanks for signing up!') }}</h4>
                                 <p style="color: #9FBB95;text-align: center" class="mt-10">
-                                    {{ __(' Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                                    {{ __('We now need to verify your email address, we\'ve sent an email to').'<span style="color:#15e2be">'. auth()->user()->email.'</span>' .__('to verify your address. Please click the link in the email to continue.') }}
                                 </p>
                                 @if (session('status') == 'verification-link-sent')
                                     <div class="alert alert-success" role="alert">
-                                        {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                                        {{ __('A new verification link has been sent. ') }}
                                     </div>
                                 @endif
 
