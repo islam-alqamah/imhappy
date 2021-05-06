@@ -182,7 +182,7 @@ class DashboardController extends Controller
             $branches = City::find($request->city_id)->branches;
         }
         if(isset($request->branch_id) && $request->branch_id!='all'){
-            $points = Branch::find($request->city_id)->points;
+            $points = Branch::find($request->branch_id)->points;
         }
         $responses = FeedbackResponse::where(function($query) use($request) {
             $query->where('team_id', currentTeam()->id);
