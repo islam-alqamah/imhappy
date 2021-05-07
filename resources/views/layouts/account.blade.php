@@ -20,9 +20,23 @@
     <link href="{{ url('assets/dist/') }}/css/fancy-buttons.css" rel="stylesheet" type="text/css">
 @yield('styles')
     <!-- Custom CSS -->
-
-    <link href="{{ url('assets/dist/') }}/css/style.css" rel="stylesheet" type="text/css">
-    <style type="text/css" media="print">
+    @if(App::getLocale() == 'ar')
+    <link
+            rel="stylesheet"
+            href="https://cdn.rtlcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-cSfiDrYfMj9eYCidq//oGXEkMc0vuTxHXizrMOFAaPsLt1zoCUVnSsURN+nef1lj"
+            crossorigin="anonymous">
+    <!-- compiled and minified theme CSS -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.rtlcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+            integrity="sha384-YNPmfeOM29goUYCxqyaDVPToebWWQrHk0e3QYEs7Ovg6r5hSRKr73uQ69DkzT1LH"
+            crossorigin="anonymous">
+    <link href="{{ url('assets/dist/') }}/css/rtl-style.css" rel="stylesheet" type="text/css">
+    @else
+        <link href="{{ url('assets/dist/') }}/css/style.css" rel="stylesheet" type="text/css">
+    @endif
+        <style type="text/css" media="print">
         .dont-print
         {
             display:none;
