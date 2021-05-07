@@ -11,14 +11,7 @@
         </div>
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a></li>
-                <li><a href="#"><span>{{ __('Branches') }}</span></a></li>
-                <li><a href="{{ route('branches.branches') }}"><span>{{ __('Branches') }}</span></a></li>
-                <li><a href="{{ route('branches.branches.points',['branch'=>$branch->id]) }}">
-                        <span>{{ $branch->name }}</span></a></li>
-                <li class="active"><span>{{ (isset($point->name))?$point->name:'' }}</span></li>
-            </ol>
+
         </div>
         <!-- /Breadcrumb -->
     </div>
@@ -55,7 +48,7 @@
                                 {{ __('Point Name') }}
                             </label>
 
-                            <input type="text" required value="{{ (isset($point->name))?$point->name:'New Point' }}" name="name" class="form-control" id="name" placeholder="{{ __('Point Name') }}">
+                            <input type="text" required value="{{ (isset($point->name))?$point->name:__('New Point') }}" name="name" class="form-control" id="name" placeholder="{{ __('Point Name') }}">
 
                         </div>
                         <div class="form-group">
@@ -68,7 +61,7 @@
                                 {{ __('Point-Page Title') }}
                             </label>
 
-                            <textarea type="text" name="title" class="form-control" id="title" placeholder="{{ __('Point-Page Title') }}">{{ (isset($point->title))?$point->title:'Page title example' }}</textarea>
+                            <textarea type="text" name="title" class="form-control" id="title" placeholder="{{ __('Point-Page Title') }}">{{ (isset($point->title))?$point->title:__('Page title example') }}</textarea>
 
                         </div>
                         <div class="form-group">
@@ -82,7 +75,7 @@
                                 {{ __('Thank-you message') }}
                             </label>
 
-                            <input type="text" name="text" value="{{ (isset($point->text))?$point->text:'Thank you for rating' }}" class="form-control" id="text" placeholder="{{ __('Thank you Page Text') }}">
+                            <input type="text" name="text" value="{{ (isset($point->text))?$point->text:__('Thank you for rating') }}" class="form-control" id="text" placeholder="{{ __('Thank you Page Text') }}">
                         </div>
                         <div class="form-group mt-10">
                             <label>{{ __('Submit button text') }}</label>

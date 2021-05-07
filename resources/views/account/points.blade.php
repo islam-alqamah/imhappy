@@ -26,8 +26,8 @@
                                         <th>{{ __('Point ID') }}</th>
                                         <th>{{ __('QR-Code') }}</th>
                                         <th>{{ __('Point Name') }}</th>
-                                        <th>{{ __('title') }}</th>
-                                        <th>{{ __('text') }}</th>
+                                        <th>{{ __('Title') }}</th>
+                                        <th>{{ __('Text') }}</th>
                                         <th>{{ __('Type') }}</th>
                                         <th>{{ __('Responses') }}</th>
                                         <th>{{ __('Options') }}</th>
