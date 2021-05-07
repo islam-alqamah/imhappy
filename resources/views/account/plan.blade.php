@@ -6,14 +6,7 @@
             <h5 class="txt-dark">{{ __('Plans') }}</h5>
         </div>
 
-        <!-- Breadcrumb -->
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <ol class="breadcrumb">
-                <li><a href="{{ url('/dashboard') }}">{{ __('Dashboard') }}</a></li>
-                <li class="active"><span>{{ __('Plans') }}</span></li>
-            </ol>
-        </div>
-        <!-- /Breadcrumb -->
+
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
