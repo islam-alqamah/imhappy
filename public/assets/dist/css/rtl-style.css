@@ -2979,7 +2979,7 @@ a#toggle_mobile_nav {
   overflow: auto; }
 .navbar.navbar-inverse.navbar-fixed-top .nav.top-nav > li {
   display: inline-block;
-  float: left; }
+  }
 .navbar.navbar-inverse.navbar-fixed-top .nav.top-nav > li > a i.top-nav-icon {
   font-size: 24px;
   vertical-align: middle; }
@@ -3007,8 +3007,8 @@ a#toggle_mobile_nav {
   border: medium none !important;
   min-height: 59px; }
 .navbar.navbar-inverse.navbar-fixed-top .navbar-right .dropdown-menu {
-  left: auto;
-  right: 0; }
+  left: 0;
+  right: auto; }
 
 .slide-nav-toggle .navbar.navbar-inverse.navbar-fixed-top .nav-header {
   width: 44px; }
