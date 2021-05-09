@@ -31,7 +31,7 @@
 <div class="wrapper pa-0">
     <header class="sp-header">
         <div class="sp-logo-wrap pull-left">
-            <a href="index.html">
+            <a href="{{ url('/') }}">
                 <img class="brand-img mr-10" width="80" src="{{ url('images/logos/default.png') }}" alt="brand"/>
             </a>
         </div>
@@ -52,7 +52,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
                                 <div class="mb-30">
-                                    <h3 class="text-center txt-dark mb-10">I'M Happy Login</h3>
+                                    <h3 class="text-center txt-dark mb-10">Sign In</h3>
                                     <h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
                                 </div>
                                 <div class="form-wrap">
