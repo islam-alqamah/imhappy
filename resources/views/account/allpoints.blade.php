@@ -37,7 +37,7 @@
                                     @foreach($points as $point)
                                         @if($point->branch)
                                         <tr>
-                                            <td>#{{ $point->id }}</td>
+                                            <td>{{ $point->id }}</td>
                                             <td>
                                                 <a href="{{ route('branches.branches.points',['branch'=>$point->branch->id]) }}" target="_blank">
                                                     {{ $point->branch->name }}</a>

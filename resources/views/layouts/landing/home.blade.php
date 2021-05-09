@@ -153,13 +153,13 @@
                                         <a class="nav-link page-scroll side-menu__toggler side-menu__close-btn" href="#pricing">Pricing</a>
                                     </li>
                                     <li class="nav-item d-md-none">
-                                        <a class="main-btn" data-toggle="modal" data-target="#login" href="#">Login Here!</a>
+                                        <a class="main-btn" data-toggle="modal" data-target="#login" href="#">Sign in Here!</a>
                                     </li>
                                 </ul>
                             </div>
                             <!-- navbar collapse -->
                             <div class="navbar-btn d-none d-sm-flex">
-                                <a class="main-btn" data-toggle="modal" data-target="#login" href="#">Login Here!</a>
+                                <a class="main-btn" data-toggle="modal" data-target="#login" href="#">Sign in Here!</a>
                             </div>
                         </nav>
                     </div>
@@ -791,7 +791,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Login</h5>
+                <h5 class="modal-title" id="myModalLabel">Sign in</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
@@ -827,7 +827,7 @@
                     <br>
                     <br>
                     <div class="form-group text-center">
-                        <button type="submit" class="main-btn" >Login</button>
+                        <button type="submit" class="main-btn" >Sign in</button>
                     </div>
                 </form>
             </div>
