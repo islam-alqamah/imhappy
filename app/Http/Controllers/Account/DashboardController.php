@@ -251,6 +251,7 @@ class DashboardController extends Controller
 
         $excellent = [];
         $carbon_start_date = Carbon::now();
+        $carbon_init_date = Carbon::now();
         if(isset($request->date_range)){
             $start_date = explode(' - ',$request->date_range)[0];
             $end_date = explode(' - ',$request->date_range)[1];
@@ -262,7 +263,7 @@ if($agent->isMobile()){
     $number_of_days = 30;
 }
         for($i = 0;$i<=$number_of_days;$i++){
-            $carbon_start_date = ($i == 0)? $carbon_start_date : $carbon_start_date->subDay();
+            $carbon_start_date = ($i == 0)? $carbon_init_date : $carbon_init_date->subDay();
             $excellent[$carbon_start_date->format('Y-m-d')] = FeedbackResponse::where('rate','excellent')
                 ->whereDate('created_at','<',
                     $carbon_start_date->addDay()->format('Y-m-d'))
@@ -359,7 +360,7 @@ if($agent->isMobile()){
             $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->addDays(30);
         }
         for($i = 0;$i<=$number_of_days;$i++){
-            $carbon_start_date = ($i == 0)? $carbon_start_date : $carbon_start_date->subDay();
+            $carbon_start_date = ($i == 0)? $carbon_init_date : $carbon_init_date->subDay();
             $average[$carbon_start_date->format('Y-m-d')] = FeedbackResponse::where('rate','average')
                 ->whereDate('created_at','<',
                     $carbon_start_date->addDay()->format('Y-m-d'))
@@ -456,7 +457,7 @@ if($agent->isMobile()){
             $carbon_start_date = Carbon::createFromFormat('m/d/Y', $start_date)->addDays(30);
         }
         for($i = 0;$i<=$number_of_days;$i++){
-            $carbon_start_date = ($i == 0)? $carbon_start_date : $carbon_start_date->subDay();
+            $carbon_start_date = ($i == 0)? $carbon_init_date : $carbon_init_date->subDay();
             $poor[$carbon_start_date->format('Y-m-d')] = FeedbackResponse::where('rate','verypoor')
                 ->whereDate('created_at','<',
                     $carbon_start_date->addDay()->format('Y-m-d'))
