@@ -28,7 +28,7 @@
                                     @endforeach
                                 </select>
                                 <input class="form-control input-daterange-datepicker"  type="text" name="date_range"
-                                       value="{{ isset($request->date_range) ?$request->date_range:'01-01-2021 - 12-31-2021' }}">
+                                       value="{{ isset($request->date_range) ?$request->date_range: \Carbon\Carbon::now()->subDays(30)->format('m/d/Y').' - '.\Carbon\Carbon::now()->format('m/d/Y') }}">
                                 <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0">{{ __('Filter') }}</button>
                             </div>
                         </form>
