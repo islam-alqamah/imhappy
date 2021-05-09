@@ -36,7 +36,6 @@ use App\Http\Controllers\Account\Subscriptions\SubscriptionCouponController;
 use App\Http\Controllers\Account\Subscriptions\SubscriptionResumeController;
 use App\Http\Controllers\Account\Subscriptions\SubscriptionInvoiceController;
 
-URL::forceScheme('https');
 
 /*
 |--------------------------------------------------------------------------

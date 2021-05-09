@@ -36,7 +36,7 @@
                                     <tbody>
                                     @foreach($branch->points as $point)
                                         <tr>
-                                            <td>#{{ $point->id }}</td>
+                                            <td>{{ $point->id }}</td>
                                             <td>
                                                 <a href="{{ url($point->qrcode) }}" target="_blank">
                                                     <img src="{{ url($point->qrcode) }}" width="80"></a>
