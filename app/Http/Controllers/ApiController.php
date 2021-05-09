@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Point;
 use App\Models\QuestionAnswer;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
     public function questions($point,Request $request){
-        $team = Point::find($point)->team_id;
-        if($request->company_id != "IMH00".$team){
+        $team_id = Point::find($point)->team_id;
+        if($request->company_id != "IMH00".$team_id){
             return ['status'=>'failed','msg'=>'company id invalid'];
         }
         $point = Point::find($point);
@@ -19,7 +20,9 @@ class ApiController extends Controller
         }
         $questions = $point->form->questions;
         $color = $point->form->theme_color;
-        return ['point'=>$point];
+        $team = Team::find($team_id);
+        $logo = $team->settings->logo;
+        return ['point'=>$point,'logo'=>$logo];
     }
     public function postAnswer(Request $request){
         foreach ($request->answer as $question_id=>$answer){
