@@ -44,19 +44,19 @@
                                             <label class="control-label mb-10" for="address">
                                                 {{ __('Company Address') }}
                                             </label>
-                                            <input type="text" value="{{ $settings->address }}" name="address" class="form-control" id="address" placeholder="{{ __('Company address') }}">
+                                            <input type="text" value="{{ $settings->address }}" name="address" class="form-control" id="address" placeholder="{{ __('Company Address') }}">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="phone">
                                                 {{ __('Company Phone') }}
                                             </label>
-                                            <input type="text" value="{{ $settings->phone }}" name="phone" class="form-control" id="phone" placeholder="{{ __('Company phone') }}">
+                                            <input type="text" value="{{ $settings->phone }}" name="phone" class="form-control" id="phone" placeholder="{{ __('Company Phone') }}">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="fax">
                                                 {{ __('Company Fax') }}
                                             </label>
-                                            <input type="text" value="{{ $settings->fax }}" name="fax" class="form-control" id="fax" placeholder="{{ __('Company fax') }}">
+                                            <input type="text" value="{{ $settings->fax }}" name="fax" class="form-control" id="fax" placeholder="{{ __('Company Fax') }}">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="email">
