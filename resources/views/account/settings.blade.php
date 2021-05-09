@@ -36,7 +36,7 @@
                                                     <label class="control-label mb-10" for="comid">
                                                         {{ __('Company ID') }}
                                                     </label>
-                                                    <input type="text" disabled value="#IMH00{{ currentTeam()->id }}" name="comid" class="form-control" id="comid" placeholder="">
+                                                    <input type="text" disabled value="IMH00{{ currentTeam()->id }}" name="comid" class="form-control" id="comid" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
