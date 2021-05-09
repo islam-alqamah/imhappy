@@ -22,7 +22,7 @@ class ApiController extends Controller
         $color = $point->form->theme_color;
         $team = Team::find($team_id);
         $logo = $team->settings->logo;
-        return ['point'=>$point,'logo'=>$logo];
+        return ['point'=>$point,'logo'=>url($logo)];
     }
     public function postAnswer(Request $request){
         foreach ($request->answer as $question_id=>$answer){
