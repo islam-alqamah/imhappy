@@ -87,7 +87,7 @@
             <form id="search_form" role="search" class="top-nav-search collapse pull-left">
                 <div class="input-group mt-10">
                     <a href="#" style="color:#15E2BE">{{ currentTeam()->settings->company_name }}</a>
-                    <p>{!! (currentTeam()->subscribe)?'<small style="font-size:12px;color:#eeeeee">Exp Date: '.currentTeam()->subscribe->ends_at.'</small>':'' !!}
+                    <p>{!! (currentTeam()->subscribe)?'<small style="font-size:12px;color:#eeeeee">'.__('Exp Date').' : '.currentTeam()->subscribe->ends_at.'</small>':'' !!}
                         <a href="{{ route('account.plan') }}" style="color:#15E2BE">{{ __('Upgrade') }}</a>
                     </p>
 

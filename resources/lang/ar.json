@@ -124,11 +124,16 @@
     "Enter email": "إدخل البريد الالكترونى",
     "Enter Phone": "إدخل رقم الهاتف",
     "Enter Your Feedback": "اكتب رأيك / ملاحظاتك",
-    "": "",
+    "Plans": "خطط الاسعار",
     "All Cities": "المدن",
     "Filter": "تصفية",
     "Daily Stats": "يومي",
-    "Hourly Stats": "الإحصياءات كل ساعة",
-    "Monthly Stats": "الإحصياءات الشهرية",
-    "Weekly Stats": "الإحصياءات الأسبوعية"
+    "Hourly Stats": "الاحصائيات كل ساعة",
+    "Monthly Stats": "الاحصائيات الشهرية",
+    "Weekly Stats": "الاحصائيات الأسبوعية",
+    "Upgrade": "ترقية",
+    "Basic": "اساسية",
+    "Business": "اعمال",
+    "Enterprise": "متقدمة",
+    "Exp Date": "ينتهي في"
 }

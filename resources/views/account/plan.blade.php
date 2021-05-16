@@ -17,7 +17,7 @@
                         <div class="panel panel-pricing card-view mb-0">
                             <div class="panel-heading">
                                 <i class="ti-wallet"></i>
-                                <h6>{{ $plan->title }}</h6>
+                                <h6>{{ __($plan->title) }}</h6>
                                 <span class="panel-price">{{ $plan->price }}<span class="pricing-dolor">SAR</span></span>
                             </div>
                             <div class="panel-body text-center pl-0 pr-0">
