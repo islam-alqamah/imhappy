@@ -49,7 +49,7 @@ use App\Http\Controllers\Account\Subscriptions\SubscriptionInvoiceController;
 */
 
 
-Route::get('/', [FrontEndController::class,'index'])->name('home');
+
 
 Route::get('/view/point/{point}', [FrontEndController::class, 'view'] )->name('view.point');
 Route::post('/feedback/submit/{form}', [FrontEndController::class, 'feedback'] )->name('feedback.submit');
@@ -57,6 +57,7 @@ Route::post('/survey/submit/{form}', [FrontEndController::class, 'survey'] )->na
 Route::get('/feedback/thanks/{form}', [FrontEndController::class, 'thanks'] )->name('feedback.thanks');
 
 Route::group(['middleware' => 'language'], function () {
+    Route::get('/', [FrontEndController::class,'index'])->name('home');
     Route::get('oauth/{provider}', [OAuthController::class, 'redirectToProvider'])->name('oauth.redirect');
     Route::get('auth/{provider}/callback',[OAuthController::class, 'handleProviderCallback'])->name('oauth.callback');
 

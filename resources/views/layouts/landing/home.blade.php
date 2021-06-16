@@ -45,8 +45,52 @@
     <link rel="stylesheet" href="assets/landing/css/default.css" />
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="assets/landing/css/style.css?v=2" />
     <link rel="stylesheet" href="assets/landing/css/themify-icons.css" />
+    @if(app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="assets/landing/css/style-rtl.css?v=2" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            html{
+                direction: rtl;
+
+            }
+            *:not(i){
+                font-family: 'Almarai', sans-serif!important;
+            }
+            .banner-area::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                height: 100%;
+                background-size:cover ;
+                width: 100%;
+                z-index: -2;
+                background: url({{ url('assets/landing/images/Hero_Big_Arabic.png') }}) no-repeat top center;
+                background-repeat: no-repeat;
+                min-height: 1250px; }
+        </style>
+        @else
+        <link rel="stylesheet" href="assets/landing/css/style.css?v=2" />
+        <style>
+            html{
+                direction: ltr;
+            }
+            .banner-area::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                height: 100%;
+                background-size:cover ;
+                width: 100%;
+                z-index: -2;
+                background: url({{ url('assets/landing/images/Hero_Big_English.png') }}) no-repeat top center;
+                background-repeat: no-repeat;
+                min-height: 1250px; }
+        </style>
+    @endif
     <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
 </head>
 
@@ -93,8 +137,7 @@
         <!-- /.side-menu__sep -->
         <div class="side-menu__content">
             <p>
-                Understanding the behavior of your client will help you to track their actions
-                to spot the opportunities you do not utilize and then improve them.
+                {{__('Understand your customers and their needs, focus on opportunities, make them satisfied — so they keep coming again, and stay with you longer.')}}
             </p>
             <p>
                 <a href="mailto:info@imhappy.app">info@imhappy.app</a> <br />
@@ -141,25 +184,33 @@
                                     id="navbarSupportedContent">
                                 <ul class="navbar-nav main-nav__navigation-box">
                                     <li class="nav-item active">
-                                        <a class="nav-link page-scroll side-menu__toggler side-menu__close-btn" href="#home">Home</a>
+                                        <a class="nav-link page-scroll  side-menu__close-btn" href="#home">{{__('Home')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link page-scroll side-menu__toggler side-menu__close-btn" href="#about">About</a>
+                                        <a class="nav-link page-scroll  side-menu__close-btn" href="#about">{{__('About')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link page-scroll side-menu__toggler side-menu__close-btn" href="#features">Features</a>
+                                        <a class="nav-link page-scroll  side-menu__close-btn" href="#features">{{__('Features')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link page-scroll side-menu__toggler side-menu__close-btn" href="#pricing">Pricing</a>
+                                        <a class="nav-link page-scroll side-menu__close-btn" href="#pricing">{{__('Pricing')}}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        @if(app()->getLocale() == 'ar')
+                                        <a class="nav-link page-scroll side-menu__close-btn" href="{{ url('languages/en/back') }}">{{__('English')}}</a>
+                                        @else
+                                            <a class="nav-link page-scroll side-menu__close-btn" href="{{ url('languages/ar/back') }}">{{__('العربية')}}</a>
+
+                                        @endif
                                     </li>
                                     <li class="nav-item d-md-none">
-                                        <a class="main-btn" data-toggle="modal" data-target="#login" href="#">Sign in Here!</a>
+                                        <a class="main-btn" data-toggle="modal" data-target="#login" href="#">{{__('Sign in Here!')}}</a>
                                     </li>
                                 </ul>
                             </div>
                             <!-- navbar collapse -->
                             <div class="navbar-btn d-none d-sm-flex">
-                                <a class="main-btn" data-toggle="modal" data-target="#login" href="#">Sign in Here!</a>
+                                <a class="main-btn" data-toggle="modal" data-target="#login" href="#">{{__('Sign in Here!')}}</a>
                             </div>
                         </nav>
                     </div>
@@ -174,19 +225,18 @@
 
 <!--====== BANNER PART START ======-->
 
-<section class="banner-area">
+<section class="banner-area" >
     <div class="container">
         <div class="banner-items">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-7">
                     <div class="banner-content">
-                        <h2 >A seamless solution to</h2>
-                        <h2><span>upgrade</span> your performance.</h2>
+                        <h2 >{{__('A seamless solution to')}}</h2>
+                        <h2><span>{{__('upgrade')}}</span> {{__('your performance')}}.</h2>
                         <p style="color: #979797;font-weight: normal">
-                            Understand your customers and their needs, focus on opportunities,
-                            make them satisfied — so they keep coming again, and stay with you longer.
+                            {{__('Understand your customers and their needs, focus on opportunities, make them satisfied — so they keep coming again, and stay with you longer.')}}
                         </p>
-                        <a class="main-btn" href="#" data-target="#sign-up" data-toggle="modal" >Sign up Now</a>
+                        <a class="main-btn" href="#" data-target="#sign-up" data-toggle="modal" >{{__('Sign up now')}}</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -206,8 +256,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div class="section-title text-center">
-                    <span>We do more for your product</span>
-                    <h2 class="section-sub-title"><span><b>I’m Happy </b></span> Providing the best features</h2>
+                    <span>{{__('We do more for your product')}}</span>
+                    <h2 class="section-sub-title"><span><b>{{__('I’m Happy')}} </b></span> {{__('Providing the best features')}}</h2>
                 </div>
             </div>
         </div>
@@ -232,7 +282,7 @@
                                 <i class="ti-palette"
                                 ><img src="assets/landing/images/features-shape.png" alt="shape"
                                     /></i>
-                                <span>Personalize</span>
+                                <span>{{__('Personalize')}}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -248,7 +298,7 @@
                                 <i class="ti-dashboard"
                                 ><img src="assets/landing/images/features-shape.png" alt="shape"
                                     /></i>
-                                <span>Interactive Dashboard</span>
+                                <span>{{__('Interactive Dashboard')}}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -264,7 +314,7 @@
                                 <i class="ti-layout"
                                 ><img src="assets/landing/images/features-shape.png" alt="shape"
                                     /></i>
-                                <span>Templates</span>
+                                <span>{{__('Templates')}}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -280,7 +330,7 @@
                                 <i class="ti-face-smile"
                                 ><img src="assets/landing/images/features-shape.png" alt="shape"
                                     /></i>
-                                <span>Instant Feedback</span>
+                                <span>{{__('Instant Feedback')}}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -296,7 +346,7 @@
                                 <i class="fa fa-qrcode"
                                 ><img src="assets/landing/images/features-shape.png" alt="shape"
                                     /></i>
-                                <span>Multi Channels</span>
+                                <span>{{__('Multi Channels')}}</span>
                             </a>
                         </li>
                     </ul>
@@ -308,9 +358,9 @@
                                 aria-labelledby="pills-1-tab"
                         >
                             <i class="ti-palette"></i>
-                            <h4 class="title">Personalize</h4>
+                            <h4 class="title">{{__('Personalize')}}</h4>
                             <p>
-                                Personalize your form, questions, answers, and colors to match your brand and product.
+                                {{__('Personalize your form, questions, answers, and colors to match your brand and product.')}}
                             </p>
                         </div>
                         <div
@@ -320,10 +370,9 @@
                                 aria-labelledby="pills-2-tab"
                         >
                             <i class="ti-dashboard"></i>
-                            <h4 class="title">Interactive Dashboard</h4>
+                            <h4 class="title">{{__('Interactive Dashboard')}}</h4>
                             <p>
-                                Professional and Interactive Dashboard to view all the data
-                                submitted by your valuable customers which leads you to improve your experience.
+                                {{__('Professional and Interactive Dashboard to view all the data submitted by your valuable customers which leads you to improve your experience.')}}
                             </p>
                         </div>
                         <div
@@ -333,9 +382,9 @@
                                 aria-labelledby="pills-3-tab"
                         >
                             <i class="ti-layout"></i>
-                            <h4 class="title">Templates</h4>
+                            <h4 class="title">{{__('Templates')}}</h4>
                             <p>
-                                Create your own unlimited questions template or you can choose one to save time and satisfy your needs.
+                                {{__('Create your own unlimited questions template or you can choose one to save time and satisfy your needs.')}}
                             </p>
                         </div>
                         <div
@@ -345,9 +394,9 @@
                                 aria-labelledby="pills-4-tab"
                         >
                             <i class="ti-face-smile"></i>
-                            <h4 class="title">Instant Feedback</h4>
+                            <h4 class="title">{{__('Instant Feedback')}}</h4>
                             <p>
-                                Real time feedback capturing thoughts to track and improve your customer experience over time.
+                                {{__('Real time feedback capturing thoughts to track and improve your customer experience over time.')}}
                             </p>
                         </div>
                         <div
@@ -357,10 +406,9 @@
                                 aria-labelledby="pills-5-tab"
                         >
                             <i class="fa fa-qrcode"></i>
-                            <h4 class="title">Multi Channels</h4>
+                            <h4 class="title">{{__('Multi Channels')}}</h4>
                             <p>
-                                Customer feedback will be easier with our channels (QR code or Toucheless)
-                                    and the instant feedback you can have it on your device.
+                                {{__('Customer feedback will be easier with our channels (QR code or Toucheless) and the instant feedback you can have it on your device.')}}
                             </p>
                         </div>
                     </div>
@@ -386,30 +434,29 @@
             <div class="col-lg-6">
                 <div class="about-content">
                     <div class="section-title">
-                        <span>We do more for your product</span>
+                        <span>{{__('We do more for your product')}}</span>
                         <h2 class="section-sub-title">
-                            What <span>I’m Happy</span> can do for your company:
+                            {{__('What')}} <span>{{__('I’m Happy')}}</span> {{__('can do for your company')}}:
                         </h2>
                     </div>
                     <p style="font-weight: normal;font-size: 18px">
-                        Understanding the behavior of your client will help you to track their
-                        actions to spot the opportunities you do not utilize and then improve them.
+                        {{__('Understanding the behavior of your client will help you to track their actions to spot the opportunities you do not utilize and then improve them')}}.
                     </p>
                     <ul>
                         <li>
-                            <i class="fa fa-check-circle"></i> Real-time customer satisfaction reporting.
+                            <i class="fa fa-check-circle"></i> {{__('Real-time customer satisfaction reporting')}}.
                         </li>
                         <li>
-                            <i class="fa fa-check-circle"></i> Professional and Interactive Dashboard.
+                            <i class="fa fa-check-circle"></i> {{__('Professional and Interactive Dashboard')}}.
                         </li>
                         <li>
-                            <i class="fa fa-check-circle"></i> Enhance brand loyalty.
+                            <i class="fa fa-check-circle"></i> {{__('Enhance brand loyalty')}}.
                         </li>
                         <li>
-                            <i class="fa fa-check-circle"></i> Quickly utilize opportunities.
+                            <i class="fa fa-check-circle"></i> {{__('Quickly utilize opportunities')}}.
                         </li>
                     </ul>
-                    <a class="main-btn mt-50" data-toggle="modal" data-target="#sign-up" href="#">Sign up now</a>
+                    <a class="main-btn mt-50" data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
                 </div>
             </div>
         </div>
@@ -427,17 +474,17 @@
             <div class="col-lg-7">
                 <div class="business-content">
                     <div class="section-title">
-                        <span>We do more for your product</span>
+                        <span>{{__('We do more for your product')}}</span>
                         <h2 class="section-sub-title">
-                            How <span>I’m Happy</span> do it:
+                            {{__('How')}} <span>{{__('I’m Happy')}}</span> {{__('do it')}}:
                         </h2>
                     </div>
-                    <div class="row mr-110">
+                    <div class="row @if(app()->getLocale()=='en') mr-110 @endif">
                         <div class="col-sm-4">
                             <div class="business-item">
                                 <i class="ti-clipboard"></i><br />
                                 <span
-                                >Collect</span
+                                >{{__('Collect')}}</span
                                 >
                             </div>
                         </div>
@@ -445,7 +492,7 @@
                             <div class="business-item item-2">
                                 <i class="ti-pie-chart"></i><br />
                                 <span
-                                >Analyze</span
+                                >{{__('Analyze')}}</span
                                 >
                             </div>
                         </div>
@@ -453,20 +500,20 @@
                             <div class="business-item item-3">
                                 <i class="ti-stats-up"></i><br />
                                 <span
-                                >Upgrade</span
+                                >{{__('Upgrade')}}</span
                                 >
                             </div>
                         </div>
                     </div>
-                    <p>Collect your data from your channles (QR code, Touchless Screens).</p>
-                    <p>Analyze your data from your seamless dashboard.</p>
-                    <p>Upgrade your plans, scopes, achieve new targets and gain more happy clients.</p>
-                    <a class="main-btn" data-target="#sign-up" data-toggle="modal"  href="#">Sign up now</a>
+                    <p>{{__('Collect your data from your channles (QR code, Touchless Screens)')}}.</p>
+                    <p>{{__('Analyze your data from your seamless dashboard')}}.</p>
+                    <p>{{__('Upgrade your plans, scopes, achieve new targets and gain more happy clients')}}.</p>
+                    <a class="main-btn" data-target="#sign-up" data-toggle="modal"  href="#">{{__('Sign up now')}}</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="business-thumb text-right">
+    <div class="business-thumb @if(app()->getLocale()=='ar') text-left @else text-right  @endif">
         <img src="assets/landing/images/business-thumb.jpg" alt="" />
     </div>
 </section>
@@ -488,24 +535,22 @@
             </div>
             <div class="col-lg-6 col-md-9">
                 <div class="section-title">
-                    <span>We do more for your product</span>
-                    <h2 class="section-sub-title">Discover <span>I’M Happy</span> Channels:</h2>
+                    <span>{{__('We do more for your product')}}</span>
+                    <h2 class="section-sub-title">{{__('Discover')}} <span>{{__('I’M Happy')}}</span> {{__('Channels')}}:</h2>
                 </div>
                 <div class="customers-content">
                     <div class="item">
                         <i style="margin: 20px 10px;color:#ffffff;position: absolute;font-size: 40px;z-index: 99999" class="fa fa-qrcode"></i>
-                        <p> <span>QR Code</span>
-                            Clients will scan a QR-Code generated from you side,
-                            and start to give you feedback and send it directly to your device.
+                        <p> <span>{{__('QR Code')}}</span>
+                            {{__('Clients will scan a QR-Code generated from you side, and start to give you feedback and send it directly to your device')}}.
                         </p>
                     </div>
                     <div class="item mt-35">
                         <i style="margin: 20px 10px;color:#ffffff;position: absolute;font-size: 40px;z-index: 99999" class="ti-thumb-up"></i>
-                        <p><span>Touchless</span>
-                            Clients will rate your service without touching any device
-                            from selected location with our touchless technology.
+                        <p><span>{{__('Touchless')}}</span>
+                            {{__('Clients will rate your service without touching any device from selected location with our touchless technology')}}.
                         </p>
-                        <a class="main-btn mt-50" data-toggle="modal" data-target="#sign-up" href="#">Sign up Now</a>
+                        <a class="main-btn mt-50" data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
                     </div>
                 </div>
             </div>
@@ -545,186 +590,260 @@
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <div class="section-title text-center">
-                    <span>Select what suits you</span>
-                    <h2 class="section-sub-title">Choose Your Pricing Plan</h2>
+                    <span>{{__('Select what suits you')}}</span>
+                    <h2 class="section-sub-title">{{__('Choose Your Pricing Plan')}}</h2>
                 </div>
                 <ul
                         class="list-inline text-center switch-toggler-list"
                         role="tablist"
                         id="switch-toggle-tab"
                 >
-                    <li class="month active"><a href="#">Monthly</a></li>
+                    <li class="month active"><a href="#">{{__('Monthly')}}</a></li>
                     <li>
                         <!-- Rounded switch -->
                         <label class="switch on">
                             <span class="slider round"></span>
                         </label>
                     </li>
-                    <li class="year"><a href="#">Annualy</a></li>
+                    <li class="year"><a href="#">{{__('Annual')}}</a></li>
                 </ul>
                 <!-- /.list-inline -->
             </div>
         </div>
         <div class="tabed-content">
             <div id="month">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-7 animated fadeInLeft">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__inner">
-                                <i class="flaticon-send"></i>
-                                <p>Silver</p>
-                                <h3>$20.00</h3>
-                                <div class="overlay">
-                                    <ul class="list-unstyled pricing-one__list">
-                                        <li><i class="fa fa-check"></i> Extra features</li>
-                                        <li>
-                                            <i class="fa fa-check"></i> Lifetime free support
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Upgrade options</li>
-                                        <li><i class="fa fa-check"></i> Full access</li>
-                                    </ul>
-                                    <!-- /.list-unstyled pricing-one__list -->
-                                    <a class="main-btn" href="#"><span>Choose Plan</span></a>
-                                </div>
-                                <!-- /.thm-btn -->
-                            </div>
-                            <!-- /.pricing-one__inner -->
-                        </div>
-                        <!-- /.pricing-one__single -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                    <div class="col-lg-4 col-md-7 animated fadeInUp">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__inner">
-                                <i class="flaticon-shuttle"></i>
-                                <p>Gold</p>
-                                <h3>$30.00</h3>
-                                <div class="overlay">
-                                    <ul class="list-unstyled pricing-one__list">
-                                        <li><i class="fa fa-check"></i> Extra features</li>
-                                        <li>
-                                            <i class="fa fa-check"></i> Lifetime free support
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Upgrate options</li>
-                                        <li><i class="fa fa-check"></i> Full access</li>
-                                    </ul>
-                                    <!-- /.list-unstyled pricing-one__list -->
-                                    <a class="main-btn" href="#"><span>Choose Plan</span></a>
-                                </div>
-                                <!-- /.thm-btn -->
-                            </div>
-                            <!-- /.pricing-one__inner -->
-                        </div>
-                        <!-- /.pricing-one__single -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                    <div class="col-lg-4 col-md-7 animated fadeInRight">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__inner">
-                                <i class="flaticon-plane"></i>
-                                <p>Daimond</p>
-                                <h3>$49.00</h3>
-                                <div class="overlay">
-                                    <ul class="list-unstyled pricing-one__list">
-                                        <li><i class="fa fa-check"></i> Extra features</li>
-                                        <li>
-                                            <i class="fa fa-check"></i> Lifetime free support
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Upgrate options</li>
-                                        <li><i class="fa fa-check"></i> Full access</li>
-                                    </ul>
-                                    <!-- /.list-unstyled pricing-one__list -->
-                                    <a class="main-btn" href="#"><span>Choose Plan</span></a>
-                                </div>
-                                <!-- /.thm-btn -->
-                            </div>
-                            <!-- /.pricing-one__inner -->
-                        </div>
-                        <!-- /.pricing-one__single -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div>
+                <style>
+                    article {
+                        width:100%;
+                        max-width:1000px;
+                        margin:0 auto;
+                        position:relative;
+                    }
+                    article ul {
+                        display:flex;
+                        top:0px;
+                        z-index:10;
+                        padding-bottom:14px;
+                    }
+                    article li {
+                        list-style:none;
+                        flex:1;
+                    }
+                    article li:last-child {
+                        border-right:1px solid #DDD;
+                    }
+                    article  button {
+                        width:100%;
+                        border: 1px solid #DDD;
+                        border-right:0;
+                        border-top:0;
+                        padding: 10px;
+                        background:#FFF;
+                        font-size:14px;
+                        font-weight:bold;
+                        height:60px;
+                        color:#999
+                    }
+                    article li.active button {
+                        background:#E9E9E9;
+                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                        color:#000;
+                    }
+                    article  table { border:none;border-collapse:collapse; table-layout:fixed; width:100%; }
+                    article  th { background:#F5F5F5; display:none; }
+                    article td, article th {
+                        height:53px;
+                        border-right: none;
+                        border-left: none;
+                    }
+                    article td, article th { border:1px solid #DDD; padding:10px; empty-cells:show; }
+                    article td, article th {
+                        text-align:left;
+                    }
+                    td+td, th+th {
+                        text-align:center;
+                        display:none;
+                    }
+                    td.default {
+                        display:table-cell;
+                    }
+                    .bg-purple {
+                        border-top:4px solid #FFCC00;
+                    }
+                    .bg-blue {
+                        border-top:4px solid #00A5B7;
+                    }
+                    .sep {
+                        background:#F5F5F5;
+                        font-weight:bold;
+                    }
+                    .txt-l { font-size:28px; font-weight:bold; }
+                    .txt-top { position:relative; top:-9px; left:-2px; }
+                    .tick { font-size:18px; color:#2CA01C; }
+                    .hide {
+                        border:0;
+                        background:none;
+                    }
+                    .contatinho{
+                        background:#00A5B7;
+                        padding:10px 20px;
+                        font-size:12px;
+                        display:inline-block;
+                        color:#FFF;
+                        text-decoration:none;
+                        border-radius:3px;
+                        text-transform:uppercase;
+                        margin:5px 0 10px 0;
+                    }
+
+                    @media (min-width: 640px) {
+                        article  ul {
+                            display:none;
+                        }
+                        article td, article th {
+                            display:table-cell !important;
+                            border-right: none;
+                            border-left: none;
+                        }
+                        article td,article th {
+                            width: 330px;
+
+                        }
+                        td+td, th+th {
+                            width: auto;
+                        }
+                    }
+                </style>
+                <article>
+
+                    <ul>
+                        <li class="bg-purple">
+                            <button>{{__('QR Code')}}</button>
+                        </li>
+                        <li class="bg-blue" >
+                            <button>{{__('Touchless')}}</button>
+                        </li>
+                    </ul>
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="hide"></th>
+                            <th class="bg-purple">{{__('QR Code')}}</th>
+                            <th class="bg-blue">{{__('Touchless')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{__('Price')}}</td>
+                            <td><span class="txt-l">49,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">89,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Extra features')}}</td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Branches')}}</td>
+                            <td><span class="tick">1</span></td>
+                            <td><span class="tick">3</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Points')}}</td>
+                            <td><span class="tick">3</span></td>
+                            <td><span class="tick">9</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Responses')}}</td>
+                            <td><span class="tick">1000/{{__('Month')}}</span></td>
+                            <td><span class="tick">{{__('Unlimited')}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Full access')}}</td>
+                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td class="hide"></td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                            </td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </article>
                 <!-- /.row -->
             </div>
             <!-- /#month -->
             <div id="year">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-7 animated fadeInLeft">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__inner">
-                                <i class="flaticon-send"></i>
-                                <p>Silver</p>
-                                <h3>$59.00</h3>
-                                <div class="overlay">
-                                    <ul class="list-unstyled pricing-one__list">
-                                        <li><i class="fa fa-check"></i> Extra features</li>
-                                        <li>
-                                            <i class="fa fa-check"></i> Lifetime free support
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Upgrate options</li>
-                                        <li><i class="fa fa-check"></i> Full access</li>
-                                    </ul>
-                                    <!-- /.list-unstyled pricing-one__list -->
-                                    <a class="main-btn" href="#"><span>Choose Plan</span></a>
-                                </div>
-                                <!-- /.thm-btn -->
-                            </div>
-                            <!-- /.pricing-one__inner -->
-                        </div>
-                        <!-- /.pricing-one__single -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                    <div class="col-lg-4 col-md-7 animated fadeInUp">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__inner">
-                                <i class="flaticon-shuttle"></i>
-                                <p>Gold</p>
-                                <h3>$79.00</h3>
-                                <div class="overlay">
-                                    <ul class="list-unstyled pricing-one__list">
-                                        <li><i class="fa fa-check"></i> Extra features</li>
-                                        <li>
-                                            <i class="fa fa-check"></i> Lifetime free support
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Upgrate options</li>
-                                        <li><i class="fa fa-check"></i> Full access</li>
-                                    </ul>
-                                    <!-- /.list-unstyled pricing-one__list -->
-                                    <a class="main-btn" href="#"><span>Choose Plan</span></a>
-                                </div>
-                                <!-- /.thm-btn -->
-                            </div>
-                            <!-- /.pricing-one__inner -->
-                        </div>
-                        <!-- /.pricing-one__single -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                    <div class="col-lg-4 col-md-7 animated fadeInRight">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__inner">
-                                <i class="flaticon-plane"></i>
-                                <p>Daimond</p>
-                                <h3>$99.00</h3>
-                                <div class="overlay">
-                                    <ul class="list-unstyled pricing-one__list">
-                                        <li><i class="fa fa-check"></i> Extra features</li>
-                                        <li>
-                                            <i class="fa fa-check"></i> Lifetime free support
-                                        </li>
-                                        <li><i class="fa fa-check"></i> Upgrate options</li>
-                                        <li><i class="fa fa-check"></i> Full access</li>
-                                    </ul>
-                                    <!-- /.list-unstyled pricing-one__list -->
-                                    <a class="main-btn" href="#"><span>Choose Plan</span></a>
-                                </div>
-                                <!-- /.thm-btn -->
-                            </div>
-                            <!-- /.pricing-one__inner -->
-                        </div>
-                        <!-- /.pricing-one__single -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div>
+                <article>
+
+                    <ul>
+                        <li class="bg-purple">
+                            <button>{{__('QR Code')}}</button>
+                        </li>
+                        <li class="bg-blue" >
+                            <button>{{__('Touchless')}}</button>
+                        </li>
+                    </ul>
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="hide"></th>
+                            <th class="bg-purple">{{__('QR Code')}}</th>
+                            <th class="bg-blue">{{__('Touchless')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{__('Price')}}</td>
+                            <td><span class="txt-l">490,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">890,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Extra features')}}</td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Branches')}}</td>
+                            <td><span class="tick">1</span></td>
+                            <td><span class="tick">3</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Points')}}</td>
+                            <td><span class="tick">3</span></td>
+                            <td><span class="tick">9</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Responses')}}</td>
+                            <td><span class="tick">1000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">{{__('Unlimited')}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Full access')}}</td>
+                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td class="hide"></td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                            </td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </article>
                 <!-- /.row -->
             </div>
             <!-- /#year -->
@@ -803,11 +922,11 @@
                         @endif
 
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>{{__('Email')}}</label>
                         <input class="form-control" type="text" name="email" placeholder="Your Email Address ..">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
+                        <label>{{__('Password')}}</label>
                         <input class="form-control" type="password" name="password" placeholder="Password ..">
                     </div>
                     <div class="form-group">
@@ -827,7 +946,7 @@
                     <br>
                     <br>
                     <div class="form-group text-center">
-                        <button type="submit" class="main-btn" >Sign in</button>
+                        <button type="submit" class="main-btn" >{{__('Sign in')}}</button>
                     </div>
                 </form>
             </div>
@@ -842,11 +961,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Sign up</h5>
+                <h5 class="modal-title" id="myModalLabel">{{__('Sign up')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <h5 class="mb-15">Enjoy 15 days free trial</h5>
+                <h5 class="mb-15">{{__('Enjoy 15 days free trial')}}</h5>
                 <form method="POST" action="{{ route('register') }}">
                     @if($errors->has('reg_email') || $errors->has('password'))
                         <div class="alert alert-danger">
@@ -860,24 +979,24 @@
                     @endif
                     @csrf
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>{{__('Name')}}</label>
                         <input class="form-control" required type="text" name="name" placeholder="Your full name ..">
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>{{__('Email')}}</label>
                         <input class="form-control" required type="text" name="reg_email" placeholder="Your Email Address ..">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
+                        <label>{{__('Password')}}</label>
                         <input class="form-control" required type="password" name="password" placeholder="Password ..">
                     </div>
 
                     <div class="form-group">
-                        <label>Confirm Password</label>
+                        <label>{{__('Confirm Password')}}</label>
                         <input class="form-control" required type="password" name="password_confirmation" placeholder="Confirm Password ..">
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="main-btn" >Sign Up Now</button>
+                        <button type="submit" class="main-btn" >{{__('Sign up now')}}</button>
                     </div>
                 </form>
             </div>
@@ -914,8 +1033,8 @@
                 <div class="footer-widget footer-widget-about" style="padding-top: 20px">
                     <a href="#"><img src="assets/landing/images/IM_Happy_logo_white.png" alt="logo" /></a>
                     <p>
-                        Understanding the behavior of your client will help you to track their
-                        actions to spot the opportunities you do not utilize and then improve them.
+                        {{__('Understand your customers and their needs, focus on opportunities, make them satisfied — so they keep coming again, and stay with you longer.')}}
+
                     </p>
                     <ul>
                         <li>
@@ -936,7 +1055,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget footer-widget-list">
                     <div class="list-item d-flex">
-                        <div class="item mr-100">
+                        <div class="item @if(app()->getLocale()=='ar') ml-100 @else mr-100 @endif">
                             <h3 class="title">Explore</h3>
                             <ul>
                                 <li><a href="#">About</a></li>
