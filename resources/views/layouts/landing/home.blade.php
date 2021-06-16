@@ -45,9 +45,52 @@
     <link rel="stylesheet" href="assets/landing/css/default.css" />
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="assets/landing/css/style.css?v=2" />
     <link rel="stylesheet" href="assets/landing/css/themify-icons.css" />
+    @if(app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="assets/landing/css/style-rtl.css?v=2" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            html{
+                direction: rtl;
 
+            }
+            *:not(i){
+                font-family: 'Almarai', sans-serif!important;
+            }
+            .banner-area::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                height: 100%;
+                background-size:cover ;
+                width: 100%;
+                z-index: -2;
+                background: url({{ url('assets/landing/images/Hero_Big_Arabic.png') }}) no-repeat top center;
+                background-repeat: no-repeat;
+                min-height: 1250px; }
+        </style>
+        @else
+        <link rel="stylesheet" href="assets/landing/css/style.css?v=2" />
+        <style>
+            html{
+                direction: ltr;
+            }
+            .banner-area::before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                height: 100%;
+                background-size:cover ;
+                width: 100%;
+                z-index: -2;
+                background: url({{ url('assets/landing/images/Hero_Big_English.png') }}) no-repeat top center;
+                background-repeat: no-repeat;
+                min-height: 1250px; }
+        </style>
+    @endif
     <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
 </head>
 
@@ -95,7 +138,6 @@
         <div class="side-menu__content">
             <p>
                 {{__('Understand your customers and their needs, focus on opportunities, make them satisfied — so they keep coming again, and stay with you longer.')}}
-                .
             </p>
             <p>
                 <a href="mailto:info@imhappy.app">info@imhappy.app</a> <br />
@@ -183,7 +225,7 @@
 
 <!--====== BANNER PART START ======-->
 
-<section class="banner-area">
+<section class="banner-area" >
     <div class="container">
         <div class="banner-items">
             <div class="row align-items-center">
@@ -437,7 +479,7 @@
                             {{__('How')}} <span>{{__('I’m Happy')}}</span> {{__('do it')}}:
                         </h2>
                     </div>
-                    <div class="row mr-110">
+                    <div class="row @if(app()->getLocale()=='en') mr-110 @endif">
                         <div class="col-sm-4">
                             <div class="business-item">
                                 <i class="ti-clipboard"></i><br />
@@ -471,7 +513,7 @@
             </div>
         </div>
     </div>
-    <div class="business-thumb text-right">
+    <div class="business-thumb @if(app()->getLocale()=='ar') text-left @else text-right  @endif">
         <img src="assets/landing/images/business-thumb.jpg" alt="" />
     </div>
 </section>
@@ -880,11 +922,11 @@
                         @endif
 
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>{{__('Email')}}</label>
                         <input class="form-control" type="text" name="email" placeholder="Your Email Address ..">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
+                        <label>{{__('Password')}}</label>
                         <input class="form-control" type="password" name="password" placeholder="Password ..">
                     </div>
                     <div class="form-group">
@@ -904,7 +946,7 @@
                     <br>
                     <br>
                     <div class="form-group text-center">
-                        <button type="submit" class="main-btn" >Sign in</button>
+                        <button type="submit" class="main-btn" >{{__('Sign in')}}</button>
                     </div>
                 </form>
             </div>
@@ -919,11 +961,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Sign up</h5>
+                <h5 class="modal-title" id="myModalLabel">{{__('Sign up')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <h5 class="mb-15">Enjoy 15 days free trial</h5>
+                <h5 class="mb-15">{{__('Enjoy 15 days free trial')}}</h5>
                 <form method="POST" action="{{ route('register') }}">
                     @if($errors->has('reg_email') || $errors->has('password'))
                         <div class="alert alert-danger">
@@ -937,24 +979,24 @@
                     @endif
                     @csrf
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>{{__('Name')}}</label>
                         <input class="form-control" required type="text" name="name" placeholder="Your full name ..">
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>{{__('Email')}}</label>
                         <input class="form-control" required type="text" name="reg_email" placeholder="Your Email Address ..">
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
+                        <label>{{__('Password')}}</label>
                         <input class="form-control" required type="password" name="password" placeholder="Password ..">
                     </div>
 
                     <div class="form-group">
-                        <label>Confirm Password</label>
+                        <label>{{__('Confirm Password')}}</label>
                         <input class="form-control" required type="password" name="password_confirmation" placeholder="Confirm Password ..">
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="main-btn" >Sign up now</button>
+                        <button type="submit" class="main-btn" >{{__('Sign up now')}}</button>
                     </div>
                 </form>
             </div>
@@ -1013,7 +1055,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget footer-widget-list">
                     <div class="list-item d-flex">
-                        <div class="item mr-100">
+                        <div class="item @if(app()->getLocale()=='ar') ml-100 @else mr-100 @endif">
                             <h3 class="title">Explore</h3>
                             <ul>
                                 <li><a href="#">About</a></li>
