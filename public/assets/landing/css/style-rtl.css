@@ -1601,7 +1601,7 @@ p {
     font-size: 17px; } }
 .business-area .business-thumb {
   position: absolute;
-  left: -100px;
+  left: 0;
   top: 40%;
   transform: translateY(-50%);
   z-index: -1; }
