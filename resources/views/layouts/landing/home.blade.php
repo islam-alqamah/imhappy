@@ -683,9 +683,9 @@
                         background:#F5F5F5;
                         font-weight:bold;
                     }
-                    .txt-l { font-size:28px; font-weight:bold; }
+                    .txt-l { font-size:28px; font-weight:bold; color: #15E2BE }
                     .txt-top { position:relative; top:-9px; left:-2px; }
-                    .tick { font-size:18px; color:#2CA01C; }
+                    .tick { font-size:18px; color:#242B3E; }
                     .hide {
                         border:0;
                         background:none;
@@ -731,6 +731,7 @@
                         </li>
                     </ul>
 
+
                     <table>
                         <thead>
                         <tr>
@@ -744,24 +745,24 @@
                         <tbody>
                         <tr>
                             <td>{{__('Price')}}</td>
-                            <td><span class="txt-l">10 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">15 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">20 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">25 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">20 </span> </td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">34 </span> </td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">59 </span> </td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">109 </span> </td>
                         </tr>
                         <tr>
                             <td>{{__('Charts & Analytics')}}</td>
-                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td>{{__('Responses')}}</td>
-                            <td><span class="tick">1000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">100/{{ __('Month') }}</span></td>
+                            <td><span class="tick">500/{{ __('Month') }}</span></td>
+                            <td><span class="tick">2500/{{ __('Month') }}</span></td>
                             <td><span class="tick">5000/{{ __('Month') }}</span></td>
-                            <td><span class="tick">{{__('Unlimited')}}</span></td>
-                            <td><span class="tick">{{__('Unlimited')}}</span></td>
                         </tr>
                         <tr>
                             <td>{{__('QR-Code')}}</td>
@@ -772,14 +773,14 @@
                         </tr>
                         <tr>
                             <td>{{__('Touchless')}}</td>
-                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td>{{__('Instant response (telegram)')}}</td>
-                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
@@ -801,7 +802,6 @@
                         </tr>
                         </tbody>
                     </table>
-
                 </article>
                 <!-- /.row -->
             </div>
@@ -831,24 +831,24 @@
                         <tbody>
                         <tr>
                             <td>{{__('Price')}}</td>
-                            <td><span class="txt-l">100 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">150 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">200 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">250 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">10 </span> </td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">24 </span> </td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">49 </span> </td>
+                            <td><span class="txt-top">{{__('$')}}</span><span class="txt-l">99 </span> </td>
                         </tr>
                         <tr>
                             <td>{{__('Charts & Analytics')}}</td>
-                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td>{{__('Responses')}}</td>
-                            <td><span class="tick">1000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">100/{{ __('Month') }}</span></td>
+                            <td><span class="tick">500/{{ __('Month') }}</span></td>
+                            <td><span class="tick">2500/{{ __('Month') }}</span></td>
                             <td><span class="tick">5000/{{ __('Month') }}</span></td>
-                            <td><span class="tick">{{__('Unlimited')}}</span></td>
-                            <td><span class="tick">{{__('Unlimited')}}</span></td>
                         </tr>
                         <tr>
                             <td>{{__('QR-Code')}}</td>
@@ -859,14 +859,15 @@
                         </tr>
                         <tr>
                             <td>{{__('Touchless')}}</td>
-                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td>{{__('Instant response (telegram)')}}</td>
-                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">-</span></td>
+                            <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
