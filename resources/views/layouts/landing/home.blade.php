@@ -668,10 +668,16 @@
                         display:table-cell;
                     }
                     .bg-purple {
-                        border-top:4px solid #FFCC00;
+                        border-top:4px solid #a291f5;
                     }
                     .bg-blue {
                         border-top:4px solid #00A5B7;
+                    }
+                    .bg-green{
+                        border-top:4px solid #007d67;
+                    }
+                    .bg-yellow{
+                        border-top:4px solid #ffdf7e;
                     }
                     .sep {
                         background:#F5F5F5;
@@ -729,48 +735,68 @@
                         <thead>
                         <tr>
                             <th class="hide"></th>
-                            <th class="bg-purple">{{__('QR Code')}}</th>
-                            <th class="bg-blue">{{__('Touchless')}}</th>
+                            <th class="bg-purple">{{__('Basic')}}</th>
+                            <th class="bg-blue">{{__('Advanced')}}</th>
+                            <th class="bg-green">{{__('Business')}}</th>
+                            <th class="bg-yellow">{{__('Enterprise')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>{{__('Price')}}</td>
-                            <td><span class="txt-l">49,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">89,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">10 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">15 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">20 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">25 </span> <span class="txt-top">{{__('SAR')}}</span></td>
                         </tr>
                         <tr>
-                            <td>{{__('Extra features')}}</td>
+                            <td>{{__('Charts & Analytics')}}</td>
+                            <td><span class="nottick">&#10060;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
-                        </tr>
-                        <tr>
-                            <td>{{__('Branches')}}</td>
-                            <td><span class="tick">1</span></td>
-                            <td><span class="tick">3</span></td>
-                        </tr>
-                        <tr>
-                            <td>{{__('Points')}}</td>
-                            <td><span class="tick">3</span></td>
-                            <td><span class="tick">9</span></td>
+                            <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td>{{__('Responses')}}</td>
-                            <td><span class="tick">1000/{{__('Month')}}</span></td>
+                            <td><span class="tick">1000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">5000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">{{__('Unlimited')}}</span></td>
                             <td><span class="tick">{{__('Unlimited')}}</span></td>
                         </tr>
                         <tr>
-                            <td>{{__('Full access')}}</td>
+                            <td>{{__('QR-Code')}}</td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Touchless')}}</td>
                             <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Instant response (telegram)')}}</td>
+                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td class="hide"></td>
                             <td>
-                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
                             </td>
                             <td>
-                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
+                            </td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
+                            </td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
                             </td>
                         </tr>
                         </tbody>
@@ -796,48 +822,67 @@
                         <thead>
                         <tr>
                             <th class="hide"></th>
-                            <th class="bg-purple">{{__('QR Code')}}</th>
-                            <th class="bg-blue">{{__('Touchless')}}</th>
+                            <th class="bg-purple">{{__('Basic')}}</th>
+                            <th class="bg-blue">{{__('Advanced')}}</th>
+                            <th class="bg-green">{{__('Business')}}</th>
+                            <th class="bg-yellow">{{__('Enterprise')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>{{__('Price')}}</td>
-                            <td><span class="txt-l">490,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
-                            <td><span class="txt-l">890,90 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">100 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">150 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">200 </span> <span class="txt-top">{{__('SAR')}}</span></td>
+                            <td><span class="txt-l">250 </span> <span class="txt-top">{{__('SAR')}}</span></td>
                         </tr>
                         <tr>
-                            <td>{{__('Extra features')}}</td>
+                            <td>{{__('Charts & Analytics')}}</td>
+                            <td><span class="nottick">&#10060;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
-                        </tr>
-                        <tr>
-                            <td>{{__('Branches')}}</td>
-                            <td><span class="tick">1</span></td>
-                            <td><span class="tick">3</span></td>
-                        </tr>
-                        <tr>
-                            <td>{{__('Points')}}</td>
-                            <td><span class="tick">3</span></td>
-                            <td><span class="tick">9</span></td>
+                            <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td>{{__('Responses')}}</td>
                             <td><span class="tick">1000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">5000/{{ __('Month') }}</span></td>
+                            <td><span class="tick">{{__('Unlimited')}}</span></td>
                             <td><span class="tick">{{__('Unlimited')}}</span></td>
                         </tr>
                         <tr>
-                            <td>{{__('Full access')}}</td>
+                            <td>{{__('QR-Code')}}</td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Touchless')}}</td>
                             <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{__('Instant response (telegram)')}}</td>
+                            <td><span class="nottick">&#10060;</span></td>
+                            <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
                             <td class="hide"></td>
                             <td>
-                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
                             </td>
                             <td>
-                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up now')}}</a>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
+                            </td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
+                            </td>
+                            <td>
+                                <a class="main-btn " data-toggle="modal" data-target="#sign-up" href="#">{{__('Sign up')}}</a>
                             </td>
                         </tr>
                         </tbody>
