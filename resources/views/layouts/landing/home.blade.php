@@ -598,128 +598,129 @@
                         role="tablist"
                         id="switch-toggle-tab"
                 >
-                    <li class="month active"><a href="#">{{__('Monthly')}}</a></li>
+                    <li class="year active"><a href="#">{{__('Annual')}}</a></li>
                     <li>
                         <!-- Rounded switch -->
                         <label class="switch on">
                             <span class="slider round"></span>
                         </label>
                     </li>
-                    <li class="year"><a href="#">{{__('Annual')}}</a></li>
+                    <li class="month"><a href="#">{{__('Monthly')}}</a></li>
                 </ul>
                 <!-- /.list-inline -->
             </div>
         </div>
+        <style>
+            article {
+                width:100%;
+                max-width:1000px;
+                margin:0 auto;
+                position:relative;
+            }
+            article ul {
+                display:flex;
+                top:0px;
+                z-index:10;
+                padding-bottom:14px;
+            }
+            article li {
+                list-style:none;
+                flex:1;
+            }
+            article li:last-child {
+                border-right:1px solid #DDD;
+            }
+            article  button {
+                width:100%;
+                border: 1px solid #DDD;
+                border-right:0;
+                border-top:0;
+                padding: 10px;
+                background:#FFF;
+                font-size:14px;
+                font-weight:bold;
+                height:60px;
+                color:#999
+            }
+            article li.active button {
+                background:#E9E9E9;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                color:#000;
+            }
+            article  table { border:none;border-collapse:collapse; table-layout:fixed; width:100%; }
+            article  th { background:#F5F5F5; display:none; }
+            article td, article th {
+                height:53px;
+                border-right: none;
+                border-left: none;
+            }
+            article td, article th { border:1px solid #DDD; padding:10px; empty-cells:show; }
+            article td, article th {
+                text-align:left;
+            }
+            td+td, th+th {
+                text-align:center;
+                display:none;
+            }
+            td.default {
+                display:table-cell;
+            }
+            .bg-purple {
+                border-top:4px solid #a291f5;
+            }
+            .bg-blue {
+                border-top:4px solid #00A5B7;
+            }
+            .bg-green{
+                border-top:4px solid #007d67;
+            }
+            .bg-yellow{
+                border-top:4px solid #ffdf7e;
+            }
+            .sep {
+                background:#F5F5F5;
+                font-weight:bold;
+            }
+            .txt-l { font-size:28px; font-weight:bold; color: #15E2BE }
+            .txt-top { font-size:22px;  color:#242B3E;  position:relative; top:-9px; left:-2px; }
+            .tick { font-size:18px; color:#242B3E; }
+            .hide {
+                border:0;
+                background:none;
+            }
+            .contatinho{
+                background:#00A5B7;
+                padding:10px 20px;
+                font-size:12px;
+                display:inline-block;
+                color:#FFF;
+                text-decoration:none;
+                border-radius:3px;
+                text-transform:uppercase;
+                margin:5px 0 10px 0;
+            }
+
+            @media (min-width: 640px) {
+                article  ul {
+                    display:none;
+                }
+                article td, article th {
+                    display:table-cell !important;
+                    border-right: none;
+                    border-left: none;
+                }
+                article td,article th {
+                    width: 330px;
+
+                }
+                td+td, th+th {
+                    width: auto;
+                }
+            }
+        </style>
         <div class="tabed-content">
-            <div id="month">
-                <style>
-                    article {
-                        width:100%;
-                        max-width:1000px;
-                        margin:0 auto;
-                        position:relative;
-                    }
-                    article ul {
-                        display:flex;
-                        top:0px;
-                        z-index:10;
-                        padding-bottom:14px;
-                    }
-                    article li {
-                        list-style:none;
-                        flex:1;
-                    }
-                    article li:last-child {
-                        border-right:1px solid #DDD;
-                    }
-                    article  button {
-                        width:100%;
-                        border: 1px solid #DDD;
-                        border-right:0;
-                        border-top:0;
-                        padding: 10px;
-                        background:#FFF;
-                        font-size:14px;
-                        font-weight:bold;
-                        height:60px;
-                        color:#999
-                    }
-                    article li.active button {
-                        background:#E9E9E9;
-                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-                        color:#000;
-                    }
-                    article  table { border:none;border-collapse:collapse; table-layout:fixed; width:100%; }
-                    article  th { background:#F5F5F5; display:none; }
-                    article td, article th {
-                        height:53px;
-                        border-right: none;
-                        border-left: none;
-                    }
-                    article td, article th { border:1px solid #DDD; padding:10px; empty-cells:show; }
-                    article td, article th {
-                        text-align:left;
-                    }
-                    td+td, th+th {
-                        text-align:center;
-                        display:none;
-                    }
-                    td.default {
-                        display:table-cell;
-                    }
-                    .bg-purple {
-                        border-top:4px solid #a291f5;
-                    }
-                    .bg-blue {
-                        border-top:4px solid #00A5B7;
-                    }
-                    .bg-green{
-                        border-top:4px solid #007d67;
-                    }
-                    .bg-yellow{
-                        border-top:4px solid #ffdf7e;
-                    }
-                    .sep {
-                        background:#F5F5F5;
-                        font-weight:bold;
-                    }
-                    .txt-l { font-size:28px; font-weight:bold; color: #15E2BE }
-                    .txt-top { position:relative; top:-9px; left:-2px; }
-                    .tick { font-size:18px; color:#242B3E; }
-                    .hide {
-                        border:0;
-                        background:none;
-                    }
-                    .contatinho{
-                        background:#00A5B7;
-                        padding:10px 20px;
-                        font-size:12px;
-                        display:inline-block;
-                        color:#FFF;
-                        text-decoration:none;
-                        border-radius:3px;
-                        text-transform:uppercase;
-                        margin:5px 0 10px 0;
-                    }
+            <div id="year">
 
-                    @media (min-width: 640px) {
-                        article  ul {
-                            display:none;
-                        }
-                        article td, article th {
-                            display:table-cell !important;
-                            border-right: none;
-                            border-left: none;
-                        }
-                        article td,article th {
-                            width: 330px;
-
-                        }
-                        td+td, th+th {
-                            width: auto;
-                        }
-                    }
-                </style>
                 <article>
 
                     <ul>
@@ -779,7 +780,11 @@
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
-                            <td>{{__('Instant response (telegram)')}}</td>
+                            <td>{{__('Instant response (telegram)')}}
+
+                                <a href="#" data-toggle="tooltip" title="" data-original-title="1- Add @IM_HAPPY_360_BOT (I’M Happy) into your group.
+                                                    2- type /help
+                                                    3- copy and paste the ID in this field." aria-describedby="tooltip385588"><i class="fa fa-question-circle"></i> </a></td>
                             <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
@@ -806,7 +811,7 @@
                 <!-- /.row -->
             </div>
             <!-- /#month -->
-            <div id="year">
+            <div id="month">
                 <article>
 
                     <ul>
@@ -865,7 +870,12 @@
                             <td><span class="tick">&#10004;</span></td>
                         </tr>
                         <tr>
-                            <td>{{__('Instant response (telegram)')}}</td>
+                            <td>{{__('Instant response (telegram)')}}
+
+                                <a href="#" data-toggle="tooltip" title="" data-original-title="1- Add @IM_HAPPY_360_BOT (I’M Happy) into your group.
+                                                    2- type /help
+                                                    3- copy and paste the ID in this field." aria-describedby="tooltip385588"><i class="fa fa-question-circle"></i> </a>
+                            </td>
                             <td><span class="tick">-</span></td>
                             <td><span class="tick">&#10004;</span></td>
                             <td><span class="tick">&#10004;</span></td>
@@ -1199,13 +1209,18 @@
 
 <!--====== Main js ======-->
 <script src="assets/landing/js/main.js"></script>
+<script>
+    if( $('[data-toggle="tooltip"]').length > 0 )
+        $('[data-toggle="tooltip"]').tooltip();
 
+</script>
 @if($errors->has('email'))
     <script>
         $('#login').modal({
             show: true
         });
     </script>
+
 @endif
 @if($errors->has('reg_email') || $errors->has('password'))
     <script>
