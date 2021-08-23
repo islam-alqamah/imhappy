@@ -25,4 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('survey/template/{template}/questions', [SurveyTemplateApi::class, 'getTemplateQuestions'])->name('template-questions');
 Route::post('questions/{point}', [ApiController::class, 'questions'])->name('questions');
 Route::post('answers/{point}', [ApiController::class, 'postAnswer'])->name('answer');
+Route::post('user/logout', [ApiController::class, 'logout'])->name('api-logout');
 

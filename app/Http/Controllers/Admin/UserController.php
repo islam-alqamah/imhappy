@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
+use App\Models\Plan;
+use App\Models\subscribe;
+use App\Models\Team;
+use App\Models\TeamSetting;
 use App\Models\User;
 use App\Permission;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 //Enables us to output flash messaging
 use Session;
@@ -31,8 +37,8 @@ class UserController extends Controller
          * @middlewares(web, auth:sanctum, verified, auth)
          */
         $users = User::all();
-
-        return view('admin.users.index')->with('users', $users);
+        $plans = Plan::all();
+        return view('admin.users.index',compact('plans'))->with('users', $users);
     }
 
     /**
@@ -72,11 +78,26 @@ class UserController extends Controller
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users',
-            'password'=>'required|min:6|confirmed',
+            'password'=>'required|min:6',
         ]);
 
-        $user = User::create(['name'=> $request->name, 'email' => $request->email, 'password' => bcrypt($request->password)]);
 
+
+        $user = User::create(['name'=> $request->name, 'email' => $request->email, 'password' => bcrypt($request->password)]);
+        $user->email_verified_at = Carbon::now()->format('Y-m-d');
+        $user->save();
+        $this->createTeam($user);
+        if($request->plan_id) {
+            $subscribe = new subscribe;
+            $subscribe->user_id = $user->id;
+            $subscribe->team_id = $user->team->id;
+            $subscribe->plan_id = $request->plan_id;
+            $subscribe->subscribed_by = auth()->user()->name;
+            $subscribe->payment_id = 0;
+            $subscribe->starts_at = Carbon::now()->format('Y-m-d');
+            $subscribe->ends_at = Carbon::now()->addMonth()->format('Y-m-d');
+            $subscribe->save();
+        }
         $roles = $request['roles']; //Retrieving the roles field
 
         //Checking if a role was selected
@@ -88,10 +109,36 @@ class UserController extends Controller
         }
 
         session()->flash('alert', ['type' => 'success', 'message' => 'User added']);
-
         return redirect()->route('admin.users.index');
     }
 
+    protected function createTeam(User $user)
+    {
+
+
+        $trial_days = null;
+        if (config('saas.trial_days') !== null) {
+            $trial_days = now()->addDays(config('saas.trial_days'));
+        }
+        $team = Team::forceCreate([
+            'user_id' => $user->id,
+            'name' => explode(' ', $user->name, 2)[0]."'",
+            'personal_team' => true,
+            // Create trials period for the new team created
+            'trial_ends_at' => $trial_days,
+        ]);
+        $user->ownedTeams()->save($team);
+        $settings = new TeamSetting();
+        $settings->team_id = $team->id;
+        $settings->company_name = $user->name;
+        $settings->logo = 'images\logos\default.png';
+        $settings->reporting_email = $user->email;
+        $settings->telegram = '-group_id';
+        $settings->facebook = '#';
+        $settings->youtube = '#';
+        $settings->instagram = '#';
+        $settings->save();
+    }
     /**
      * Display the specified resource.
      *
@@ -127,8 +174,8 @@ class UserController extends Controller
          */
         $user = User::findOrFail($id); //Get user with specified id
         $roles = Role::get(); //Get all roles
-
-        return view('admin.users.edit', compact('user', 'roles')); //pass user and roles data to view
+        $plans = Plan::all();
+        return view('admin.users.edit', compact('plans','user', 'roles')); //pass user and roles data to view
     }
 
     /**
@@ -164,7 +211,17 @@ class UserController extends Controller
         } else {
             $user->roles()->detach(); //If no role is selected remove exisiting role associated to a user
         }
-
+        if($request->plan_id) {
+            $subscribe = new subscribe;
+            $subscribe->user_id = $user->id;
+            $subscribe->team_id = $user->team->id;
+            $subscribe->plan_id = $request->plan_id;
+            $subscribe->subscribed_by = auth()->user()->name;
+            $subscribe->payment_id = 0;
+            $subscribe->starts_at = Carbon::now()->format('Y-m-d');
+            $subscribe->ends_at = Carbon::now()->addMonth()->format('Y-m-d');
+            $subscribe->save();
+        }
         notify()->success('User has been updated');
 
         return redirect(route('admin.users.index'));
@@ -176,6 +233,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function toggle($id){
+        $user = User::find($id);
+        $user->active = !$user->active;
+        $user->updated_by = auth()->user()->name;
+        $user->save();
+        return back();
+    }
+    public function invoice($payment_id){
+        $payment = Payment::find($payment_id);
+        return view('admin.invoice', compact('payment'));
+    }
     public function destroy($id)
     {
         /**

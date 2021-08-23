@@ -100,6 +100,10 @@ class Team extends JetstreamTeam
         return now()->addDays(2)->greaterThan($this->trial_ends_at);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function cities(){
         return $this->hasMany(City::class);
     }
@@ -120,5 +124,8 @@ class Team extends JetstreamTeam
     }
     public function payments(){
         return $this->hasMany(Payment::class);
+    }
+    public function responses(){
+        return $this->hasMany(FeedbackResponse::class,'team_id');
     }
 }

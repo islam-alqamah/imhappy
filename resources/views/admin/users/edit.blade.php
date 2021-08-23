@@ -23,6 +23,18 @@
                         {{ Form::email('email', null, array('class' => 'form-control')) }}
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label mb-5" for="city">
+                            {{ __('Subscribe to Plan') }}
+                        </label>
+                        <select class="form-control select2" name="plan_id" >
+                            <option value="0">{{ __('Trial') }}</option>
+                            @foreach($plans as $plan)
+                                <option value="{{ $plan->id }}">{{ $plan->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <h5><b>{{ __('Give Role') }}</b></h5>
 
                     <div class='form-group'>

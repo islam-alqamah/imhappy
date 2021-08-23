@@ -196,6 +196,8 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:sanctum', 'role:admin']], function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('index');
+        Route::get('/user/toggle/{id}', [UserController::class, 'toggle']);
+        Route::get('/invoice/{id}', [UserController::class, 'invoice']);
         Route::resource('/users', UserController::class);
 
         Route::resource('/permissions', PermissionController::class);
@@ -218,11 +220,14 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('close_ticket/{ticket_id}', [TicketsController::class, 'close']);
         Route::get('tickets/{ticket_id}', [TicketsController::class, 'adminshow']);
 
+        Route::post('users/new', [UserController::class, 'store'])->name('users.new');
+
         Route::view('backups', 'admin.backup.index')->name('backup.index');
         Route::get('download-backup', DownloadBackupController::class);
         Route::get('maintenance', MaintenanceMode::class)->name('maintenance');
         Route::get('subscriptions-cancel', ['App\Http\Controllers\Admin\SubscriptionController', 'cancelSubscription'])->name('subscription.cancel');
         Route::get('subscriptions', ['App\Http\Controllers\Admin\SubscriptionController', 'subscription'])->name('subscriptions');
+        Route::post('subscribe/update/{id}', ['App\Http\Controllers\Admin\SubscriptionController', 'update'])->name('subscribe.update');
 
         Route::get('/stripe/charges', [StripeBalanceController::class , 'index']);
         Route::get('/stripe/charges/{id}', [StripeBalanceController::class , 'show']);
