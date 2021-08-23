@@ -14,6 +14,16 @@
                         <button href="#" id="open_right_sidebar" class="btn btn-primary btn-outline fancy-button btn-0 btn-xs">
                             <i class="fa fa-plus" style="color: #fff"></i>
                         </button>
+                        <div class="btn-group">
+                            <div class="dropup open">
+                                <button aria-expanded="true" data-toggle="dropdown" class="btn btn-primary btn-outline fancy-button btn-0 btn-xs dropdown-toggle " type="button">
+                                   {{ __('Import') }} <span class="caret"></span></button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a href="#">{{ __('Upload .xls File') }}</a></li>
+                                    <li><a href="#">{{ __('Download Example File') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
