@@ -42,12 +42,16 @@
                         </form>
                     </div>
                     <div class="pull-right">
-                        <a href="#" class="pull-left inline-block refresh mr-15">
-                            <i class="zmdi zmdi-replay"></i>
-                        </a>
-                        <a href="#" class="pull-left inline-block full-screen mr-15">
-                            <i class="zmdi zmdi-fullscreen"></i>
-                        </a>
+                        <div class="btn-group">
+                            <div class="dropup ">
+                                <button aria-expanded="true" data-toggle="dropdown" class="btn btn-primary btn-outline fancy-button btn-0 btn-xs dropdown-toggle " type="button">
+                                    {{ __('Import') }} <span class="caret"></span></button>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li><a data-toggle="modal" data-target="#import-form" href="#">{{ __('Upload .xls File') }}</a></li>
+                                    <li><a target="_blank" href="{{ route('branches.responses.export') }}">{{ __('Download Example File') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -99,8 +103,31 @@
         </div>
 
     </div>
+
     <!-- /Row -->
     <!-- Row -->
+    <div id="import-form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 class="modal-title" id="myModalLabel">{{ __('Import Responses') }} </h5>
+                </div>
+                <div class="modal-body">
+                    <form enctype="multipart/form-data" action="{{ route('branches.responses.import') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label>{{ __('Please Upload xls File') }}</label>
+                            <input required type="file" accept=".xlsx" name="file_to_import" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0">{{ __('Import Now') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Row -->
 @endsection

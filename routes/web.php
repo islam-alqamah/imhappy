@@ -74,8 +74,11 @@ Route::group(['middleware' => 'language'], function () {
         ->post('/charts',[DashboardController::class,'charts'] )->name('charts');
     Route::middleware(['auth:sanctum', 'verified'])
         ->get('/reports',[DashboardController::class,'reports'] )->name('reports');
+
     Route::middleware(['auth:sanctum', 'verified'])
         ->post('/reports',[DashboardController::class,'reports'] )->name('reports');
+
+
     Route::post('account/profile/save', [SettingsController::class,'save_profile'])->name('account.profile.save');
     Route::group(['prefix' => 'account', 'as' => 'account.', 'middleware' => ['auth:sanctum', 'verified']], function () {
         Route::view('security', 'account.security')->name('security');
@@ -172,15 +175,23 @@ Route::group(['middleware' => 'language'], function () {
 
     });
     Route::group(['middleware' => ['auth:sanctum', 'verified'], 'prefix' => 'branches', 'as' => 'branches.'], function () {
-        /* Ticket Routes */
+        /* Branches Routes */
         Route::get('branches', [BranchesController::class, 'index'])->name('branches');
+        Route::get('branches/export', [BranchesController::class, 'export_branches'])->name('export');
+        Route::post('branches/import', [BranchesController::class, 'import_branches'])->name('import');
         Route::post('branches/new', [BranchesController::class, 'store'])->name('branches.new');
         Route::post('branches/update', [BranchesController::class, 'update'])->name('branches.update');
         Route::get('branches/delete/{branch}', [BranchesController::class, 'delete'])->name('branches.delete');
         Route::get('branches/points/{branch}', [BranchesController::class, 'points'])->name('branches.points');
         Route::post('branches/points/{branch}/new', [BranchesController::class, 'new_point'])->name('points.new');
         Route::get('branches/points/{point}/delete', [BranchesController::class, 'delete_point'])->name('points.delete');
-        Route::get('branches/points/{point}/export', [BranchesController::class, 'export_point'])->name('points.export');
+
+        Route::get('points/export', [BranchesController::class, 'export_points'])->name('points.export');
+        Route::post('points/import', [BranchesController::class, 'import_points'])->name('points.import');
+
+        Route::get('responses/export', [BranchesController::class, 'export_responses'])->name('responses.export');
+        Route::post('responses/import', [BranchesController::class, 'import_responses'])->name('responses.import');
+
         Route::get('branches/branch/{branch}/export', [BranchesController::class, 'export_branch'])->name('branch.export');
         Route::get('branches/points/{point}/responses', [BranchesController::class, 'responses'])->name('points.responses');
         Route::post('branches/points/{point}/responses', [BranchesController::class, 'responses'])->name('points.responses');

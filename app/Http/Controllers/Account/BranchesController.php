@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Exports\BranchesExport;
+use App\Exports\PointsExport;
 use App\Exports\ResponsesExport;
 use App\Http\Controllers\Controller;
+use App\Imports\BranchesImport;
+use App\Imports\PointsImport;
+use App\Imports\ResponsesImport;
 use App\Models\Branch;
 use App\Models\City;
 use App\Models\FeedbackResponse;
@@ -162,11 +167,8 @@ class BranchesController extends Controller
         $branch->delete();
         return back()->with(['status'=>'success','msg'=>'Data Saved']);
     }
-    public function export_point(){
-        return Excel::download(new ResponsesExport, 'Responses.xlsx');
-    }
-    public function export_branch(){
-        return Excel::download(new ResponsesExport, 'Responses.xlsx');
+    public function export_points(){
+        return Excel::download(new PointsExport, 'Points.xlsx');
     }
     public function delete_point($point){
         $point = Point::find($point);
@@ -181,6 +183,29 @@ class BranchesController extends Controller
         }
         $point->delete();
         return back()->with(['status'=>'success','msg'=>'Data Saved']);
+    }
+
+    public function import_points(Request $request){
+        Excel::import(new PointsImport,$request->file('file_to_import'));
+        return back();
+    }
+    public function export_branches(){
+        return Excel::download(new BranchesExport, 'branches-collection.xlsx');
+    }
+    public function import_branches(Request $request){
+        Excel::import(new BranchesImport,$request->file('file_to_import'));
+        return back();
+    }
+    public function export_responses(){
+        return Excel::download(new ResponsesExport, 'Responses.xlsx');
+    }
+    public function import_responses(Request $request){
+        if(Excel::import(new ResponsesImport,$request->file('file_to_import'))){
+            return back()->with(['status'=>'success','msg'=>'Data Saved']);
+        }else{
+            return back()->with(['status'=>'danger','msg'=>'Check you xls file']);
+        }
+
     }
 
 }

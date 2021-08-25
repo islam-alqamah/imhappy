@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FeedbackResponse extends Model
 {
+    protected $fillable = ['team_id','city_id','branch_id','form_id','email','phone','feedback','rate'];
     use HasFactory;
     public function branch(){
         return $this->belongsTo(Branch::class);

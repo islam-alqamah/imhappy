@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Branch extends Model
 {
+    protected $fillable = ['name','city_id','team_id','address','phone'];
     use HasFactory;
     public function city(){
         return $this->belongsTo(City::class);

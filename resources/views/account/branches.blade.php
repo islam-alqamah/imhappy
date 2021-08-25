@@ -15,12 +15,12 @@
                             <i class="fa fa-plus" style="color: #fff"></i>
                         </button>
                         <div class="btn-group">
-                            <div class="dropup open">
+                            <div class="dropup ">
                                 <button aria-expanded="true" data-toggle="dropdown" class="btn btn-primary btn-outline fancy-button btn-0 btn-xs dropdown-toggle " type="button">
                                    {{ __('Import') }} <span class="caret"></span></button>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a href="#">{{ __('Upload .xls File') }}</a></li>
-                                    <li><a href="#">{{ __('Download Example File') }}</a></li>
+                                    <li><a data-toggle="modal" data-target="#import-form" href="#">{{ __('Upload .xls File') }}</a></li>
+                                    <li><a target="_blank" href="{{ route('branches.export') }}">{{ __('Download Example File') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -33,6 +33,7 @@
                                 <table id="example" class="table table-hover mb-0">
                                     <thead>
                                     <tr>
+                                        <th>{{ __('Branch ID') }}</th>
                                         <th>{{ __('Branch Name') }}</th>
                                         <th>{{ __('City') }}</th>
                                         <th>{{ __('Points') }}</th>
@@ -45,6 +46,7 @@
                                     <tbody>
                                     @foreach($branches as $branch)
                                     <tr>
+                                        <td>#{{ $branch->id }}</td>
                                         <td><a href="{{ route('branches.branches.points',['branch'=>$branch->id]) }}"> {{ $branch->name }} </a></td>
                                         <td>{{ $branch->city->name }}</td>
                                         <td>{{ $branch->points->count() }}</td>
@@ -308,6 +310,30 @@
                 @endif
             </li>
         </ul>
+    </div>
+<!-- Import Modal -->
+
+    <div id="import-form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 class="modal-title" id="myModalLabel">{{ __('Import Branches') }} </h5>
+                </div>
+                <div class="modal-body">
+                    <form enctype="multipart/form-data" action="{{ route('branches.import') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label>{{ __('Please Upload xls File') }}</label>
+                            <input required type="file" accept=".xlsx" name="file_to_import" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-outline fancy-button btn-0">{{ __('Import Now') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

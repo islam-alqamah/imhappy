@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Point extends Model
 {
+    protected $fillable =['id','team_id','branch_id','name','type','title','text','qrcode'];
     use HasFactory;
 
     public function branch(){
