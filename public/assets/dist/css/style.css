@@ -4203,7 +4203,7 @@ table.dataTable thead .sorting_desc::after {
   content: "\f0dd"; }
 
 table.dataTable thead .sorting::after, table.dataTable thead .sorting_asc::after, table.dataTable thead .sorting_desc::after {
-  display: block;
+  display: none;
   font-family: FontAwesome;
   position: absolute;
   right: 10px;

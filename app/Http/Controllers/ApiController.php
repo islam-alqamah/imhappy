@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Point;
 use App\Models\QuestionAnswer;
 use App\Models\Team;
+use Auth;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -34,5 +35,13 @@ class ApiController extends Controller
         }
         $response = ['status'=>'success'];
         return $response;
+    }
+
+    public function logout(Request $request){
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+            return ['status'=>'success','user'=>Auth::user()];
+        }else{
+            return ['status'=>'failed','msg'=>'unauthorized'];
+        }
     }
 }

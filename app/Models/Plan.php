@@ -16,4 +16,7 @@ class Plan extends Model
         'trial_period_days',
         'interval',
     ];
+    public function subscribes(){
+        return $this->hasMany(subscribe::class);
+    }
 }

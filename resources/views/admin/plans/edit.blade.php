@@ -13,7 +13,7 @@
                     {!! csrf_field() !!}
                     @method('PUT')
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">Plan name</label>
+                    <label class="col-md-3 col-form-label" for="hf-name">{{__('Plan name')}}</label>
                     <div class="col-md-6">
                         <input type="text" id="name" name="name" class="form-control" value="{{ $plan->title }}"
                             placeholder="Enter Plan name..">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Plan Monthly Price') }}</label>
+                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Monthly Price') }}</label>
                     <div class="col-md-6">
                         <input type="text" id="price" name="price" class="form-control"
                             value="{{ $plan->price }}">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Plan Annual Price') }}</label>
+                    <label class="col-md-3 col-form-label" for="hf-name">{{ __('Annual Price') }}</label>
                     <div class="col-md-6">
                         <input type="text" id="annual_price" name="annual_price" class="form-control"
                                value="{{ $plan->annual_price }}">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="hf-name">Plan Trial</label>
+                    <label class="col-md-3 col-form-label" for="hf-name">{{__('Plan Trial')}}</label>
                     <div class="col-md-6">
                         <input type="text" id="trial" name="trial" class="form-control"
                             value="{{ $plan->trial_period_days }}">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="branches">Branches Limit</label>
+                    <label class="col-md-3 col-form-label" for="branches">{{__('Branches Limit')}}</label>
                     <div class="col-md-6">
                         <input type="text" id="branches" name="branches" class="form-control"
                                value="{{ $plan->branches }}">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="points">Points Limit</label>
+                    <label class="col-md-3 col-form-label" for="points">{{__('Points Limit')}}</label>
                     <div class="col-md-6">
                         <input type="text" id="points" name="points" class="form-control"
                                value="{{ $plan->points }}">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="channels">Channels</label>
+                    <label class="col-md-3 col-form-label" for="channels">{{__('Channels')}}</label>
                     <div class="col-md-6">
                         <label> QR-Code
                             <input type="checkbox" name="channels[]" class="form-control"

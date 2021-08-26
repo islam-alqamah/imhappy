@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Plan;
+use App\Models\subscribe;
 use App\Permission;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,8 +19,18 @@ class SubscriptionController extends Controller
     }
 
     public function subscription(){
-        $subscriptions = Subscription::paginate(10);
-        return view('admin.subscriptions.index', compact('subscriptions'));
+        $subscriptions = subscribe::all();
+        $plans = Plan::all();
+        return view('admin.subscriptions.index', compact('plans','subscriptions'));
+    }
+
+    public function update(Request $request,$id){
+        $subscribe = subscribe::find($id);
+        $subscribe->ends_at = $request->ends_at;
+        $subscribe->plan_id = $request->plan_id;
+        $subscribe->updated_by = auth()->user()->name;
+       $subscribe->save();
+       return back();
     }
 
     public function cancelSubscription(){
