@@ -15,7 +15,7 @@ class AddPermissionsTableUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('type')->default('team_admin');
-            $table->json('user_permissions')->nullable()->default();
+            $table->json('user_permissions')->nullable()->default({"all"});
         });
     }
 
