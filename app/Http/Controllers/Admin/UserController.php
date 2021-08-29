@@ -205,6 +205,8 @@ class UserController extends Controller
         $input = $request->only(['name', 'email']); //Retreive the name, email and password fields
         $roles = $request['roles']; //Retreive all roles
         $user->fill($input)->save();
+        $user->user_permissions = json_encode($request->permissions);
+        $user->save();
 
         if (isset($roles)) {
             $user->roles()->sync($roles);  //If one or more role is selected associate user to roles

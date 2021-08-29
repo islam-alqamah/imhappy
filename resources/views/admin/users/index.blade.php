@@ -36,6 +36,28 @@
 
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label mb-5" >
+                                        {{ __('Permissions') }}
+                                    </label>
+                                    <select class="form-control select2" multiple name="permissions[]" >
+                                        <option value="dashboard">{{ __('Dashboard') }}</option>
+                                        <option value="charts">{{ __('Charts & Analytics') }}</option>
+                                        <option value="reports">{{ __('Reports') }}</option>
+                                        <option value="branches">{{ __('Branches') }}</option>
+                                        <option value="points">{{ __('Points') }}</option>
+                                        <optgroup label="{{__('Account')}}">
+                                            <option value="account-settings">{{ __('Settings') }}</option>
+                                            <option value="account-payments">{{ __('Payments') }}</option>
+                                        </optgroup>
+                                        <optgroup label="{{__('Admin')}}">
+                                            <option selected value="admin-users">{{ __('Users') }}</option>
+                                            <option selected value="admin-templates">{{ __('Templates') }}</option>
+                                            <option selected value="admin-subscriptions">{{ __('Subscriptions') }}</option>
+                                            <option selected value="admin-plans">{{ __('Plans') }}</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label mb-5" for="city">
                                         {{ __('Subscribe to Plan') }}
                                     </label>

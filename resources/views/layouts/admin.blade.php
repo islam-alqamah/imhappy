@@ -19,6 +19,13 @@
 	<link href="{{ url('assets/dist/vendors') }}/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 	<link href="{{ url('assets/dist/vendors') }}/bower_components/switchery/dist/switchery.min.css" rel="stylesheet" type="text/css"/>
 
+
+	<link href="{{ url('assets/dist/vendors') }}/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css"/>
+	<link href="{{ url('assets/dist/vendors') }}/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
+	<link href="{{ url('assets/dist/vendors') }}/bower_components/multiselect/css/multi-select.css" rel="stylesheet" type="text/css"/>
+
+
+
 	<link href="{{ url('assets/dist/vendors') }}/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
 @yield('styles')
 	@if(App::getLocale() == 'ar')
@@ -140,6 +147,8 @@
 					<div class="clearfix"></div>
 				</a>
 			</li>
+			@if(in_array('admin-users',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'sys_admin')
 			<li>
 				<a class="{{ return_if(on_page('admin.users.index'), ' active') }}" href="{{ route('admin.users.index') }}" >
 					<div class="pull-left"><i class="zmdi zmdi-accounts-alt mr-20"></i>
@@ -148,8 +157,11 @@
 					<div class="clearfix"></div>
 				</a>
 			</li>
+			@endif
+			@if(in_array('admin-templates',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'sys_admin')
 			<li class="navigation-header">
-				<span>{{ __('Survey') }}</span>
+				<span>{{ __('Touchless') }}</span>
 				<i class="zmdi zmdi-more"></i>
 			</li>
 			<li>
@@ -160,6 +172,9 @@
 					<div class="clearfix"></div>
 				</a>
 			</li>
+			@endif
+			@if(in_array(['admin-subscriptions','admin-plans'],json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'sys_admin')
 			<li class="navigation-header">
 				<span>{{ __('Subscription') }}</span>
 				<i class="zmdi zmdi-more"></i>
@@ -176,15 +191,22 @@
 						@if(on_page('admin.plans.index') OR on_page('admin.plans.create') OR on_page('admin.plans.edit') OR on_page('admin.subscriptions'))
 							in
 						 @endif">
+
+					@if(in_array(['admin-plans'],json_decode(auth()->user()->user_permissions))
+                    || auth()->user()->type == 'sys_admin')
 					<li>
 						<a class="{{ return_if(on_page('admin.plans.index'), 'active-page') }}" href="{{ route('admin.plans.index') }}">{{ __('Plans') }}</a>
 					</li>
+					@endif
+					@if(in_array(['admin-subscriptions'],json_decode(auth()->user()->user_permissions))
+                        || auth()->user()->type == 'sys_admin')
 					<li>
 						<a class="{{ return_if(on_page('admin.subscriptions'), 'active-page') }}" href="{{ route('admin.subscriptions') }}">{{ __('subscriptions') }}</a>
 					</li>
+					@endif
 				</ul>
 			</li>
-
+					@endif
 		</ul>
 	</div>
 	<!-- /Left Sidebar Menu -->
@@ -252,15 +274,17 @@
 <!-- Toast JavaScript -->
 <script src="{{ url('assets/dist/vendors') }}/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
 
-<script>
-	var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-	$('.js-switch-1').each(function() {
-		new Switchery($(this)[0], $(this).data());
-	});
-</script>
+<script src="{{ url('assets/dist/vendors') }}/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="{{ url('assets/dist/vendors') }}/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="{{ url('assets/dist/vendors') }}/bower_components/multiselect/js/jquery.multi-select.js"></script>
+
+
+@yield('scripts')
 <!-- Init JavaScript -->
 <script src="{{ url('assets/dist/') }}/js/init.js"></script>
 <script src="{{ url('assets/dist/') }}/js/dashboard-data.js"></script>
+<script src="{{ url('assets/dist/') }}/js/form-advance-data.js"></script>
+
 
 @yield('scripts')
 
