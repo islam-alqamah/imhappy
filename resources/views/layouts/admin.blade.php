@@ -173,7 +173,8 @@
 				</a>
 			</li>
 			@endif
-			@if(in_array(['admin-subscriptions','admin-plans'],json_decode(auth()->user()->user_permissions))
+			@if(in_array('admin-subscriptions',json_decode(auth()->user()->user_permissions))
+			|| in_array('admin-plans',json_decode(auth()->user()->user_permissions))
             || auth()->user()->type == 'sys_admin')
 			<li class="navigation-header">
 				<span>{{ __('Subscription') }}</span>
@@ -192,13 +193,13 @@
 							in
 						 @endif">
 
-					@if(in_array(['admin-plans'],json_decode(auth()->user()->user_permissions))
+					@if(in_array('admin-plans',json_decode(auth()->user()->user_permissions))
                     || auth()->user()->type == 'sys_admin')
 					<li>
 						<a class="{{ return_if(on_page('admin.plans.index'), 'active-page') }}" href="{{ route('admin.plans.index') }}">{{ __('Plans') }}</a>
 					</li>
 					@endif
-					@if(in_array(['admin-subscriptions'],json_decode(auth()->user()->user_permissions))
+					@if(in_array('admin-subscriptions',json_decode(auth()->user()->user_permissions))
                         || auth()->user()->type == 'sys_admin')
 					<li>
 						<a class="{{ return_if(on_page('admin.subscriptions'), 'active-page') }}" href="{{ route('admin.subscriptions') }}">{{ __('subscriptions') }}</a>
