@@ -16,6 +16,12 @@
     <!-- Data table CSS -->
     <link href="{{ url('assets/dist/vendors') }}/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
+
+    <link href="{{ url('assets/dist/vendors') }}/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ url('assets/dist/vendors') }}/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ url('assets/dist/vendors') }}/bower_components/multiselect/css/multi-select.css" rel="stylesheet" type="text/css"/>
+
+
     <link href="{{ url('assets/dist/vendors') }}/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
     <link href="{{ url('assets/dist/') }}/css/fancy-buttons.css" rel="stylesheet" type="text/css">
 @yield('styles')
@@ -140,6 +146,8 @@
                 <span>Main</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
+            @if(in_array('dashboard',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'team_admin')
             <li>
                 <a class="{{ return_if(on_page('dashboard'), ' active') }}" href="{{ url('/dashboard') }}" >
                     <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>
@@ -148,6 +156,9 @@
                     <div class="clearfix"></div>
                 </a>
             </li>
+            @endif
+            @if(in_array('charts',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'team_admin')
             <li>
                 <a class="{{ return_if(on_page('charts'), ' active') }}" href="{{ url('/charts') }}" >
                     <div class="pull-left"><i class="zmdi zmdi-chart mr-20"></i>
@@ -156,6 +167,9 @@
                     <div class="clearfix"></div>
                 </a>
             </li>
+            @endif
+            @if(in_array('reports',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'team_admin')
             <li>
                 <a class="{{ return_if(on_page('reports'), ' active') }}" href="{{ url('/reports') }}" >
                     <div class="pull-left"><i class="zmdi zmdi-comment-list mr-20"></i>
@@ -164,6 +178,9 @@
                     <div class="clearfix"></div>
                 </a>
             </li>
+            @endif
+            @if(in_array('branches',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'team_admin')
             <li><hr class="light-grey-hr mb-10"/></li>
             <li>
                 <a class="{{ return_if(on_page('branches.branches') , ' active') }}" href="{{ route('branches.branches') }}">
@@ -172,7 +189,9 @@
                         <span class="right-nav-text">{{ __('Branches') }}</span></div>
                     <div class="clearfix"></div></a>
             </li>
-
+            @endif
+            @if(in_array('points',json_decode(auth()->user()->user_permissions))
+            || auth()->user()->type == 'team_admin')
             <li><hr class="light-grey-hr mb-10"/></li>
             <li>
                 <a class="{{ return_if(on_page('points.all') , ' active') }}" href="{{ route('points.all') }}">
@@ -181,24 +200,36 @@
                         <span class="right-nav-text">{{ __('All Points') }}</span></div>
                     <div class="clearfix"></div></a>
             </li>
+            @endif
             <li><hr class="light-grey-hr mb-10"/></li>
 
             <li>
-                <a class="{{ return_if(on_page('account.profile') or on_page('account.settings') or on_page('account.preference') or on_page('account.social') , ' active') }}" href="javascript:void(0);" data-toggle="collapse" data-target="#account">
+                <a class="{{ return_if(on_page('account.profile') or on_page('account.settings') or on_page('account.payments') or on_page('account.users') , ' active') }}" href="javascript:void(0);" data-toggle="collapse" data-target="#account">
                     <div class="pull-left">
                         <i class="zmdi zmdi-account mr-20"></i>
                         <span class="right-nav-text">{{ __('Account') }}</span></div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                     <div class="clearfix"></div></a>
                 <ul id="account" class="collapse collapse-level-1">
+
+                    @if(in_array('account-settings',json_decode(auth()->user()->user_permissions))
+                    || auth()->user()->type == 'team_admin')
+                    <li>
+                        <a class="{{ return_if(on_page('account.users'), ' active-page ') }}" href="{{ route('account.users') }}">{{ __('Users') }}</a>
+                    </li>
+
                     <li>
                         <a class="{{ return_if(on_page('account.settings'), ' active-page ') }}" href="{{ route('account.settings') }}">{{ __('Settings') }}</a>
                     </li>
-                    <li>
-                        <a class="{{ return_if(on_page('account.profile'), ' active-page ') }}" href="{{ route('account.profile') }}">{{ __('Profile') }}</a>
-                    </li>
+                    @endif
+                    @if(in_array('account-payments',json_decode(auth()->user()->user_permissions))
+                    || auth()->user()->type == 'team_admin')
                     <li>
                         <a class="{{ return_if(on_page('account.payments'), ' active-page ') }}" href="{{ route('account.payments') }}">{{ __('Payments History') }}</a>
+                    </li>
+                    @endif
+                    <li>
+                        <a class="{{ return_if(on_page('account.profile'), ' active-page ') }}" href="{{ route('account.profile') }}">{{ __('Profile') }}</a>
                     </li>
                 </ul>
             </li>
@@ -296,12 +327,39 @@
 <!-- Toast JavaScript -->
 <script src="{{ url('assets/dist/vendors') }}/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
 
+<script src="{{ url('assets/dist/vendors') }}/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="{{ url('assets/dist/vendors') }}/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="{{ url('assets/dist/vendors') }}/bower_components/multiselect/js/jquery.multi-select.js"></script>
+
+
 @yield('scripts')
 <!-- Init JavaScript -->
 <script src="{{ url('assets/dist/') }}/js/init.js"></script>
 <script src="{{ url('assets/dist/') }}/js/dashboard-data.js"></script>
+<script src="{{ url('assets/dist/') }}/js/form-advance-data.js"></script>
+
 <script>
     var ApiURL = '{{ url('api/') }}';
+</script>
+
+
+<script>
+    $('input[name="password"]').each(function(){
+        var input_id = $(this).attr('id');
+        $(this).after('<center>'+
+            '<div class="checkbox checkbox-circle">'+
+            '<input id="checkbox7" onclick="'+"ShowPass('"+input_id+"')"+'" type="checkbox">'+
+            '<label for="checkbox7"> Show </label></div></center>');
+    });
+    function ShowPass(elem) {
+        var x = document.getElementById(elem);
+        console.log(elem);
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
 </script>
 
 

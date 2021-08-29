@@ -4,6 +4,7 @@ use App\Http\Controllers\Account\BranchesController;
 use App\Http\Controllers\Account\CitiesController;
 use App\Http\Controllers\Account\EditorController;
 use App\Http\Controllers\Account\SettingsController;
+use App\Http\Controllers\Account\UsersController;
 use App\Http\Controllers\Admin\SurveyTemplatesController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\urway\UrWayController;
@@ -174,6 +175,16 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('responses', [TicketsController::class, 'index'])->name('responses');
 
     });
+    Route::group(['middleware' => ['auth:sanctum', 'verified'], 'prefix' => 'account', 'as' => 'account.'], function () {
+        /*users*/
+        Route::get('/users', [UsersController::class, 'index'])->name('users');
+        Route::post('users/new', [UsersController::class, 'store'])->name('users.new');
+        Route::get('/user/toggle/{id}', [UsersController::class, 'toggle'])->name('users.toggle');
+        Route::get('/users/edit/{id}', [UsersController::class,'edit'])->name('users.edit');
+        Route::post('/users/update/{id}', [UsersController::class,'update'])->name('users.update');
+        Route::get('/users/delete/{id}', [UsersController::class,'destroy'])->name('users.delete');
+
+    });
     Route::group(['middleware' => ['auth:sanctum', 'verified'], 'prefix' => 'branches', 'as' => 'branches.'], function () {
         /* Branches Routes */
         Route::get('branches', [BranchesController::class, 'index'])->name('branches');
@@ -199,6 +210,7 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('branches/{branch}/points/{point}/editor', [EditorController::class, 'update'])->name('editor.save');
         Route::get('cities', [CitiesController::class, 'index'])->name('cities');
         Route::post('cities/new', [CitiesController::class, 'store'])->name('cities.new');
+
 
     });
 

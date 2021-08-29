@@ -187,8 +187,8 @@
                                             <td>{{ $team->created_at }}</td>
                                             <td>{{ isset($team->user->name)?$team->user->name: '' }}</td>
                                             <td>{{ isset($team->user->email)?$team->user->email: '' }}</td>
-                                            <td>{{ $team->settings->company_name }}</td>
-                                            <td>{{ $team->settings->phone }}</td>
+                                            <td>{{ isset( $team->settings->company_name)?$team->settings->company_name:'' }}</td>
+                                            <td>{{ isset($team->settings->phone)?$team->settings->phone:'' }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
