@@ -14,7 +14,6 @@ use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
-use Mail;
 
 class DashboardController extends Controller
 {
@@ -764,17 +763,20 @@ if($agent->isMobile()){
     }
     public function pdf_dashboard(Request $request){
 
+
+
             $data = array('name'=>"I'M Happy");
             Mail::send('emails.report', $data, function($message) {
                 $message->to('gad@alqamah.sa', "I'M Happy Reports")->subject
                 ('Monthly Report');
-                $message->attach(public_path('pdf_docs/1630354419.pdf'));
+//                $message->attach(public_path('pdf_docs/1630354419.pdf'));
                 $message->from('reporting@imhappy.sa','Reporting');
             });
         Mail::send('emails.report', $data, function($message) {
-            $message->to('ithabet.php@gmail.com', "I'M Happy Reports")->subject
+            $message->to('islam@alqamah.sa', "I'M Happy Reports")->subject
             ('Monthly Report');
-            $message->from('islam@alqamah.sa','Reporting');
+
+            $message->from('reporting@imhappy.sa','Reporting');
         });
             echo "Email Sent with attachment. Check your inbox.";
 
