@@ -14,6 +14,7 @@ use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Mail;
 
 class DashboardController extends Controller
 {
