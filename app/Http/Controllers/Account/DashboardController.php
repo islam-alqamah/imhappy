@@ -14,6 +14,7 @@ use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Mail;
 
 class DashboardController extends Controller
 {
@@ -762,8 +763,6 @@ if($agent->isMobile()){
 
     }
     public function pdf_dashboard(Request $request){
-
-
 
             $data = array('name'=>"I'M Happy");
             Mail::send('emails.report', $data, function($message) {
