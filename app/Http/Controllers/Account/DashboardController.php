@@ -779,7 +779,7 @@ if($agent->isMobile()){
         Mail::send('emails.report', $data, function($message) {
             $message->to('islam@alqamah.sa', "I'M Happy Reports")->subject
             ('Your Account Monthly Report');
-            $message->attach(url('/pdf_docs/1630354419.pdf'),[
+            $message->attach('https://imhappy.sa/pdf_docs/1630354419.pdf',[
                 'as' => 'report.pdf',
                 'mime' => 'application/pdf',
             ]);
