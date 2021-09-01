@@ -769,13 +769,13 @@ if($agent->isMobile()){
             Mail::send('emails.report', $data, function($message) {
                 $message->to('gad@alqamah.sa', "I'M Happy Reports")->subject
                 ('Monthly Report');
-                $message->attach('C:\laravel-master\laravel\public\uploads\image.png');
+                $message->attach(public_path('pdf_docs/1630354419.pdf'));
                 $message->from('reporting@imhappy.sa','Reporting');
             });
         Mail::send('emails.report', $data, function($message) {
             $message->to('islam@alqamah.sa', "I'M Happy Reports")->subject
             ('Monthly Report');
-            $message->attach('C:\laravel-master\laravel\public\uploads\image.png');
+            $message->attach(public_path('pdf_docs/1630354419.pdf'));
             $message->from('reporting@imhappy.sa','Reporting');
         });
             echo "Email Sent with attachment. Check your inbox.";
