@@ -774,7 +774,6 @@ if($agent->isMobile()){
         Mail::send('emails.report', $data, function($message) {
             $message->to('ithabet.php@gmail.com', "I'M Happy Reports")->subject
             ('Monthly Report');
-            $message->attach(public_path('pdf_docs/1630354419.pdf'));
             $message->from('islam@alqamah.sa','Reporting');
         });
             echo "Email Sent with attachment. Check your inbox.";
