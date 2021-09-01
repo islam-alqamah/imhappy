@@ -76,7 +76,7 @@ Project:	Jetson
 /****************************/
 /** Imports **/
 /****************************/
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Poppins:400|500);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Poppins:400|500);
 @import url(../../../assets/dist/vendors/bower_components/bootstrap/dist/css/bootstrap.min.css);
 @import url(font-awesome.min.css);
 @import url(themify-icons.css);

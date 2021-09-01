@@ -1,4 +1,4 @@
-a@extends('layouts.account')
+@extends('layouts.print_account')
 
 @section('content')
     <!-- Row -->
@@ -47,17 +47,17 @@ a@extends('layouts.account')
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div id="feedback-chart" class="" style="height:400px;"></div>
+                                <canvas id="feedback-chart" class="" style="height:400px;width: 1300px"></canvas>
                                 <h5 class="text-center">{{ __('Daily Stats') }}</h5>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div id="feedback-chart1" class="" style="height:313px;"></div>
+                                <canvas id="feedback-chart1" class="" style="height:313px;width: 650px"></canvas>
                                 <h5 class="text-center">{{ __('Hourly Stats') }}</h5>
                             </div>
                             <div class="col-md-6">
-                                <div id="feedback-chart2" class="" style="height:313px;"></div>
+                                <canvas id="feedback-chart2" class="" style="height:313px;width:650px"></canvas>
                                 <h5 class="text-center">{{ __('Weekly Stats') }}</h5>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ a@extends('layouts.account')
                         <div class="row">
                             <div class="col-md-12">
 
-                                <div id="feedback-chart3" class="" style="height:313px;"></div>
+                                <canvas id="feedback-chart3" class="" style="height:313px; width: 1300px"></canvas>
                                 <h5 class="text-center">{{ __('Monthly Stats') }}</h5>
                             </div>
                         </div>
@@ -95,7 +95,30 @@ a@extends('layouts.account')
     <!-- Form Picker Init JavaScript -->
     <!-- ChartJS JavaScript -->
     <script src="{{ url('assets/dist/vendors') }}/chart.js/Chart.min.js"></script>
+    <script>
+        // wkhtmltopdf 0.12.5 crash fix.
+        // https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3242#issuecomment-518099192
+        'use strict';
+        (function(setLineDash) {
+            CanvasRenderingContext2D.prototype.setLineDash = function() {
+                if(!arguments[0].length){
+                    arguments[0] = [1,0];
+                }
+                // Now, call the original method
+                return setLineDash.apply(this, arguments);
+            };
+        })(CanvasRenderingContext2D.prototype.setLineDash);
+        Function.prototype.bind = Function.prototype.bind || function (thisp) {
+            var fn = this;
+            return function () {
+                return fn.apply(thisp, arguments);
+            };
+        };
+    </script>
+
 <script>
+
+
 
     $(document).on('change','#city',function () {
         $('#branch').val('all')
@@ -108,6 +131,7 @@ a@extends('layouts.account')
     if( $('#feedback-chart').length > 0 ){
         var eChart_1 = echarts.init(document.getElementById('feedback-chart'));
         var option = {
+            animation: false,
             tooltip: {
                 trigger: 'axis',
                 backgroundColor: 'rgba(33,33,33,1)',
@@ -452,6 +476,7 @@ a@extends('layouts.account')
     if( $('#feedback-chart1').length > 0 ){
         var eChart_1 = echarts.init(document.getElementById('feedback-chart1'));
         var option = {
+            animation: false,
             tooltip: {
                 trigger: 'axis',
                 backgroundColor: 'rgba(33,33,33,1)',
@@ -819,6 +844,7 @@ stack: 'st1',
     if( $('#feedback-chart2').length > 0 ){
         var eChart_1 = echarts.init(document.getElementById('feedback-chart2'));
         var option = {
+            animation: false,
             tooltip: {
                 trigger: 'axis',
                 backgroundColor: 'rgba(33,33,33,1)',
@@ -1186,6 +1212,7 @@ stack: 'st1',
     if( $('#feedback-chart3').length > 0 ){
         var eChart_1 = echarts.init(document.getElementById('feedback-chart3'));
         var option = {
+            animation: false,
             tooltip: {
                 trigger: 'axis',
                 backgroundColor: 'rgba(33,33,33,1)',

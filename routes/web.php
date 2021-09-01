@@ -68,6 +68,8 @@ Route::group(['middleware' => 'language'], function () {
 
     Route::middleware(['auth:sanctum', 'verified'])
         ->get('/dashboard',[DashboardController::class,'index'] )->name('dashboard');
+    Route::middleware(['auth:sanctum', 'verified'])
+        ->get('/pdf-dashboard',[DashboardController::class,'pdf_dashboard'] )->name('pdf_dashboard');
 
     Route::middleware(['auth:sanctum', 'verified'])
         ->get('/charts',[DashboardController::class,'charts'] )->name('charts');
