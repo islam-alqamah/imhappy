@@ -769,16 +769,17 @@ if($agent->isMobile()){
             $data = array('name'=>"I'M Happy");
             Mail::send('emails.report', $data, function($message) {
                 $message->to('gad@alqamah.sa', "I'M Happy Reports")->subject
-                ('Monthly Report');
-//                $message->attach(public_path('pdf_docs/1630354419.pdf'));
-                $message->from('reporting@imhappy.sa','Reporting');
+                ('Your Account Monthly Report');
+                $message->attach('pdf_docs/1630354419.pdf');
+                $message->from('reporting@imhappy.sa',"I'M Happy");
             });
         Mail::send('emails.report', $data, function($message) {
             $message->to('islam@alqamah.sa', "I'M Happy Reports")->subject
-            ('Monthly Report');
-
-            $message->from('reporting@imhappy.sa','Reporting');
+            ('Your Account Monthly Report');
+            $message->attach('pdf_docs/1630354419.pdf');
+            $message->from('reporting@imhappy.sa',"I'M Happy");
         });
+
             echo "Email Sent with attachment. Check your inbox.";
 
 
